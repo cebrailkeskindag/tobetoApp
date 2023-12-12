@@ -75,7 +75,7 @@ class _LoginState extends State<Login> {
                       ),
                     )),
                 const SizedBox(
-                  height: 25,
+                  height: 20,
                 ),
                 ElevatedButton(
                   style: buttonStyle,
