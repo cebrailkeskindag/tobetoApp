@@ -10,12 +10,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Brightness brightness = MediaQuery.of(context).platformBrightness;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Tobeto',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        brightness:
+            brightness == Brightness.dark ? Brightness.dark : Brightness.light,
       ),
       home: const Login(),
     );
