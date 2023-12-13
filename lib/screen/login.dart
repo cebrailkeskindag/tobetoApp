@@ -97,6 +97,7 @@ class _LoginState extends State<Login> {
                         style: TextStyle(color: Colors.blue),
                       ),
                     ),
+                    const Text("Bu senanın yaptığı değişiklik. ")
                   ],
                 ),
               )),
