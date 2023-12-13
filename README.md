@@ -1,18 +1,39 @@
-# tobetoapp ![logo](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/047277af-a021-47c2-9f2d-f5ace8b3f6ca)
+# tobetoapp ![d3](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/f0fda431-772b-4b03-a74e-b96cb0334900)
+
 
 **Tobeto Eğitim uygulamamız, yazılım eğitimi alanında öncü bir konuma sahip Tobeto'nun Mobil Geliştirici (Flutter) öğrencileri tarafından geliştirilmiştir.
 Bu uygulama ile, Tobeto platformuna Mobil cihazlar üzerinden de erişilmesi amaçlanmıştır.**
 
+##Teknolojiler ve Araçlar 
+- Flutter
+- Dart
+- Visual Studio Code
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+### Takım Üyeleri
 
-A few resources to get you started if this is your first Flutter project:
+ @gulayselvi @haticesenadere @ilkrmshn @cebrailkeskindag
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Proje Mentörü
+@halitkalayci
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+# Uygulama Arayüzü
+
+**Uygulama Giriş Sayfası**
+
+![Ekran_goruntusu_2023-12-13_140939](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/7aae0a23-896e-43d7-ad39-fd352b551ede)
+
+
+
+
+
+#### İletişim Bilgileri
+- gulayselvi3@gmail.com
+- haticesena47@gmail.com
+- cebrailkeskindag1549@gmail.com
+- ilkermsahin42@gmail.com
+
+
+
