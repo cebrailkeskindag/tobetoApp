@@ -4,7 +4,7 @@
 **Tobeto Eğitim uygulamamız, yazılım eğitimi alanında öncü bir konuma sahip Tobeto'nun Mobil Geliştirici (Flutter) öğrencileri tarafından geliştirilmiştir.
 Bu uygulama ile, Tobeto platformuna Mobil cihazlar üzerinden de erişilmesi amaçlanmıştır.**
 
-##Teknolojiler ve Araçlar 
+## Teknolojiler ve Araçlar 
 - Flutter
 - Dart
 - Visual Studio Code
