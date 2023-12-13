@@ -11,11 +11,14 @@ Bu uygulama ile, Tobeto platformuna Mobil cihazlar üzerinden de erişilmesi ama
 
 
 ### Takım Üyeleri
+https://github.com/ilkrmshn
+https://github.com/cebrailkeskindag
+https://github.com/gulayselvi
+https://github.com/haticesenadere
 
- @gulayselvi @haticesenadere @ilkrmshn @cebrailkeskindag
 
 ### Proje Mentörü
-@halitkalayci
+https://github.com/halitkalayci
 
 
 
