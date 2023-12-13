@@ -10,11 +10,33 @@ Bu uygulama ile, Tobeto platformuna Mobil cihazlar üzerinden de erişilmesi ama
 - Visual Studio Code
 
 
+
+
+## Contributors
+
+Bu projede katkıda bulunan takım arkadaşlarımız:
+
+- [ilkrmshn](https://github.com/ilkrmshn)
+- [Adı Soyadı](https://github.com/kullanici_adi)
+- [Adı Soyadı](https://github.com/kullanici_adi)
+
+Teşekkürler!
+
+
+
+
+
+
+
+
+
+
+
 ### Takım Üyeleri
-https://github.com/ilkrmshn
-https://github.com/cebrailkeskindag
-https://github.com/gulayselvi
-https://github.com/haticesenadere
+- 
+- https://github.com/cebrailkeskindag
+- https://github.com/gulayselvi
+- https://github.com/haticesenadere
 
 
 ### Proje Mentörü
