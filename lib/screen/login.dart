@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -47,7 +49,7 @@ class _LoginState extends State<Login> {
                         padding: EdgeInsets.only(left: 30, right: 30),
                         child: TextField(
                           decoration: InputDecoration(
-                              hintText: "Kullanıcı adınız",
+                              hintText: "Kullanıcı adı",
                               hintStyle: TextStyle(fontFamily: "Poppins"),
                               prefixIcon: Icon(Icons.person),
                               border: OutlineInputBorder(
