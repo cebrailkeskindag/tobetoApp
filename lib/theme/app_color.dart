@@ -4,12 +4,13 @@ class AppColorLight {
   static ColorScheme colorScheme = ColorScheme.fromSeed(
       seedColor: const Color(0xFF6514C8),
       primary: const Color(0xFF6514C8),
-      secondary: const Color(0xFF00D29B),
+      secondary: Color.fromARGB(255, 53, 234, 186),
       background: const Color(0xFFFFFFFF));
   static final Color textColor = Color(0xFF515151);
   static final Color boxColor = Color(0xFF0E0B93);
   static final Color favoriteButtonColor = Color(0xFFFE4657);
 }
+
 class AppColorDark {
   static ColorScheme colorScheme = ColorScheme.fromSeed(
       seedColor: const Color(0xFF6514C8),

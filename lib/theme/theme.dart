@@ -1,4 +1,4 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:tobetoapp/theme/app_color.dart';
 
 class AppTheme {
@@ -8,14 +8,6 @@ class AppTheme {
       colorScheme: AppColorLight.colorScheme,
       primaryColor: AppColorLight.colorScheme.primary,
       scaffoldBackgroundColor: AppColorLight.colorScheme.background,
-      textTheme:const TextTheme(
-        displayLarge: TextStyle(
-          fontSize: 18,
-          fontFamily: "Poppins",
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      
     );
   }
 
@@ -25,14 +17,6 @@ class AppTheme {
       colorScheme: AppColorDark.colorScheme,
       primaryColor: AppColorDark.colorScheme.primary,
       scaffoldBackgroundColor: AppColorDark.colorScheme.background,
-      textTheme:const TextTheme(
-        displayLarge: TextStyle(
-          fontSize: 18,
-          fontFamily: "Poppins",
-          fontWeight: FontWeight.bold,
-        ),
-      ),
     );
   }
 }
-*/
