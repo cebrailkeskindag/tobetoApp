@@ -83,7 +83,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
             padding: const EdgeInsets.all(8.0),
             child: Card(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0), // Kenar yuvarlatma değerini belirleyin
+                borderRadius: BorderRadius.circular(12.0), 
               ),
               child: Padding(
                 padding: const EdgeInsets.all(10),
