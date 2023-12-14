@@ -70,7 +70,6 @@ class _DrawerMenuState extends State<DrawerMenu> {
                   children: [
                     const Text("Kullanıcı adı"),
                     const Spacer(),
-                    //Icon(Icons.person),
                     Image.asset(
                       'assets/images/ic_user.png',
                       width: 40.0,
