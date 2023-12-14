@@ -14,27 +14,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
     return Drawer(
       child: ListView(
         padding: const EdgeInsets.only(top: 25),
-        children:  [
-          SizedBox(
-            height: 100,
-            child: DrawerHeader(
-                decoration:const BoxDecoration(
-                    image: DecorationImage(
-                  image: AssetImage("assets/images/tobeto_logo.png"),
-                )),
-                // child:ElevatedButton(onPressed: () {Navigator.of(context).pop();}, child:Icon(Icons.cancel_outlined))
-<<<<<<< HEAD
-                child: IconButton(
-=======
-                child:IconButton(
->>>>>>> main
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: Icon(Icons.cancel_outlined))),
-          ),
-<<<<<<< HEAD
-          */
+        children: [
           Row(
             children: [
               Image.asset(
@@ -50,17 +30,13 @@ class _DrawerMenuState extends State<DrawerMenu> {
           const SizedBox(
             height: 10,
           ),
-          const ListTile(
-              title: Text("Anasayfa"), leading: Icon(Icons.home_outlined)),
-=======
           ListTile(
               title: const Text("Anasayfa"),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (ctx) => const HomepageScreen()));
               },
-              leading:const Icon(Icons.home_outlined)),
->>>>>>> main
+              leading: const Icon(Icons.home_outlined)),
           const ListTile(
               title: Text("Değerlendirmeler"),
               leading: Icon(Icons.assignment_turned_in_outlined)),
@@ -86,24 +62,14 @@ class _DrawerMenuState extends State<DrawerMenu> {
             padding: const EdgeInsets.all(8.0),
             child: Card(
               shape: RoundedRectangleBorder(
-<<<<<<< HEAD
-                borderRadius: BorderRadius.circular(
-                    12.0), // Kenar yuvarlatma değerini belirleyin
+                borderRadius: BorderRadius.circular(12.0),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(10),
-=======
-                borderRadius: BorderRadius.circular(12.0), // Kenar yuvarlatma değerini belirleyin
-              ),
-
-              child: const Padding(
-                padding: EdgeInsets.all(10),
->>>>>>> main
                 child: Row(
                   children: [
                     const Text("Kullanıcı adı"),
                     const Spacer(),
-                    //Icon(Icons.person),
                     Image.asset(
                       'assets/images/ic_user.png',
                       width: 40.0,
@@ -115,13 +81,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
             ),
           ),
           const Padding(
-<<<<<<< HEAD
             padding: EdgeInsets.only(left: 20, top: 10),
             child: Text("© 2022 Tobeto"),
-=======
-            padding:  EdgeInsets.only(left: 20,top:10),
-            child:  Text("© 2022 Tobeto"),
->>>>>>> main
           ),
         ],
       ),
