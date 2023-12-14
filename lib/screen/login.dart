@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/widgets/drawer.dart';
+
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -17,6 +19,8 @@ class _LoginState extends State<Login> {
         backgroundColor: Theme.of(context).primaryColor,
         minimumSize: const Size(290, 40));
     return Scaffold(
+      drawer: DrawerMenu(),
+      appBar: AppBar(title: Text("Menu"),),
       backgroundColor: Colors.grey,
       body: Container(
         decoration: const BoxDecoration(
