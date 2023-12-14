@@ -14,27 +14,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
     return Drawer(
       child: ListView(
         padding: const EdgeInsets.only(top: 25),
-        children:  [
-            /**
-          SizedBox(
-            height: 100,
-            child: DrawerHeader(
-                decoration:const BoxDecoration(
-                    image: DecorationImage(
-                  image: AssetImage("assets/images/tobeto_logo.png"),
-                )),
-                // child:ElevatedButton(onPressed: () {Navigator.of(context).pop();}, child:Icon(Icons.cancel_outlined))
-
-             
-
-                child:IconButton(
-
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: Icon(Icons.cancel_outlined))),
-          ),
-           */
+        children: [
           Row(
             children: [
               Image.asset(
@@ -50,14 +30,13 @@ class _DrawerMenuState extends State<DrawerMenu> {
           const SizedBox(
             height: 10,
           ),
-      
           ListTile(
               title: const Text("Anasayfa"),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (ctx) => const HomepageScreen()));
               },
-              leading:const Icon(Icons.home_outlined)),
+              leading: const Icon(Icons.home_outlined)),
           const ListTile(
               title: Text("Değerlendirmeler"),
               leading: Icon(Icons.assignment_turned_in_outlined)),
@@ -83,7 +62,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
             padding: const EdgeInsets.all(8.0),
             child: Card(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0), 
+                borderRadius: BorderRadius.circular(12.0),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(10),
@@ -103,8 +82,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
             ),
           ),
           const Padding(
-            padding:  EdgeInsets.only(left: 20,top:10),
-            child:  Text("© 2022 Tobeto"),
+            padding: EdgeInsets.only(left: 20, top: 10),
+            child: Text("© 2022 Tobeto"),
           ),
         ],
       ),
