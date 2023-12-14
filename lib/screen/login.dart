@@ -1,8 +1,5 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/widgets/drawer.dart';
-
+import 'package:tobetoapp/screen/homepage_screen.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -19,11 +16,7 @@ class _LoginState extends State<Login> {
         backgroundColor: Theme.of(context).primaryColor,
         minimumSize: const Size(290, 40));
     return Scaffold(
-      drawer: DrawerMenu(),
-      appBar: AppBar(title: Text("Menu"),),
-      backgroundColor: Colors.grey,
-      body: Container(
-        decoration: const BoxDecoration(
+      body: Container(decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage("assets/images/login_background.png"),
           fit: BoxFit.cover,
@@ -53,7 +46,7 @@ class _LoginState extends State<Login> {
                         padding: EdgeInsets.only(left: 30, right: 30),
                         child: TextField(
                           decoration: InputDecoration(
-                              hintText: "Kullanıcı adı",
+                              labelText: "Kullanıcı adı",
                               hintStyle: TextStyle(fontFamily: "Poppins"),
                               prefixIcon: Icon(Icons.person),
                               border: OutlineInputBorder(
@@ -72,7 +65,7 @@ class _LoginState extends State<Login> {
                           child: TextField(
                             obscureText: true,
                             decoration: InputDecoration(
-                                hintText: "Parola giriniz",
+                                labelText: "Parola giriniz",
                                 hintStyle: TextStyle(fontFamily: "Poppins"),
                                 prefixIcon: const Icon(Icons.lock),
                                 suffixIcon: IconButton(
@@ -88,7 +81,10 @@ class _LoginState extends State<Login> {
                     ),
                     ElevatedButton(
                       style: buttonStyle,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (ctx) => const HomepageScreen()));
+                      },
                       child: const Text(
                         "GİRİŞ YAP",
                         style: TextStyle(
