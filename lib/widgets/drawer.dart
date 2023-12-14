@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/screen/homepage_screen.dart';
 
 class DrawerMenu extends StatefulWidget {
   const DrawerMenu({Key? key}) : super(key: key);
@@ -14,18 +15,27 @@ class _DrawerMenuState extends State<DrawerMenu> {
       child: ListView(
         padding: const EdgeInsets.only(top: 25),
         children:  [
-           SizedBox( 
+          SizedBox(
             height: 100,
             child: DrawerHeader(
-              decoration:const BoxDecoration(
-                  image: DecorationImage(
-                image: AssetImage("assets/images/tobeto_logo.png"),
-              )),
-             // child:ElevatedButton(onPressed: () {Navigator.of(context).pop();}, child:Icon(Icons.cancel_outlined))
-              child:IconButton(onPressed: (){Navigator.of(context).pop();}, icon: Icon(Icons.cancel_outlined))
-            ),
+                decoration:const BoxDecoration(
+                    image: DecorationImage(
+                  image: AssetImage("assets/images/tobeto_logo.png"),
+                )),
+                // child:ElevatedButton(onPressed: () {Navigator.of(context).pop();}, child:Icon(Icons.cancel_outlined))
+                child:IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(Icons.cancel_outlined))),
           ),
-          const ListTile(title: Text("Anasayfa"), leading: Icon(Icons.home_outlined)),
+          ListTile(
+              title: const Text("Anasayfa"),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (ctx) => const HomepageScreen()));
+              },
+              leading:const Icon(Icons.home_outlined)),
           const ListTile(
               title: Text("Değerlendirmeler"),
               leading: Icon(Icons.assignment_turned_in_outlined)),
@@ -50,9 +60,9 @@ class _DrawerMenuState extends State<DrawerMenu> {
             padding: const EdgeInsets.all(8.0),
             child: Card(
               shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0), // Kenar yuvarlatma değerini belirleyin
-            ),
-              
+                borderRadius: BorderRadius.circular(12.0), // Kenar yuvarlatma değerini belirleyin
+              ),
+
               child: const Padding(
                 padding: EdgeInsets.all(10),
                 child: Row(
@@ -61,7 +71,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
               ),
             ),
           ),
-         const Padding(
+          const Padding(
             padding:  EdgeInsets.only(left: 20,top:10),
             child:  Text("© 2022 Tobeto"),
           ),
