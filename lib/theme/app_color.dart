@@ -13,7 +13,8 @@ class AppColorLight {
   static Color boxColor = const Color(0xFF0E0B93);
   static Color favoriteButtonColor = const Color(0xFFFE4657);
   static Color appBarBacgroundColor = const Color(0xFFFFFFFF);
-  static Color appBartextColor = const Color(0xFFFE4657);
+  static Color appBartextColor = const Color(0xFF515151);
+  static Color drawerBacgroundColor = const Color(0xFFFFFFFF);
   static Color elevatedButtonColor = Colors.purple;
 }
 
@@ -29,6 +30,7 @@ class AppColorDark {
   static Color iconColor = const Color(0xFFFFFFFF);
   static Color boxColor = const Color.fromARGB(255, 9, 9, 12);
   static Color appBarBacgroundColor = const Color(0xFF010827);
-  static Color appBartextColor = const Color(0xFFFE4657);
+  static Color appBartextColor = const Color(0xFFFFFFFF);
+  static Color drawerBacgroundColor = const Color(0xFF010827);
   static Color elevatedButtonColor = Colors.purple;
 }

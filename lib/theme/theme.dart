@@ -9,6 +9,7 @@ class AppTheme {
       colorScheme: AppColorLight.colorScheme,
       primaryColor: AppColorLight.colorScheme.primary,
       scaffoldBackgroundColor: AppColorLight.colorScheme.background,
+      drawerTheme: DrawerThemeData(backgroundColor: AppColorLight.drawerBacgroundColor),
       listTileTheme: ListTileThemeData(
           titleTextStyle: GoogleFonts.poppins(
             fontSize: 18.0,
@@ -33,7 +34,7 @@ class AppTheme {
         iconTheme: IconThemeData(color: AppColorLight.iconColor),
         titleTextStyle: GoogleFonts.poppins(
           fontSize: 22.0,
-          color: AppColorLight.textColor,
+          color: AppColorLight.appBartextColor,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -52,6 +53,7 @@ class AppTheme {
       colorScheme: AppColorDark.colorScheme,
       primaryColor: AppColorDark.colorScheme.primary,
       scaffoldBackgroundColor: AppColorDark.colorScheme.background,
+      drawerTheme: DrawerThemeData(backgroundColor: AppColorDark.drawerBacgroundColor),
       listTileTheme: ListTileThemeData(
           titleTextStyle: GoogleFonts.poppins(
             fontSize: 18.0,
@@ -76,7 +78,7 @@ class AppTheme {
         iconTheme: IconThemeData(color: AppColorDark.iconColor),
         titleTextStyle: GoogleFonts.poppins(
           fontSize: 22.0,
-          color: AppColorDark.textColor,
+          color: AppColorDark.appBartextColor,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
