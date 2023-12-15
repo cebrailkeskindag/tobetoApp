@@ -17,7 +17,6 @@ class _DrawerMenuState extends State<DrawerMenu> {
         ? 'assets/images/tobeto_logo.png'
         : 'assets/images/tobeto_logo_d.png';
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.background,
       child: ListView(
         padding: const EdgeInsets.only(top: 25),
         children: [
