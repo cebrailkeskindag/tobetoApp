@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
+import 'package:tobetoapp/theme/app_color.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -11,12 +12,18 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
+    
+   Brightness currentBrightness = MediaQuery.of(context).platformBrightness;
+   String imageName = currentBrightness == Brightness.light
+        ? 'assets/images/tobeto_logo.png'
+        : 'assets/images/tobeto_logo_d.png';
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 16),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: (AppColorDark.elevatedButtonColor),
         minimumSize: const Size(290, 40));
     return Scaffold(
-      body: Container(decoration: const BoxDecoration(
+      body: Container(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage("assets/images/login_background.png"),
           fit: BoxFit.cover,
@@ -35,7 +42,7 @@ class _LoginState extends State<Login> {
                     ),
                     SizedBox(
                       height: 50,
-                      child: Image.asset("assets/images/tobeto_logo.png"),
+                      child: Image.asset(imageName),
                     ),
                     const SizedBox(
                       height: 15,
