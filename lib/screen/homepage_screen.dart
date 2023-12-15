@@ -11,12 +11,11 @@ class HomepageScreen extends StatefulWidget {
 class _HomepageScreenState extends State<HomepageScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( 
       drawer: const DrawerMenu(),
       appBar: AppBar(
         title: const Text("Anasayfa"),
       ),
-      backgroundColor: Colors.grey,
       
     );
   }
