@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/screen/catalog.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
 import 'package:tobetoapp/screen/profil.dart';
 
@@ -53,8 +54,14 @@ class _DrawerMenuState extends State<DrawerMenu> {
                   .push(MaterialPageRoute(builder: (ctx) => const Profil()));
             },
           ),
-          const ListTile(
-              title: Text("Katalog"), leading: Icon(Icons.list_outlined)),
+          ListTile(
+            title: const Text("Katalog"),
+            leading: const Icon(Icons.list_outlined),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (ctx) => const Catalog()));
+            },
+          ),
           const ListTile(
             title: Text("Takvim"),
             leading: Icon(Icons.date_range),
