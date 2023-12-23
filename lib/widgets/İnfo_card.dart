@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class ACard extends StatelessWidget {
-  const ACard({Key? key}) : super(key: key);
+class InfoCard extends StatelessWidget {
+  const InfoCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      shape: const RoundedRectangleBorder(
-        side: BorderSide(color: Colors.green),
-        borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(20), topLeft: Radius.circular(20)),
-      ),
+      shape: const Border(
+          left: BorderSide(
+        color: Colors.green,
+        width: 8,
+      )),
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             Row(
@@ -23,7 +23,7 @@ class ACard extends StatelessWidget {
                   "İstanbul Kodluyor \nBilgilendirme",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                Spacer(),
+                const Spacer(),
                 ClipRRect(
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(25.0),

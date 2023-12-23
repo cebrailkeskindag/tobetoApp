@@ -29,15 +29,20 @@ class ExamCard extends StatelessWidget {
                   aspectRatio: 8 / 9,
                   child: Card(
                     color: Colors.white,
-                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            SizedBox(width: 100,
+                            SizedBox(
+                              width: 100,
                               child: Text(
-                                softWrap: true,
+                                  softWrap: true,
                                   "Herkes için Kodlama 2B Değerlendirme Sınavı",
-                                  style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold)),
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w900)),
                             ),
                             Icon(
                               Icons.check_box,
@@ -49,13 +54,19 @@ class ExamCard extends StatelessWidget {
                           "Herkes için Kodlama-2B",
                           style: TextStyle(fontSize: 11),
                         ),
-                        
                         Padding(
-                          padding: EdgeInsets.only(left:14),
+                          padding: EdgeInsets.only(left: 14),
                           child: Row(
                             children: [
-                              Icon(Icons.timer_outlined,color: Colors.purple,),
-                              Text(" 45 Dakika")
+                              Icon(
+                                Icons.timer_outlined,
+                                color: Colors.purple,
+                              ),
+                              Text(
+                                " 45 Dakika",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 18),
+                              )
                             ],
                           ),
                         )

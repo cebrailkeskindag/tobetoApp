@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/widgets/a_card.dart';
+import 'package:tobetoapp/widgets/%C4%B0nfo_card.dart';
 import 'package:tobetoapp/widgets/category_card.dart';
 
 import 'package:tobetoapp/widgets/drawer.dart';
 import 'package:tobetoapp/widgets/exam_card.dart';
-
 
 import '../theme/app_color.dart';
 
@@ -22,7 +21,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
     Color tColor = currentBrightness == Brightness.light
         ? AppColorLight.textColor
         : AppColorDark.textColor;
-         String istkodluyor = currentBrightness == Brightness.light
+    String istkodluyor = currentBrightness == Brightness.light
         ? 'assets/images/istkodluyor.png'
         : 'assets/images/istkodluyor_dark.png';
     MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -42,17 +41,21 @@ class _HomepageScreenState extends State<HomepageScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(5.0),
               child: Center(
                   child: RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
                           text: "TOBETO",
-                          style: const TextStyle(color: Colors.purple, fontSize: 30),
+                          style: const TextStyle(
+                              color: Colors.purple,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w500),
                           children: [
                             TextSpan(
-                              text: "'ya hoşgeldiniz Kullanıcı_adı",
-                              style: TextStyle(color: tColor),
+                              text: "'ya hoş geldin  Kullanıcı_adı",
+                              style: TextStyle(
+                                  color: tColor, fontWeight: FontWeight.w300),
                             )
                           ]))),
             ),
@@ -74,8 +77,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                       children: [
                         SizedBox(
                             width: screenWidth / 3,
-                            child:
-                                Image.asset(istkodluyor)),
+                            child: Image.asset(istkodluyor)),
                         const Text(
                           " Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
                           textAlign: TextAlign.center,
@@ -103,16 +105,16 @@ class _HomepageScreenState extends State<HomepageScreen> {
                                 child: const Text("Anketlerim"))
                           ],
                         ),
-                        SizedBox(width: screenWidth / 0.20, child: ACard()),
-                         // SizedBox(width: screenWidth / 0.20, child: TrainingsCard()),
+                        SizedBox(width: screenWidth / 0.20, child: InfoCard()),
+                        // SizedBox(width: screenWidth / 0.20, child: TrainingsCard()),
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-           SizedBox(width: screenWidth /0.20,child: ExamCard()),
-            SizedBox(width: screenWidth /0.20,child: CategoryCard())
+            SizedBox(width: screenWidth / 0.20, child: ExamCard()),
+            SizedBox(width: screenWidth / 0.20, child: CategoryCard())
           ],
         ),
       ),
