@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tobetoapp/widgets/a_card.dart';
 
 import 'package:tobetoapp/widgets/drawer.dart';
+import 'package:tobetoapp/widgets/trainings_card.dart';
 
 class HomepageScreen extends StatefulWidget {
   const HomepageScreen({Key? key}) : super(key: key);
@@ -29,13 +30,20 @@ class _HomepageScreenState extends State<HomepageScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(5.0),
               child: Center(
-                child: Text(
-                  "TOBETO'YA HOŞGELDİNİZ",
-                ),
-              ),
+                  child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                          text: "TOBETO",
+                          style: TextStyle(color: Colors.purple, fontSize: 30),
+                          children: [
+                            TextSpan(
+                              text: "'ya hoşgeldiniz Kullanıcı_adı",
+                              style: TextStyle(color: Colors.black),
+                            )
+                          ]))),
             ),
             Padding(
               padding: EdgeInsets.all(screenWidth / 20),
@@ -85,6 +93,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                           ],
                         ),
                         SizedBox(width: screenWidth / 0.20, child: ACard()),
+                        //  SizedBox(width: screenWidth / 0.20, child: TrainingsCard()),
                       ],
                     ),
                   ),
