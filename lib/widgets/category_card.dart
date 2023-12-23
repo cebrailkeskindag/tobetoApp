@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({Key? key}) : super(key: key);
@@ -23,11 +24,15 @@ class CategoryCard extends StatelessWidget {
                 bottomRight: Radius.circular(50)),
             child: Container(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                Colors.blue.shade900,
-                Colors.purple,
-                Colors.white
-              ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
+                  gradient: LinearGradient(
+                      colors: [
+                    Colors.blue.shade900,
+                    Colors.purple,
+                    Colors.white
+                  ],
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      tileMode: TileMode.mirror)),
               width: screenWidth,
               height: 180,
               child: Padding(
@@ -41,9 +46,13 @@ class CategoryCard extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {},
-                      child: const Text("Başla"),
                       style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(300, 34),
+                          fixedSize: const Size(300, 34),
+                          backgroundColor: Color.fromRGBO(103, 82, 195, 1)),
+                      child: const Text(
+                        "Başla",
+                        style: TextStyle(
+                            fontFamily: "Poppins", color: Colors.white),
                       ),
                     )
                   ],
@@ -61,11 +70,15 @@ class CategoryCard extends StatelessWidget {
                 bottomRight: Radius.circular(50)),
             child: Container(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                Colors.blue.shade900,
-                Colors.purple,
-                Colors.white
-              ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
+                  gradient: LinearGradient(
+                      colors: [
+                    Colors.blue.shade900,
+                    Colors.purple,
+                    Colors.blueAccent
+                  ],
+                      transform: GradientRotation(15),
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft)),
               width: screenWidth,
               height: 180,
               child: Padding(
@@ -79,9 +92,13 @@ class CategoryCard extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {},
-                      child: const Text("Başla"),
                       style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(300, 34),
+                          fixedSize: const Size(300, 34),
+                          backgroundColor: Color.fromRGBO(103, 82, 195, 1)),
+                      child: const Text(
+                        "Başla",
+                        style: TextStyle(
+                            fontFamily: "Poppins", color: Colors.white),
                       ),
                     )
                   ],
@@ -98,12 +115,16 @@ class CategoryCard extends StatelessWidget {
                 bottomLeft: Radius.circular(50),
                 bottomRight: Radius.circular(50)),
             child: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                Colors.blue.shade900,
-                Colors.purple,
-                Colors.white
-              ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [
+                    Color.fromARGB(255, 103, 255, 174),
+                    Colors.purple,
+                    Colors.blue
+                  ],
+                      transform: GradientRotation(15),
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft)),
               width: screenWidth,
               height: 180,
               child: Padding(
@@ -117,9 +138,13 @@ class CategoryCard extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {},
-                      child: const Text("Başla"),
                       style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(300, 34),
+                          fixedSize: const Size(300, 34),
+                          backgroundColor: Color.fromRGBO(103, 82, 195, 1)),
+                      child: const Text(
+                        "Başla",
+                        style: TextStyle(
+                            fontFamily: "Poppins", color: Colors.white),
                       ),
                     )
                   ],
