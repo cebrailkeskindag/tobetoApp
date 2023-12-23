@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/widgets/circular_button.dart';
 import 'package:tobetoapp/widgets/drawer.dart';
 
 class Profil extends StatefulWidget {
@@ -16,6 +17,7 @@ class _ProfilState extends State<Profil> {
       appBar: AppBar(
         title: const Text("Profil"),
       ),
+      body: CircularButton(),
     );
   }
 }

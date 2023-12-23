@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/widgets/%C4%B0nfo_card.dart';
+import 'package:footer/footer.dart';
+import 'package:footer/footer_view.dart';
+import 'package:tobetoapp/widgets/footer_bar.dart';
+import 'package:tobetoapp/widgets/info_card.dart';
 import 'package:tobetoapp/widgets/category_card.dart';
 
 import 'package:tobetoapp/widgets/drawer.dart';
@@ -32,92 +35,107 @@ class _HomepageScreenState extends State<HomepageScreen> {
     // Ekran yüksekliği
     //double screenHeight = mediaQuery.size.height;
     return Scaffold(
-      drawer: const DrawerMenu(),
+      endDrawer: const DrawerMenu(),
       appBar: AppBar(
-        title: const Text("Anasayfa"),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Center(
-                  child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                          text: "TOBETO",
-                          style: const TextStyle(
-                              color: Colors.purple,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w500),
-                          children: [
-                            TextSpan(
-                              text: "'ya hoş geldin  Kullanıcı_adı",
-                              style: TextStyle(
-                                  color: tColor, fontWeight: FontWeight.w300),
-                            )
-                          ]))),
-            ),
-            Padding(
-              padding: EdgeInsets.all(screenWidth / 20),
-              child: const Text(
-                "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!",
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: EdgeInsets.all(screenWidth / 20),
-                child: Card(
-                  color: Theme.of(context).colorScheme.background,
-                  child: Padding(
-                    padding: EdgeInsets.all(screenWidth / 80),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                            width: screenWidth / 3,
-                            child: Image.asset(istkodluyor)),
-                        const Text(
-                          " Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
-                          textAlign: TextAlign.center,
-                        ),
-                        const Text(
-                          "  Aradığın \"İş\" Burada ",
-                        ),
-                        Wrap(
-                          children: [
-                            TextButton(
-                                onPressed: () {
-                                  // Navigator.of(context).push(MaterialPageRoute(
-                                  //  builder: (ctx) =>
-                                  //   const ApplicationCard()));
-                                },
-                                child: const Text("Başvurularım")),
-                            TextButton(
-                                onPressed: () {},
-                                child: const Text("Eğitimlerim")),
-                            TextButton(
-                                onPressed: () {},
-                                child: const Text("Duyuru ve Haberlerim")),
-                            TextButton(
-                                onPressed: () {},
-                                child: const Text("Anketlerim"))
-                          ],
-                        ),
-                        SizedBox(width: screenWidth / 0.20, child: InfoCard()),
-                        // SizedBox(width: screenWidth / 0.20, child: TrainingsCard()),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(width: screenWidth / 0.20, child: ExamCard()),
-            SizedBox(width: screenWidth / 0.20, child: CategoryCard())
-          ],
+        centerTitle: false,
+        automaticallyImplyLeading: false,
+        title: Image.asset(
+          "assets/images/tobeto_logo.png",
+          width: 150,
         ),
       ),
+      body: FooterView(
+          footer: Footer(child: const FooterBar()),
+          flex: 10,
+          children: <Widget>[
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Center(
+                        child: RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                                text: "TOBETO",
+                                style: const TextStyle(
+                                    color: Colors.purple,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w500),
+                                children: [
+                                  TextSpan(
+                                    text: "'ya hoş geldin  Kullanıcı_adı",
+                                    style: TextStyle(
+                                        color: tColor,
+                                        fontWeight: FontWeight.w300),
+                                  )
+                                ]))),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(screenWidth / 20),
+                    child: const Text(
+                      "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!",
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(screenWidth / 20),
+                      child: Card(
+                        color: Theme.of(context).colorScheme.background,
+                        child: Padding(
+                          padding: EdgeInsets.all(screenWidth / 80),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                  width: screenWidth / 3,
+                                  child: Image.asset(istkodluyor)),
+                              const Text(
+                                " Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
+                                textAlign: TextAlign.center,
+                              ),
+                              const Text(
+                                "  Aradığın \"İş\" Burada ",
+                              ),
+                              Wrap(
+                                children: [
+                                  TextButton(
+                                      onPressed: () {
+                                        // Navigator.of(context).push(MaterialPageRoute(
+                                        //  builder: (ctx) =>
+                                        //   const ApplicationCard()));
+                                      },
+                                      child: const Text("Başvurularım")),
+                                  TextButton(
+                                      onPressed: () {},
+                                      child: const Text("Eğitimlerim")),
+                                  TextButton(
+                                      onPressed: () {},
+                                      child:
+                                          const Text("Duyuru ve Haberlerim")),
+                                  TextButton(
+                                      onPressed: () {},
+                                      child: const Text("Anketlerim"))
+                                ],
+                              ),
+                              SizedBox(
+                                  width: screenWidth / 0.20,
+                                  child: const InfoCard()),
+                              // SizedBox(width: screenWidth / 0.20, child: TrainingsCard()),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: screenWidth / 0.20, child: const ExamCard()),
+                  SizedBox(
+                      width: screenWidth / 0.20, child: const CategoryCard()),
+                ],
+              ),
+            ),
+          ]),
     );
   }
 }
