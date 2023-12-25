@@ -128,6 +128,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                                   const Wrap(
                                     children: [
                                       TabBar(
+                                        isScrollable: true,
                                         tabs: tabs,
                                       ),
                                     ],
