@@ -1,3 +1,4 @@
+import 'package:fab_circular_menu_plus/fab_circular_menu_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/widgets/circular_button.dart';
 import 'package:tobetoapp/widgets/drawer.dart';
@@ -17,7 +18,8 @@ class _ProfilState extends State<Profil> {
       appBar: AppBar(
         title: const Text("Profil"),
       ),
-      body: CircularButton(),
+      body: Scaffold(),
+      floatingActionButton: CircularButton(),
     );
   }
 }
