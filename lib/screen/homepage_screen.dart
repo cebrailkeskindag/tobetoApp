@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:footer/footer.dart';
 import 'package:footer/footer_view.dart';
+import 'package:tobetoapp/widgets/circular_button.dart';
 import 'package:tobetoapp/widgets/footer_bar.dart';
 import 'package:tobetoapp/widgets/info_card.dart';
 import 'package:tobetoapp/widgets/category_card.dart';
@@ -44,6 +45,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
           width: 150,
         ),
       ),
+      floatingActionButton: CircularButton(),
       body: FooterView(
           footer: Footer(child: const FooterBar()),
           flex: 10,
