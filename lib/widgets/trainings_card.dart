@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/theme/app_color.dart';
 
 class TrainingsCard extends StatelessWidget {
   const TrainingsCard({Key? key}) : super(key: key);
@@ -8,98 +9,72 @@ class TrainingsCard extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.only(top: 20.0),
           child: Card(
-            color: Colors.white,
             elevation: 10,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  // Image.asset("assets/images.istkodluyor.png"),
-                  const Text(
-                    "Dr. Ecmel Ayral'ın Hoşgeldin Mesajı",
-                    style: TextStyle(color: Colors.black),
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(12),
+                    topLeft: Radius.circular(12),
+                  ), // Yuvarlanan köşe
+                  child: Image.asset(
+                    "assets/images/ecmal.jpg",
+                    width: double.infinity,
+                    height: 180,
+                    fit: BoxFit.cover,
                   ),
-                  const Text(
-                    "21 Eylül 2023 15:20",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  ElevatedButton(
-                      onPressed: () {}, child: const Text("Eğitime Git"))
-                ],
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Card(
-              color: Colors.white,
-              elevation: 10, // Card'a eklenen gölgenin yüksekliği
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    // Image.asset("assets/images.istkodluyor.png"),
-                    const Text("Dr. Ecmel Ayral'ın Hoşgeldin Mesajı"),
-                    const Text("Dr. Ecmel Ayral'ın Hoşgeldin Mesajı"),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Butona tıklandığında yapılacak işlemler
-                      },
-                      child: const Text("Eğitime Git"),
-                    )
-                  ],
                 ),
+                const Text(
+                  "Dr. Ecmel Ayral'dan Hoşgeldin Mesajı",
+                ),
+                const Text(
+                  "21 Eylül 2023 15:20",
+                ),
+                ElevatedButton(
+                    onPressed: () {}, child: const Text("Eğitime Git"))
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 20.0),
+          child: Card(
+              elevation: 10, // Card'a eklenen gölgenin yüksekliği
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(12),
+                      topLeft: Radius.circular(12),
+                    ), // Yuvarlanan köşe
+                    child: Image.asset(
+                      "assets/images/istkod_egitim.jpg",
+                      width: double.infinity,
+                      height: 180,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const Text("Eğitimlere Nasıl Katılırım?"),
+                  const Text("8 Eylül 2023 17:06"),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Butona tıklandığında yapılacak işlemler
+                    },
+                    child: const Text("Eğitime Git"),
+                  )
+                ],
               )),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Card(
-            color: Colors.white,
-            elevation: 10,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  //   Image.asset("assets/images.istkodluyor.png"),
-                  const Text("Dr. Ecmel Ayral'ın Hoşgeldin Mesajı"),
-                  const Text("Dr. Ecmel Ayral'ın Hoşgeldin Mesajı"),
-                  ElevatedButton(
-                      onPressed: () {}, child: const Text("Eğitime Git"))
-                ],
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Card(
-            color: Colors.white,
-            elevation: 10,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  //   Image.asset("assets/images.istkodluyor.png"),
-                  const Text("Dr. Ecmel Ayral'ın Hoşgeldin Mesajı"),
-                  const Text("Dr. Ecmel Ayral'ın Hoşgeldin Mesajı"),
-                  ElevatedButton(
-                      onPressed: () {}, child: const Text("Eğitime Git"))
-                ],
-              ),
-            ),
-          ),
         ),
         const SizedBox(height: 20),
         Center(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(10.0),
             child: Container(
-              width: 60.0,
-              height: 60.0,
+              width: 50.0,
+              height: 50.0,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white,

@@ -30,7 +30,6 @@ class _LoginState extends State<Login> {
         )),
         child: Center(
           child: Card(
-              color: Theme.of(context).colorScheme.background,
               child: SizedBox(
                 width: 350,
                 height: 360,

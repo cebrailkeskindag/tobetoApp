@@ -15,7 +15,6 @@ class ExamCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(screenWidth / 20),
       child: Card(
-        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -28,7 +27,7 @@ class ExamCard extends StatelessWidget {
                 child: const AspectRatio(
                   aspectRatio: 8 / 9,
                   child: Card(
-                    color: Colors.white,
+                    elevation: 15,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [

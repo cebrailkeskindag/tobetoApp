@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColorLight {
   static ColorScheme colorScheme = ColorScheme.fromSeed(
     seedColor: const Color(0xFF6514C8),
+    onPrimary: const Color(0xFFFFFFFF),
     primary: const Color(0xFF6514C8),
     secondary: const Color.fromARGB(255, 53, 234, 186),
     background: const Color(0xFFFFFFFF),
@@ -16,13 +17,15 @@ class AppColorLight {
   static Color appBartextColor = const Color(0xFF515151);
   static Color drawerBacgroundColor = const Color(0xFFFFFFFF);
   static Color elevatedButtonColor = Colors.purple;
+  static Color cardColor = const Color(0xFFFFFFFF);
 }
 
 class AppColorDark {
   static ColorScheme colorScheme = ColorScheme.fromSeed(
     seedColor: const Color(0xFF6514C8),
-    primary: const Color.fromARGB(255, 38, 7, 76),
-    secondary: const Color(0xFF004D40),
+    onPrimary: const Color(0xFFFFFFFF),
+    primary: const Color(0xFF00d29b),
+    secondary: const Color(0xFF00d29b),
     background: const Color(0xFF010827),
     surface: const Color(0xFFFFFFFF),
   );
@@ -33,4 +36,5 @@ class AppColorDark {
   static Color appBartextColor = const Color(0xFFFFFFFF);
   static Color drawerBacgroundColor = const Color(0xFF010827);
   static Color elevatedButtonColor = Colors.purple;
+  static Color cardColor = const Color(0xFF0B2B40);
 }
