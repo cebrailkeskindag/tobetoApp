@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:footer/footer.dart';
-import 'package:footer/footer_view.dart';
 import 'package:tobetoapp/widgets/circular_button.dart';
-import 'package:tobetoapp/widgets/footer_bar.dart';
 import 'package:tobetoapp/widgets/info_card.dart';
 import 'package:tobetoapp/widgets/category_card.dart';
 
 import 'package:tobetoapp/widgets/drawer.dart';
 import 'package:tobetoapp/widgets/exam_card.dart';
+import 'package:tobetoapp/widgets/news_card.dart';
+import 'package:tobetoapp/widgets/survey_card.dart';
 import 'package:tobetoapp/widgets/trainings_card.dart';
 
 import '../theme/app_color.dart';
@@ -38,6 +37,9 @@ class _HomepageScreenState extends State<HomepageScreen> {
     String istkodluyor = currentBrightness == Brightness.light
         ? 'assets/images/istkodluyor.png'
         : 'assets/images/istkodluyor_dark.png';
+    String tobetoAppbarLogo = currentBrightness == Brightness.light
+        ? 'assets/images/tobeto_logo.png'
+        : 'assets/images/tobeto_logo_d.png';
     MediaQueryData mediaQuery = MediaQuery.of(context);
 
     // Ekran genişliği
@@ -66,96 +68,129 @@ class _HomepageScreenState extends State<HomepageScreen> {
             centerTitle: false,
             automaticallyImplyLeading: false,
             title: Image.asset(
-              "assets/images/tobeto_logo.png",
+              tobetoAppbarLogo,
               width: 150,
             ),
           ),
-          floatingActionButton: CircularButton(),
-          body: FooterView(
-              footer: Footer(child: const FooterBar()),
-              flex: 10,
-              children: <Widget>[
-                SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Center(
-                            child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                    text: "TOBETO",
-                                    style: const TextStyle(
-                                        color: Colors.purple,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w500),
-                                    children: [
-                                      TextSpan(
-                                        text: "'ya hoş geldin  Kullanıcı_adı",
-                                        style: TextStyle(
-                                            color: tColor,
-                                            fontWeight: FontWeight.w300),
-                                      )
-                                    ]))),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(screenWidth / 20),
-                        child: const Text(
-                          "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!",
+          floatingActionButton: const CircularButton(),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Center(
+                      child: RichText(
                           textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsets.all(screenWidth / 20),
-                          child: Card(
-                            color: Theme.of(context).colorScheme.background,
-                            child: Padding(
-                              padding: EdgeInsets.all(screenWidth / 80),
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                      width: screenWidth / 3,
-                                      child: Image.asset(istkodluyor)),
-                                  const Text(
-                                    " Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  const Text(
-                                    "  Aradığın \"İş\" Burada ",
-                                  ),
-                                  const Wrap(
-                                    children: [
-                                      TabBar(
-                                        isScrollable: true,
-                                        tabs: tabs,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                      width: screenWidth / 0.20,
-                                      child:
-                                          //  Text("selected index: $selectedIndex"),
-                                          //const InfoCard(),
-                                          _buildTabContent(selectedIndex)
-                                      // SizedBox(width: screenWidth / 0.20, child: TrainingsCard(),
-                                      ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                          width: screenWidth / 0.20, child: const ExamCard()),
-                      SizedBox(
-                          width: screenWidth / 0.20,
-                          child: const CategoryCard()),
-                    ],
+                          text: TextSpan(
+                              text: "TOBETO",
+                              style: const TextStyle(
+                                  color: Colors.purple,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w500),
+                              children: [
+                                TextSpan(
+                                  text: "'ya hoş geldin  Kullanıcı_adı",
+                                  style: TextStyle(
+                                      color: tColor,
+                                      fontWeight: FontWeight.w300),
+                                )
+                              ]))),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(screenWidth / 20),
+                  child: const Text(
+                    "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!",
+                    textAlign: TextAlign.center,
                   ),
                 ),
-              ]),
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(screenWidth / 20),
+                    child: Card(
+                      color: Theme.of(context).colorScheme.background,
+                      child: Padding(
+                        padding: EdgeInsets.all(screenWidth / 80),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                                width: screenWidth / 3,
+                                child: Image.asset(istkodluyor)),
+                            const Text(
+                              " Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
+                              textAlign: TextAlign.center,
+                            ),
+                            RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                    text: "Aradığın",
+                                    style: TextStyle(
+                                      color:
+                                          Theme.of(context).colorScheme.surface,
+                                      fontSize: 30,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text: " \"",
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      TextSpan(
+                                        text: "İş",
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: "\"",
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      TextSpan(
+                                        text: " Burada!",
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                        ),
+                                      )
+                                    ])),
+                            const Wrap(
+                              children: [
+                                TabBar(
+                                  isScrollable: true,
+                                  tabs: tabs,
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                                width: screenWidth / 0.20,
+                                child:
+                                    //  Text("selected index: $selectedIndex"),
+                                    //const InfoCard(),
+                                    _buildTabContent(selectedIndex)
+                                // SizedBox(width: screenWidth / 0.20, child: TrainingsCard(),
+                                ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: screenWidth / 0.20, child: const ExamCard()),
+                SizedBox(
+                    width: screenWidth / 0.20, child: const CategoryCard()),
+              ],
+            ),
+          ),
         );
       }),
     );
@@ -164,15 +199,15 @@ class _HomepageScreenState extends State<HomepageScreen> {
   Widget _buildTabContent(int tabIndex) {
     switch (tabIndex) {
       case 0:
-        return InfoCard();
+        return const InfoCard();
       case 1:
-        return TrainingsCard();
+        return const TrainingsCard();
       case 2:
-        return Text("Duyuru ve Haberler Gelecek");
+        return const NewsCard();
       case 3:
-        return Text("Anketler Gelecek");
+        return const SurveyCard();
       default:
-        return InfoCard(); // Default durum için boş bir container
+        return const InfoCard(); // Default durum için boş bir container
     }
   }
 }

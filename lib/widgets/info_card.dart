@@ -7,21 +7,24 @@ class InfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      shape: const Border(
+      shape: Border(
           left: BorderSide(
-        color: Colors.green,
+        color: Theme.of(context).colorScheme.secondary,
         width: 8,
       )),
-      color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(left: 12.0, top: 8.0, bottom: 8.0),
         child: Column(
           children: [
             Row(
               children: [
-                const Text(
-                  "İstanbul Kodluyor \nBilgilendirme",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                const SizedBox(
+                  width: 200,
+                  child: Text(
+                    "İstanbul Kodluyor Bilgilendirme",
+                    softWrap: true,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
                 ),
                 const Spacer(),
                 ClipRRect(
@@ -38,7 +41,7 @@ class InfoCard extends StatelessWidget {
                     color: const Color.fromARGB(255, 22, 62, 23),
                     child: const Text(
                       '  Kabul Edildi',
-                      style: TextStyle(color: Colors.white, fontSize: 10),
+                      style: TextStyle(fontSize: 12),
                     ),
                   ),
                 ),
