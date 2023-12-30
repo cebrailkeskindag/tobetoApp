@@ -41,7 +41,7 @@ class InfoCard extends StatelessWidget {
                     color: const Color.fromARGB(255, 22, 62, 23),
                     child: const Text(
                       '  Kabul Edildi',
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12, color: Colors.white),
                     ),
                   ),
                 ),
