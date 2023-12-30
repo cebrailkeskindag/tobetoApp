@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/datas/datas.dart';
+import 'package:tobetoapp/models/news.dart';
 import 'package:tobetoapp/widgets/circular_button.dart';
 import 'package:tobetoapp/widgets/info_card.dart';
 import 'package:tobetoapp/widgets/category_card.dart';
@@ -6,6 +8,7 @@ import 'package:tobetoapp/widgets/category_card.dart';
 import 'package:tobetoapp/widgets/drawer.dart';
 import 'package:tobetoapp/widgets/exam_card.dart';
 import 'package:tobetoapp/widgets/news_card.dart';
+import 'package:tobetoapp/widgets/news_list_card.dart';
 import 'package:tobetoapp/widgets/survey_card.dart';
 import 'package:tobetoapp/widgets/trainings_card.dart';
 
@@ -172,13 +175,13 @@ class _HomepageScreenState extends State<HomepageScreen> {
                               ],
                             ),
                             SizedBox(
-                                width: screenWidth / 0.20,
-                                child:
-                                    //  Text("selected index: $selectedIndex"),
-                                    //const InfoCard(),
-                                    _buildTabContent(selectedIndex)
-                                // SizedBox(width: screenWidth / 0.20, child: TrainingsCard(),
-                                ),
+                              width: screenWidth / 0.20,
+                              child:
+                                  ////Text("selected index: $selectedIndex"),
+                                  //const InfoCard(),
+                                  _buildTabContent(selectedIndex),
+                              // SizedBox(width: screenWidth / 0.20, child: TrainingsCard(),
+                            ),
                           ],
                         ),
                       ),
@@ -203,7 +206,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
       case 1:
         return const TrainingsCard();
       case 2:
-        return const NewsCard();
+        return NewsCard(news: newsList[0]);
       case 3:
         return const SurveyCard();
       default:

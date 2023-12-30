@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/models/news.dart';
 
-class NewsCard extends StatefulWidget {
-  const NewsCard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<NewsCard> createState() => _NewsCardState();
-}
-
-class _NewsCardState extends State<NewsCard> {
+class NewsCard extends StatelessWidget {
+  const NewsCard({Key? key, required this.news}) : super(key: key);
+  final News news;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -20,19 +14,45 @@ class _NewsCardState extends State<NewsCard> {
         width: 8,
       )),
       child: Padding(
-        padding: const EdgeInsets.only(left: 12.0, top: 8.0, bottom: 8.0),
+        padding: const EdgeInsets.only(
+            left: 12.0, top: 8.0, bottom: 8.0, right: 8.0),
         child: Column(
           children: [
             Row(
               children: [
-                Text("Duyuru"),
-                Text("İstanbul Kodluyor"),
+                Text(
+                  "Duyuru",
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+                const Spacer(),
+                Text(
+                  "İstanbul Kodluyor",
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
               ],
             ),
             Row(
               children: [
-                Icon(Icons.calendar_month_outlined),
-                Text("07.12.2023"),
+                Text(
+                  news.title,
+                  textAlign: TextAlign.left,
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                const Icon(Icons.calendar_month_outlined),
+                Text(
+                  news.newsDate,
+                  style: const TextStyle(fontSize: 14),
+                ),
+                Spacer(),
                 TextButton(onPressed: () {}, child: Text("Devamını Oku"))
               ],
             ),
