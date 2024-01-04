@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/screen/catalog.dart';
+import 'package:tobetoapp/screen/evaluation.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
 import 'package:tobetoapp/screen/profil.dart';
 
@@ -43,15 +44,20 @@ class _DrawerMenuState extends State<DrawerMenu> {
                     builder: (ctx) => const HomepageScreen()));
               },
               leading: const Icon(Icons.home_outlined)),
-          const ListTile(
-              title: Text("Değerlendirmeler"),
-              leading: Icon(Icons.assignment_turned_in_outlined)),
+          ListTile(
+            title: Text("Değerlendirmeler"),
+            leading: Icon(Icons.assignment_turned_in_outlined),
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (ctx) => const Evaluation()));
+            },
+          ),
           ListTile(
             title: Text("Profilim"),
             leading: Icon(Icons.person_outlined),
             onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (ctx) => const ProfilePage()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (ctx) => const ProfilePage()));
             },
           ),
           ListTile(
