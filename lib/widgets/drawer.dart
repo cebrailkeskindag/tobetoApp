@@ -51,7 +51,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
             leading: Icon(Icons.person_outlined),
             onTap: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (ctx) => const Profil()));
+                  .push(MaterialPageRoute(builder: (ctx) => const ProfilePage()));
             },
           ),
           ListTile(
