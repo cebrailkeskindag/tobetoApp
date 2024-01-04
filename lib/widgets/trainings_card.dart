@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/theme/app_color.dart';
 
 class TrainingsCard extends StatelessWidget {
   const TrainingsCard({Key? key}) : super(key: key);
