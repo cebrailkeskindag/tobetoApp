@@ -32,6 +32,20 @@ Bu uygulama ile, Tobeto platformuna Mobil cihazlar üzerinden de erişilmesi ama
 
 ![image](https://github.com/cebrailkeskindag/tobetoApp/assets/46896417/5821f7d5-b396-45c1-914d-c2652d641cfe)
 
+**Ana Sayfa**
+
+https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/81831430-7ae3-49d6-99e8-0b5ed90a32c8
+
+**Değerlendirmeler**
+
+https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/94e5008e-d7a7-479b-abe8-cde80ad8a6d0
+
+**Profil**
+
+https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/8bb3c1d3-5427-4872-9e50-318d9aae5425
+
+
+
 
 
 
