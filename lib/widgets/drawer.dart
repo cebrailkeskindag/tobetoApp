@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/screen/catalog.dart';
 import 'package:tobetoapp/screen/evaluation.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
@@ -64,8 +65,10 @@ class _DrawerMenuState extends State<DrawerMenu> {
             title: const Text("Katalog"),
             leading: const Icon(Icons.list_outlined),
             onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (ctx) => const Catalog()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (ctx) => const Catalog(
+                        catalogModel: catalogList,
+                      )));
             },
           ),
           const ListTile(

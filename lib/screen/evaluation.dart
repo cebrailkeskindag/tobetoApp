@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:tobetoapp/widgets/drawer.dart';
+import 'package:tobetoapp/widgets/evaluation/eva_item.dart';
 import 'package:tobetoapp/widgets/evaluation/item_Tile.dart';
 
 class Evaluation extends StatelessWidget {
@@ -33,9 +34,14 @@ class Evaluation extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Text(
-              "Yetkinliklerini  ücretsiz ölç, bilgilerini test et. ",
-              softWrap: true,
+            const Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Text(
+                "Yetkinliklerini  ücretsiz ölç, bilgilerini test et. ",
+                softWrap: true,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 30),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -107,42 +113,57 @@ class Evaluation extends StatelessWidget {
                           begin: Alignment.topRight,
                           end: Alignment.bottomLeft)),
                   width: screenWidth,
-                  height: 180,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                  child: const Padding(
+                    padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const Text(
-                          "Tobeto İşte Başarı Modeli ",
-                          style: TextStyle(color: Colors.white),
+                        Text(
+                          "Yazılımda Başarı Testi",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              fixedSize: const Size(300, 34),
-                              backgroundColor:
-                                  const Color.fromRGBO(103, 82, 195, 1)),
-                          child: const Text(
-                            "Başla",
-                            style: TextStyle(
-                                fontFamily: "Poppins", color: Colors.white),
-                          ),
-                        )
+                        Text(
+                          "Çoktan seçmeli sorular ile teknik bilgini test et.",
+                          style: TextStyle(color: Colors.white),
+                          textAlign: TextAlign.center,
+                        ),
+                        Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          size: 50,
+                          color: Colors.white,
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-            GridView.builder(
-              shrinkWrap: true,
-              itemCount: 6,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 2,
-              ),
-              itemBuilder: (context, index) => (ItemTile(index)),
+            const EvaItem(title: "Front End"),
+            const EvaItem(title: "Full Stack"),
+            const EvaItem(title: "Back End"),
+            const EvaItem(title: "Microsoft SQL Server"),
+            const EvaItem(title: "Masaüstü Programlama"),
+            const SizedBox(
+              height: 50,
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.white, Colors.purple],
+                      transform: GradientRotation(15),
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft)),
+              height: 200,
+              width: 20,
+              alignment: Alignment.center,
+            ),
+            const Text(
+              "Aboneliğe özel",
+              style: TextStyle(color: Colors.purple, fontSize: 25),
+            ),
+            const Text(
+              "değerlendirme araçları için",
+              style: TextStyle(fontSize: 25),
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -177,6 +198,7 @@ class Evaluation extends StatelessWidget {
                         Text(
                           "Dijital gelişim kategorisindeki eğitimlere başlamadan öncekonuyla ilgili bilgin ölçülür ve seviyene göre yönlendirilirsin.",
                           softWrap: true,
+                          textAlign: TextAlign.center,
                           style: TextStyle(color: Colors.white),
                         ),
                       ],
@@ -212,17 +234,20 @@ class Evaluation extends StatelessWidget {
                       children: [
                         Text(
                           "Huawei Talent Interview Teknik Bilgi Sınavı* ",
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                         Text(
                           "Sertifika alabilmen için, eğitim yolculuğunun sonunda teknik yetkinliklerin ve kod bilgin ölçülür. 4400+ soru | 30+ programlama dili 4 zorluk seviyesi",
                           softWrap: true,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                               fontWeight: FontWeight.w100, color: Colors.white),
                         ),
                         Text(
                             " *Türkiye Ar-Ge Merkezi tarafından tasarlanmıştır.",
+                            textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white))
                       ],
                     ),
