@@ -40,6 +40,7 @@ Bu uygulama ile, Tobeto platformuna Mobil cihazlar üzerinden de erişilmesi ama
 
 
 **Ana Sayfa**
+`Projemiz geliştirme aşamasında`
 
 https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/81831430-7ae3-49d6-99e8-0b5ed90a32c8
 
@@ -47,19 +48,21 @@ https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/81831430-7ae3-49d
 
 
 **Değerlendirmeler**
+`Projemiz geliştirme aşamasında`
 
 https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/94e5008e-d7a7-479b-abe8-cde80ad8a6d0
 
 ![Ekran görüntüsü 2024-01-05 191425](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/988352d1-75f5-4296-b02a-184a20fcebf7)
 
 **Profil**
+`Projemiz geliştirme aşamasında`
 
 https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/8bb3c1d3-5427-4872-9e50-318d9aae5425
 
 ![Ekran görüntüsü 2024-01-05 191437](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/61816512-0390-4785-9b96-0d43ebcb8823)
 
 **Katalog**
-
+`Projemiz geliştirme aşamasında`
 
 ![Ekran görüntüsü 2024-01-05 183228](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/470dd266-b4da-451d-959e-b4d297f20edc)
 
@@ -67,9 +70,10 @@ https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/8bb3c1d3-5427-487
 ![Ekran görüntüsü 2024-01-05 191454](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/42e068d2-9791-46eb-bce2-85dfe7ad6514)
 
 
-# For foreign friends
+# For foreign friends 
 **Our Tobeto Education application was developed by the Mobile Developer (Flutter) students of Tobeto, which has a leading position in the field of software education.
 With this application, it is aimed to access the Tobeto platform on mobile devices.**
+
 
 
 ## Technologies and Tools 
