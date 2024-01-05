@@ -93,7 +93,7 @@ With this application, it is aimed to access the Tobeto platform on mobile devic
 
 
 
-#### İletişim Bilgileri
+#### Contact information
 - gulayselvi3@gmail.com
 - haticesena47@gmail.com
 - cebrailkeskindag1549@gmail.com
