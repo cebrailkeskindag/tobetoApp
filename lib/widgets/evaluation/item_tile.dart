@@ -13,19 +13,15 @@ class ItemTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
-        tileColor: color.withOpacity(0.3),
+        //tileColor: color.withOpacity(0.3),
         onTap: () {},
-        leading: Container(
-          width: 50,
-          height: 30,
-          color: color.withOpacity(0.5),
-          child: Placeholder(
-            color: color,
-          ),
-        ),
-        title: Text(
-          'Product $itemNo',
-          key: Key('text_$itemNo'),
+
+        title: Row(
+          children: [
+            Icon(Icons.list_alt_outlined),
+            Text("Title"),
+            ElevatedButton(onPressed: () {}, child: const Text("Başla"))
+          ],
         ),
       ),
     );
