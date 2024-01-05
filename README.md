@@ -45,6 +45,24 @@ https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/94e5008e-d7a7-479
 https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/8bb3c1d3-5427-4872-9e50-318d9aae5425
 
 
+# For foreign friends
+**Our Tobeto Education application was developed by the Mobile Developer (Flutter) students of Tobeto, which has a leading position in the field of software education.
+With this application, it is aimed to access the Tobeto platform on mobile devices.**
+
+
+## Technologies and Tools 
+- Flutter
+- Dart
+- Visual Studio Code
+
+## Project mentor
+[Halit Enes Kalaycı](https://github.com/halitkalayci)
+
+## Team Members
+- [İlker Muhsin Şahin ](https://github.com/ilkrmshn)
+- [Cebrail Keskindağ ](https://github.com/cebrailkeskindag)
+- [Gülay Selvi](https://github.com/gulayselvi)
+- [Hatice Sena Dere](https://github.com/haticesenadere)
 
 
 
