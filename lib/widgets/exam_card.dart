@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/models/exam.dart';
 
 class ExamCard extends StatelessWidget {
-  const ExamCard({Key? key}) : super(key: key);
-
+  const ExamCard({Key? key, required this.exam}) : super(key: key);
+  final Exam exam;
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -13,7 +14,7 @@ class ExamCard extends StatelessWidget {
     // Ekran yüksekliği
     //double screenHeight = mediaQuery.size.height;
     return Padding(
-      padding: EdgeInsets.all(screenWidth / 20),
+      padding: EdgeInsets.all(screenWidth / 30),
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -21,10 +22,10 @@ class ExamCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text("Sınavlarım",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-              Container(
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              SizedBox(
                 height: 200,
-                child: const AspectRatio(
+                child: AspectRatio(
                   aspectRatio: 8 / 9,
                   child: Card(
                     elevation: 15,
@@ -38,32 +39,32 @@ class ExamCard extends StatelessWidget {
                               width: 100,
                               child: Text(
                                   softWrap: true,
-                                  "Herkes için Kodlama 2B Değerlendirme Sınavı",
-                                  style: TextStyle(
+                                  exam.examTitle,
+                                  style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w900)),
                             ),
-                            Icon(
+                            const Icon(
                               Icons.check_box,
                               color: Colors.purple,
                             )
                           ],
                         ),
                         Text(
-                          "Herkes için Kodlama-2B",
-                          style: TextStyle(fontSize: 11),
+                          exam.examClass,
+                          style: const TextStyle(fontSize: 11),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 14),
+                          padding: const EdgeInsets.only(left: 14),
                           child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.timer_outlined,
                                 color: Colors.purple,
                               ),
                               Text(
-                                " 45 Dakika",
-                                style: TextStyle(
+                                exam.examTime,
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 18),
                               )
                             ],

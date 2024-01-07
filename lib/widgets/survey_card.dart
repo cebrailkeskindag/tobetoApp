@@ -10,8 +10,11 @@ class SurveyCard extends StatelessWidget {
       child: Card(
         child: Column(
           children: [
-            Image.asset("assets/images/surveyError.png"),
-            Text("Atanmış herhangi bir anketiniz bulunmamaktadır")
+            Image.asset(
+              "assets/images/surveyError.png",
+              height: 180,
+            ),
+            const Text("Atanmış herhangi bir anketiniz bulunmamaktadır.")
           ],
         ),
       ),

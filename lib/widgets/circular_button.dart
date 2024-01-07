@@ -14,8 +14,9 @@ class _CircularButtonState extends State<CircularButton> {
   Widget build(BuildContext context) {
     return SizedBox(
       child: FabCircularMenuPlus(
-        ringDiameter: 400.0,
+        ringDiameter: 350.0,
         ringWidth: 100.0,
+        ringColor: Colors.white.withOpacity(0.8),
         fabOpenIcon: const Icon(
           Icons.message_outlined,
           color: Colors.white,

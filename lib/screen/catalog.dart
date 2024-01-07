@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
-import 'package:tobetoapp/models/catalog_model.dart';
 import 'package:tobetoapp/widgets/catalog/catalog_widget.dart';
 import 'package:tobetoapp/widgets/drawer.dart';
 
@@ -11,9 +10,7 @@ Future<void> ara(String aramaKelimesi) async {
 }
 
 class Catalog extends StatefulWidget {
-  const Catalog({Key? key, required this.catalogModel}) : super(key: key);
-  final List<CatalogModel> catalogModel;
-  @override
+  const Catalog({Key? key,}) : super(key: key);
   _CatalogState createState() => _CatalogState();
 }
 

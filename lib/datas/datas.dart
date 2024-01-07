@@ -1,5 +1,7 @@
 import 'package:tobetoapp/models/catalog_model.dart';
+import 'package:tobetoapp/models/exam.dart';
 import 'package:tobetoapp/models/news.dart';
+import 'package:tobetoapp/models/training.dart';
 
 const newsList = [
   News(
@@ -10,7 +12,7 @@ const newsList = [
       id: "2",
       title: "4 Aralık Online Hoşgeldin Buluşması",
       newsDate: "29.11.2023"),
-  News(id: "3", title: "Önemli Bilgilendirme", newsDate: "23.11.2023")
+  News(id: "3", title: "Önemli Bilgilendirme", newsDate: "23.11.2023"),
 ];
 
 const catalogList = [
@@ -90,4 +92,45 @@ const catalogList = [
       name: "Gürkan İlişen ",
       time: "17dk",
       title: "Müşteri Ne İster?")
+];
+
+const trainingsList = [
+  Training(
+      id: "1",
+      imagePath: "assets/images/ecmal.jpg",
+      time: "21 Eylül 2023 15:20",
+      title: "Dr. Ecmel Ayral'dan Hoşgeldin Mesajı"),
+  Training(
+      id: "1",
+      imagePath: "assets/images/istkod_egitim.jpg",
+      time: "8 Eylül 2023 17:06",
+      title: "Eğitimlere Nasıl Katılırım?"),
+  Training(
+      id: "1",
+      imagePath: "assets/images/training3.jpg",
+      time: "2 Ekim 2023 03:00",
+      title: "Herkes İçin Kodlama - 2A"),
+  Training(
+      id: "1",
+      imagePath: "assets/images/training4.jpg",
+      time: "2 Ekim 2023 03:00",
+      title: "Hoşgeldin Buluşması - 2"),
+];
+
+const examList = [
+  Exam(
+      id: "1",
+      examTitle: "Herkes İçin Kodlama 1A Değerlendirme Sınavı",
+      examClass: "Herkes İçin Kodlama 1A",
+      examTime: "45 Dakika"),
+  Exam(
+      id: "2",
+      examTitle: "Herkes İçin Kodlama 1B Değerlendirme Sınavı",
+      examClass: "Herkes İçin Kodlama 1B",
+      examTime: "45 Dakika"),
+  Exam(
+      id: "3",
+      examTitle: "Herkes İçin Kodlama 1C Değerlendirme Sınavı",
+      examClass: "Herkes İçin Kodlama 1C",
+      examTime: "45 Dakika")
 ];
