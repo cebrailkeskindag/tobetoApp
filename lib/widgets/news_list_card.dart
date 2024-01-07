@@ -7,11 +7,15 @@ class NewsListCard extends StatelessWidget {
   final List<News> news;
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: news.length,
-      itemBuilder: (ctx, index) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: NewsCard(news: news[index]),
+    return Expanded(
+      child: ListView.builder(
+        itemCount: news.length,
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (ctx, index) => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: NewsCard(news: news[index]),
+        ),
       ),
     );
   }

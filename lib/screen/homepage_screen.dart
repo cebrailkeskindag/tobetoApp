@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
+import 'package:tobetoapp/models/exam.dart';
 import 'package:tobetoapp/models/news.dart';
+import 'package:tobetoapp/models/training.dart';
 import 'package:tobetoapp/widgets/circular_button.dart';
+import 'package:tobetoapp/widgets/evaluation/eva_item.dart';
 import 'package:tobetoapp/widgets/info_card.dart';
 import 'package:tobetoapp/widgets/category_card.dart';
 
@@ -109,7 +112,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                 ),
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.all(screenWidth / 20),
+                    padding: EdgeInsets.all(screenWidth / 30),
                     child: Card(
                       color: Theme.of(context).colorScheme.background,
                       child: Padding(
@@ -166,13 +169,9 @@ class _HomepageScreenState extends State<HomepageScreen> {
                                         ),
                                       )
                                     ])),
-                            const Wrap(
-                              children: [
-                                TabBar(
-                                  isScrollable: true,
-                                  tabs: tabs,
-                                ),
-                              ],
+                            const TabBar(
+                              isScrollable: true,
+                              tabs: tabs,
                             ),
                             SizedBox(
                               width: screenWidth / 0.20,
@@ -188,7 +187,17 @@ class _HomepageScreenState extends State<HomepageScreen> {
                     ),
                   ),
                 ),
-                SizedBox(width: screenWidth / 0.20, child: const ExamCard()),
+                SizedBox(
+                  width: screenWidth / 0.20,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        for (Exam exam in examList) ExamCard(exam: exam),
+                      ],
+                    ),
+                  ),
+                ),
                 SizedBox(
                     width: screenWidth / 0.20, child: const CategoryCard()),
               ],
@@ -204,9 +213,68 @@ class _HomepageScreenState extends State<HomepageScreen> {
       case 0:
         return const InfoCard();
       case 1:
-        return const TrainingsCard();
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              for (Training training in trainingsList)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TrainingsCard(training: training),
+                ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 50.0,
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color:
+                                  Colors.black.withOpacity(0.3), // Gölge rengi
+                              spreadRadius: 4, // Yayılma yarıçapı
+                              blurRadius: 10, // Bulanıklık yarıçapı
+                              // Gölgeyi kaydırma
+                            ),
+                          ],
+                        ),
+                        child: IconButton(
+                          onPressed: () {
+                            // IconButton'a basıldığında yapılacak işlemler
+                          },
+                          icon: const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      const Text("Daha Fazla Göster")
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
       case 2:
-        return NewsCard(news: newsList[0]);
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              for (News news in newsList)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: NewsCard(news: news),
+                ),
+            ],
+          ),
+        );
       case 3:
         return const SurveyCard();
       default:

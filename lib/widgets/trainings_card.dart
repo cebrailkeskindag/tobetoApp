@@ -1,48 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/models/training.dart';
 
 class TrainingsCard extends StatelessWidget {
-  const TrainingsCard({Key? key}) : super(key: key);
-
+  const TrainingsCard({Key? key, required this.training}) : super(key: key);
+  final Training training;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 20.0),
-          child: Card(
-            elevation: 10,
-            child: Column(
-              children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(12),
-                    topLeft: Radius.circular(12),
-                  ), // Yuvarlanan köşe
-                  child: Image.asset(
-                    "assets/images/ecmal.jpg",
-                    width: double.infinity,
-                    height: 180,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                const Text(
-                  "Dr. Ecmel Ayral'dan Hoşgeldin Mesajı",
-                ),
-                const Text(
-                  "21 Eylül 2023 15:20",
-                ),
-                ElevatedButton(
-                    onPressed: () {}, child: const Text("Eğitime Git"))
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 20.0),
-          child: Card(
-              elevation: 10, // Card'a eklenen gölgenin yüksekliği
+    MediaQueryData mediaQuery = MediaQuery.of(context);
+
+    // Ekran genişliği
+    double screenWidth = mediaQuery.size.width;
+    return SizedBox(
+      width: screenWidth,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 5.0),
+            child: Card(
+              elevation: 10,
               child: Column(
-                mainAxisSize: MainAxisSize.min,
                 children: [
                   ClipRRect(
                     borderRadius: const BorderRadius.only(
@@ -50,56 +26,59 @@ class TrainingsCard extends StatelessWidget {
                       topLeft: Radius.circular(12),
                     ), // Yuvarlanan köşe
                     child: Image.asset(
-                      "assets/images/istkod_egitim.jpg",
+                      training.imagePath,
                       width: double.infinity,
                       height: 180,
                       fit: BoxFit.cover,
                     ),
                   ),
-                  const Text("Eğitimlere Nasıl Katılırım?"),
-                  const Text("8 Eylül 2023 17:06"),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Butona tıklandığında yapılacak işlemler
-                    },
-                    child: const Text("Eğitime Git"),
-                  )
-                ],
-              )),
-        ),
-        const SizedBox(height: 20),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              width: 50.0,
-              height: 50.0,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3), // Gölge rengi
-                    spreadRadius: 4, // Yayılma yarıçapı
-                    blurRadius: 10, // Bulanıklık yarıçapı
-                    // Gölgeyi kaydırma
+                  Text(
+                    training.title,
                   ),
+                  Text(
+                    training.time,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {}, child: const Text("Eğitime Git"))
                 ],
               ),
-              child: IconButton(
-                onPressed: () {
-                  // IconButton'a basıldığında yapılacak işlemler
-                },
-                icon: const Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.black87,
+            ),
+          ),
+          /*
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                width: 50.0,
+                height: 50.0,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3), // Gölge rengi
+                      spreadRadius: 4, // Yayılma yarıçapı
+                      blurRadius: 10, // Bulanıklık yarıçapı
+                      // Gölgeyi kaydırma
+                    ),
+                  ],
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    // IconButton'a basıldığında yapılacak işlemler
+                  },
+                  icon: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.black87,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        const Text("Daha Fazla Göster")
-      ],
+          const Text("Daha Fazla Göster"),
+          */
+        ],
+      ),
     );
   }
 }

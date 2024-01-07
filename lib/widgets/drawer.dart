@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/screen/catalog.dart';
 import 'package:tobetoapp/screen/evaluation.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
@@ -46,16 +45,16 @@ class _DrawerMenuState extends State<DrawerMenu> {
               },
               leading: const Icon(Icons.home_outlined)),
           ListTile(
-            title: Text("Değerlendirmeler"),
-            leading: Icon(Icons.assignment_turned_in_outlined),
+            title: const Text("Değerlendirmeler"),
+            leading: const Icon(Icons.assignment_turned_in_outlined),
             onTap: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (ctx) => const Evaluation()));
             },
           ),
           ListTile(
-            title: Text("Profilim"),
-            leading: Icon(Icons.person_outlined),
+            title: const Text("Profilim"),
+            leading: const Icon(Icons.person_outlined),
             onTap: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (ctx) => const ProfilePage()));
@@ -65,10 +64,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
             title: const Text("Katalog"),
             leading: const Icon(Icons.list_outlined),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (ctx) => const Catalog(
-                        catalogModel: catalogList,
-                      )));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (ctx) => const Catalog()));
             },
           ),
           const ListTile(
