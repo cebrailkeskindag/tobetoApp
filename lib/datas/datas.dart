@@ -1,4 +1,5 @@
 import 'package:tobetoapp/models/catalog_model.dart';
+import 'package:tobetoapp/models/education.dart';
 import 'package:tobetoapp/models/exam.dart';
 import 'package:tobetoapp/models/news.dart';
 import 'package:tobetoapp/models/training.dart';
@@ -133,4 +134,14 @@ const examList = [
       examTitle: "Herkes İçin Kodlama 1C Değerlendirme Sınavı",
       examClass: "Herkes İçin Kodlama 1C",
       examTime: "45 Dakika")
+];
+
+const educationList = [
+  Education(
+      id: "1",
+      startTime: "2024.01.08",
+      finishTime: "2024.10.25",
+      author: "Ahmet Çetinkaya",
+      title: ".NET & React Fullstack - 1A"),
+      
 ];

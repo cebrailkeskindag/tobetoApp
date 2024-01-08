@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/screen/calendar_screen.dart';
 import 'package:tobetoapp/screen/catalog.dart';
 import 'package:tobetoapp/screen/evaluation.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
@@ -68,9 +69,13 @@ class _DrawerMenuState extends State<DrawerMenu> {
                   .push(MaterialPageRoute(builder: (ctx) => const Catalog()));
             },
           ),
-          const ListTile(
+          ListTile(
             title: Text("Takvim"),
             leading: Icon(Icons.date_range),
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (ctx) =>  CalendarScreen()));
+            },
           ),
           const Divider(),
           const ListTile(
