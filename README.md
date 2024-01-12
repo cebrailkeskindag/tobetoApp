@@ -26,9 +26,10 @@ Bu uygulama ile, Tobeto platformuna Mobil cihazlar üzerinden de erişilmesi ama
 
 **Uygulama Giriş Sayfası**
 
-![Ekran_goruntusu_2023-12-13_140939](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/7aae0a23-896e-43d7-ad39-fd352b551ede)
+![Ekran görüntüsü 2024-01-13 000430](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/641c0450-23a1-47c0-93ff-6af954e86bce)
 
-![Ekran görüntüsü 2024-01-05 191602](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/0e3e6c5c-0fcf-45f0-bc02-3c5536aa9b28)
+
+![Ekran görüntüsü 2024-01-13 002121](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/7c2463bb-183e-426c-8fa2-8e178c929ed4)
 
 
 **Side Drawer**
@@ -57,9 +58,15 @@ https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/94e5008e-d7a7-479
 **Profil**
 `Projemiz geliştirme aşamasında`
 
-https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/8bb3c1d3-5427-4872-9e50-318d9aae5425
 
-![Ekran görüntüsü 2024-01-05 191437](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/61816512-0390-4785-9b96-0d43ebcb8823)
+
+https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/6b3ad820-ea0a-42c8-9edd-249f1cbd62ac
+
+
+
+https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/a3c4f8aa-aca8-4504-8b52-a6e786941de1
+
+
 
 **Katalog**
 `Projemiz geliştirme aşamasında`
@@ -68,6 +75,13 @@ https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/8bb3c1d3-5427-487
 
 
 ![Ekran görüntüsü 2024-01-05 191454](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/42e068d2-9791-46eb-bce2-85dfe7ad6514)
+
+
+**Takvim**
+
+https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/66194ee5-96b0-4132-ae5e-06e243b7555e
+
+![Ekran görüntüsü 2024-01-13 001812](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/50b4b3a6-6f97-4e91-bb2c-a48c37751451)
 
 
 # For foreign friends 
