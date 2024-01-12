@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/widgets/profile/edit/edit_screen.dart';
 
 class EditCircleButton extends StatelessWidget {
   const EditCircleButton({
@@ -27,9 +28,15 @@ class EditCircleButton extends StatelessWidget {
                   child: CircleAvatar(
                     minRadius: 20,
                     backgroundColor: Colors.red[300],
-                    child: Icon(
-                      Icons.note_alt_outlined,
-                      color: Colors.white,
+                    child: GestureDetector(
+                      child: const Icon(
+                        Icons.note_alt_outlined,
+                        color: Colors.white,
+                      ),
+                      onTap: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (ctx) => const EditScreen()));
+                      },
                     ),
                   ),
                 );

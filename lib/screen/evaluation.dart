@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:tobetoapp/widgets/drawer.dart';
 import 'package:tobetoapp/widgets/evaluation/eva_item.dart';
-import 'package:tobetoapp/widgets/evaluation/item_Tile.dart';
 
 class Evaluation extends StatelessWidget {
   const Evaluation({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
+import 'package:tobetoapp/models/calendar_model.dart';
 import 'package:tobetoapp/models/catalog_model.dart';
-import 'package:tobetoapp/models/education.dart';
 import 'package:tobetoapp/models/exam.dart';
 import 'package:tobetoapp/models/news.dart';
 import 'package:tobetoapp/models/training.dart';
@@ -136,12 +136,41 @@ const examList = [
       examTime: "45 Dakika")
 ];
 
-const educationList = [
-  Education(
+List<CalendarModel> educationList = [
+  CalendarModel(
       id: "1",
-      startTime: "2024.01.08",
-      finishTime: "2024.10.25",
-      author: "Ahmet Çetinkaya",
-      title: ".NET & React Fullstack - 1A"),
-      
+      title: 'Örnek Etkinlik 4',
+      date: DateTime.parse('2024-01-09'),
+      hour: 09,
+      minute: 45,
+      author: "Ahmet Çetinkaya"),
+  CalendarModel(
+      id: "2",
+      title: 'Örnek Etkinlik 5',
+      date: DateTime.parse('2024-01-09'),
+      hour: 09,
+      minute: 30,
+      author: "Ahmet Çetinkaya"),
+  CalendarModel(
+      id: "2",
+      title: 'Örnek Etkinlik 5',
+      date: DateTime.parse('2024-01-09'),
+      hour: 09,
+      minute: 30,
+      author: "Ahmet Çetinkaya"),
+  CalendarModel(
+      id: "2",
+      title: 'Örnek Etkinlik 5',
+      date: DateTime.parse('2024-01-09'),
+      hour: 09,
+      minute: 30,
+      author: "Ahmet Çetinkaya"),
+  CalendarModel(
+    id: "3",
+    title: 'Mobile',
+    date: DateTime.parse('2024-02-09'),
+    hour: 14,
+    minute: 30,
+    author: "Ahmet Çetinkaya",
+  ),
 ];
