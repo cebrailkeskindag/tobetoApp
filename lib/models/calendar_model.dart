@@ -2,7 +2,6 @@ class CalendarModel {
   final String id;
   final String title;
   final DateTime date;
-
   final int hour;
   final int minute;
   final String author;

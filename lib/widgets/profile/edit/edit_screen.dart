@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/widgets/drawer.dart';
+import 'package:tobetoapp/widgets/profile/edit/certificate_edit.dart';
+import 'package:tobetoapp/widgets/profile/edit/education_edit.dart';
+import 'package:tobetoapp/widgets/profile/edit/experience_edit.dart';
+import 'package:tobetoapp/widgets/profile/edit/language_edit.dart';
+import 'package:tobetoapp/widgets/profile/edit/perfection_edit.dart';
 import 'package:tobetoapp/widgets/profile/edit/personal_edit.dart';
+import 'package:tobetoapp/widgets/profile/edit/settings_edit.dart';
+import 'package:tobetoapp/widgets/profile/edit/social_media_edit.dart';
 
 const List<Tab> tabs = <Tab>[
   Tab(icon: Icon(Icons.person_outline)),
@@ -19,23 +27,75 @@ class EditScreen extends StatefulWidget {
   _EditScreenState createState() => _EditScreenState();
 }
 
+int selectedIndex = 0;
+
 class _EditScreenState extends State<EditScreen> {
   @override
   Widget build(BuildContext context) {
+    Brightness currentBrightness = MediaQuery.of(context).platformBrightness;
+    String tobetoAppbarLogo = currentBrightness == Brightness.light
+        ? 'assets/images/tobeto_logo.png'
+        : 'assets/images/tobeto_logo_d.png';
+    MediaQueryData mediaQuery = MediaQuery.of(context);
+    double screenWidth = mediaQuery.size.width;
     return DefaultTabController(
-      length: tabs.length,
-      child: Scaffold(
-        appBar: AppBar(title: Text("deneme")),
-        body: Column(
-          children: [
-            const TabBar(
-              isScrollable: true,
-              tabs: tabs,
-            ),
-            PersonalEdit()
-          ],
-        ),
-      ),
-    );
+        length: tabs.length,
+        child: Builder(builder: (BuildContext context) {
+          final TabController tabController = DefaultTabController.of(context);
+          tabController.addListener(() {
+            if (!tabController.indexIsChanging) {
+              setState(() {
+                //print(tabController.index);
+                selectedIndex = tabController.index;
+                print("Selected index: $selectedIndex");
+              });
+            }
+          });
+
+          return Scaffold(
+              endDrawer: const DrawerMenu(),
+              appBar: AppBar(
+                centerTitle: false,
+                automaticallyImplyLeading: false,
+                title: Image.asset(
+                  tobetoAppbarLogo,
+                  width: 150,
+                ),
+              ),
+              body: Column(
+                children: [
+                  const TabBar(
+                    isScrollable: true,
+                    tabs: tabs,
+                  ),
+                  SizedBox(
+                    width: screenWidth / 0.20,
+                    child: _buildTabContent(selectedIndex),
+                  ),
+                ],
+              ));
+        }));
+  }
+
+  Widget _buildTabContent(int tabIndex) {
+    switch (tabIndex) {
+      case 0:
+        return const PersonalEdit();
+      case 1:
+        return const SingleChildScrollView(child: ExperienceEdit());
+      case 2:
+        return const SingleChildScrollView(child: EducationEdit());
+      case 3:
+        return const SingleChildScrollView(child: PerfectionEdit());
+      case 4:
+        return const SingleChildScrollView(child: CertificateEdit());
+      case 5:
+        return const SingleChildScrollView(child: SocialMediaEdit());
+      case 6:
+        return const SingleChildScrollView(child: LanguageEdit());
+      default:
+        return const SingleChildScrollView(
+            child: SettingsEdit()); // Default durum için boş bir container
+    }
   }
 }

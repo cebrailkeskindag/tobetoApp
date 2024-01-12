@@ -36,7 +36,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Takvim"),
+        title: const Text("Takvim"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -71,7 +71,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(5.0),
                 ),
-                selectedTextStyle: TextStyle(color: Colors.white),
+                selectedTextStyle: const TextStyle(color: Colors.white),
                 todayDecoration: BoxDecoration(
                   color: Colors.purpleAccent,
                   shape: BoxShape.rectangle,
@@ -93,7 +93,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(5.0),
                 ),
-                formatButtonTextStyle: TextStyle(
+                formatButtonTextStyle: const TextStyle(
                   color: Colors.white,
                 ),
               ),
