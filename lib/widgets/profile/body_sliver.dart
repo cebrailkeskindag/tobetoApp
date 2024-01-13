@@ -26,10 +26,205 @@ class Body extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(15.0),
               child: Text(
-                '''When a young boy disappears, his mother, a police chief, and his friend must confront terrifying forces in order to get him back.
+                '''
                       ''',
                 textAlign: TextAlign.start,
                 style: TextStyle(fontSize: 15),
+              ),
+            ),
+            const Card(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Yetkinliklerim",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 5, bottom: 5),
+                      child: Divider(),
+                    ),
+                    Text("Henüz bir yetkinlik eklemedin")
+                  ],
+                ),
+              ),
+            ),
+            const Card(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Yabancı Dillerim",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 5, bottom: 5),
+                      child: Divider(),
+                    ),
+                    Text("Henüz bir yabancı dil eklemedin")
+                  ],
+                ),
+              ),
+            ),
+            const Card(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Sertifikalarım",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 5, bottom: 5),
+                      child: Divider(),
+                    ),
+                    Text("Henüz bir sertifika eklemedin")
+                  ],
+                ),
+              ),
+            ),
+            const Card(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Medya Hesaplarım",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 5, bottom: 5),
+                      child: Divider(),
+                    ),
+                    Text("Henüz bir hesap eklemedin")
+                  ],
+                ),
+              ),
+            ),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Text(
+                          "Tobeto İşte Başarı Modelim",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.visibility))
+                      ],
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 5, bottom: 5),
+                      child: Divider(),
+                    ),
+                    const Text(
+                      "İşte Başarı Modeli değerlendirmesiyle yetkinliklerini ölç",
+                      textAlign: TextAlign.center,
+                      softWrap: true,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {}, child: const Text("Başla")),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+             Card(
+              child: Column(
+                children: [
+                  Text(
+                    "Tobeto Seviye Testlerim",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Divider(),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Card(
+                          child: Padding(
+                            padding: EdgeInsets.all(20),
+                            child: Container(
+                              height: 120,width: 300,
+                              child: const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Herkes için Kodlama 2A Değerlendirme Sınavı",
+                                    softWrap: true,
+                                    
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 5, bottom: 5),
+                                    child: Divider(),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text("16.10.2023"),
+                                      Spacer(),
+                                      Text("72.00"),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: Padding(
+                            padding: EdgeInsets.all(20),
+                            child: Container(
+                              height: 120,width: 300,
+                              child: const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Masaüstü Programlama",
+                                    softWrap: true,
+                                    
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 5, bottom: 5),
+                                    child: Divider(),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text("15.10.2023"),
+                                      Spacer(),
+                                      Text("50.00"),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
             const Padding(
@@ -52,7 +247,8 @@ class Body extends StatelessWidget {
                               child: Image(
                                 height: size.height * 0.18,
                                 width: size.width * 0.23,
-                                image: AssetImage('assets/images/iconlogo.png'),
+                                image: const AssetImage(
+                                    'assets/images/iconlogo.png'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -61,117 +257,7 @@ class Body extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            _Features(
-              size: size,
-              title: 'Yetkinliklerim',
-              subtitle: '8 watched',
-              colorline: Colors.red[300]!,
-            ),
-            _Features(
-              size: size,
-              title: 'Yabancı Dillerim',
-              subtitle: '9 watched',
-              colorline: Colors.red[300]!,
-            ),
-            _Features(
-              size: size,
-              title: 'Sertifikalarım',
-              subtitle: '1 to air',
-              colorline: Colors.grey[300]!,
-            ),
-            _Features(
-              size: size,
-              title: 'Medya Hesaplarım',
-              subtitle: '7 to watch',
-              colorline: Colors.grey[300]!,
-            ),
           ],
         ));
-  }
-}
-
-class _CustomIcon extends StatelessWidget {
-  const _CustomIcon({
-    Key? key,
-    required this.icon,
-    required this.text,
-  }) : super(key: key);
-
-  final IconData icon;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Icon(
-          icon,
-          color: Colors.grey,
-          size: 45,
-        ),
-        Text(
-          text,
-          style: const TextStyle(fontSize: 20, color: Colors.grey),
-        )
-      ],
-    );
-  }
-}
-
-class _Features extends StatelessWidget {
-  const _Features({
-    Key? key,
-    required this.size,
-    required this.title,
-    required this.subtitle,
-    required this.colorline,
-  }) : super(key: key);
-
-  final Size size;
-  final String title;
-  final String subtitle;
-  final Color colorline;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(15),
-      width: size.width,
-      height: 100,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(fontSize: 20),
-                ),
-                const SizedBox(
-                  height: 7,
-                ),
-                Text(
-                  subtitle,
-                  style: const TextStyle(fontSize: 16),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 5.0),
-                  child: Container(
-                    height: 5,
-                    color: colorline,
-                  ),
-                )
-              ],
-            ),
-          ),
-          Icon(
-            Icons.pending,
-            color: Colors.grey[400],
-          )
-        ],
-      ),
-    );
   }
 }
