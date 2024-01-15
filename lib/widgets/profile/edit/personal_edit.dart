@@ -8,6 +8,7 @@ class PersonalEdit extends StatefulWidget {
 }
 
 class _PersonalEditState extends State<PersonalEdit> {
+  DateTime? selectedDate;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,22 +72,39 @@ class _PersonalEditState extends State<PersonalEdit> {
                 decoration: InputDecoration(
                     labelText: "Telefon Numaranız*",
                     hintStyle: const TextStyle(fontFamily: "Poppins"),
-                    prefixIcon: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.keyboard_arrow_down)),
                     border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)))),
               ),
-              const SizedBox(height: 20),
+              SizedBox(
+                height: 20,
+              ),
               TextField(
                 decoration: InputDecoration(
-                    labelText: "Doğum Tarihiniz*",
-                    hintStyle: const TextStyle(fontFamily: "Poppins"),
-                    suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.calendar_month)),
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)))),
+                  labelText: "Doğum Tarihiniz",
+                  hintText: selectedDate != null
+                      ? "${selectedDate!.toLocal().day}/${selectedDate!.toLocal().month}/${selectedDate!.toLocal().year}"
+                      : "Tarih Seçin",
+                  hintStyle: const TextStyle(fontFamily: "Poppins"),
+                  suffixIcon: IconButton(
+                    onPressed: () async {
+                      final DateTime? picked = await showDatePicker(
+                        context: context,
+                        initialDate: selectedDate ?? DateTime.now(),
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime.now(),
+                      );
+                      if (picked != null) {
+                        setState(() {
+                          selectedDate = picked;
+                        });
+                      }
+                    },
+                    icon: const Icon(Icons.calendar_today),
+                  ),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                ),
               ),
               const SizedBox(height: 20),
               const TextField(
