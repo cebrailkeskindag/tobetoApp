@@ -19,6 +19,9 @@ class _LoginState extends State<Login> {
     String imageName = currentBrightness == Brightness.light
         ? 'assets/images/tobeto_logo.png'
         : 'assets/images/tobeto_logo_d.png';
+    String backgroundLogin = currentBrightness == Brightness.light
+        ? "assets/images/login_background.png"
+        : 'assets/images/login_background_d.png';
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 16),
         backgroundColor: (AppColorDark.elevatedButtonColor),
@@ -26,9 +29,9 @@ class _LoginState extends State<Login> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             image: DecorationImage(
-          image: AssetImage("assets/images/login_background2.png"),
+          image: AssetImage(backgroundLogin),
           fit: BoxFit.cover,
         )),
         child: Center(
