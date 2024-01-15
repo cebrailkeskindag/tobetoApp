@@ -80,7 +80,7 @@ class _PersonalEditState extends State<PersonalEdit> {
               ),
               TextField(
                 decoration: InputDecoration(
-                  labelText: "Doğum Tarihiniz",
+                 // labelText: "Doğum Tarihiniz",
                   hintText: selectedDate != null
                       ? "${selectedDate!.toLocal().day}/${selectedDate!.toLocal().month}/${selectedDate!.toLocal().year}"
                       : "Tarih Seçin",
