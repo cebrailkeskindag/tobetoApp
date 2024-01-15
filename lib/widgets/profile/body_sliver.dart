@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/widgets/profile/activite_map.dart';
 
 class Body extends StatelessWidget {
   const Body({
@@ -52,6 +53,7 @@ class Body extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(height: 15),
             const Card(
               child: Padding(
                 padding: EdgeInsets.all(20),
@@ -72,6 +74,7 @@ class Body extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(height: 15),
             const Card(
               child: Padding(
                 padding: EdgeInsets.all(20),
@@ -92,25 +95,71 @@ class Body extends StatelessWidget {
                 ),
               ),
             ),
-            const Card(
+            SizedBox(height: 15),
+            Card(
+              shadowColor: Theme.of(context).colorScheme.background,
+              elevation: 5,
               child: Padding(
-                padding: EdgeInsets.all(20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Medya Hesaplarım",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    Text("Medya Hesaplarım", style: TextStyle(fontSize: 20)),
+                    const Divider(thickness: 2),
+                    SizedBox(
+                      height: 10,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 5, bottom: 5),
-                      child: Divider(),
-                    ),
-                    Text("Henüz bir hesap eklemedin")
+                    SizedBox(
+                      height: 60,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          InkWell(
+                            borderRadius: BorderRadius.circular(25),
+                            onTap: () {},
+                            child: Image.asset(
+                              "assets/images/link.png",
+                              height: 60,
+                              width: 60,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(25),
+                            onTap: () {},
+                            child: Image.asset(
+                              "assets/images/github.png",
+                              height: 60,
+                              width: 60,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(25),
+                            onTap: () {},
+                            child: Image.asset(
+                              "assets/images/flogo.png",
+                              height: 60,
+                              width: 60,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 30,
             ),
             Card(
               child: Padding(
@@ -151,10 +200,11 @@ class Body extends StatelessWidget {
                 ),
               ),
             ),
-             Card(
+            SizedBox(height: 15),
+            Card(
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     "Tobeto Seviye Testlerim",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
@@ -165,16 +215,16 @@ class Body extends StatelessWidget {
                       children: [
                         Card(
                           child: Padding(
-                            padding: EdgeInsets.all(20),
+                            padding: EdgeInsets.all(10),
                             child: Container(
-                              height: 120,width: 300,
+                              height: 120,
+                              width: 300,
                               child: const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     "Herkes için Kodlama 2A Değerlendirme Sınavı",
                                     softWrap: true,
-                                    
                                   ),
                                   Padding(
                                     padding: EdgeInsets.only(top: 5, bottom: 5),
@@ -192,18 +242,19 @@ class Body extends StatelessWidget {
                             ),
                           ),
                         ),
+                        SizedBox(width: 10),
                         Card(
                           child: Padding(
-                            padding: EdgeInsets.all(20),
+                            padding: EdgeInsets.all(10),
                             child: Container(
-                              height: 120,width: 300,
+                              height: 120,
+                              width: 300,
                               child: const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     "Masaüstü Programlama",
                                     softWrap: true,
-                                    
                                   ),
                                   Padding(
                                     padding: EdgeInsets.only(top: 5, bottom: 5),
@@ -227,6 +278,7 @@ class Body extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: 15),
             const Padding(
               padding: EdgeInsets.only(left: 15.0, bottom: 10),
               child: Text(
@@ -253,6 +305,56 @@ class Body extends StatelessWidget {
                               ),
                             ),
                           ))),
+            ),
+            SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                color: Colors.white,
+                elevation: 5,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Aktivite Haritam",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      const Divider(thickness: 2),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height / 7,
+                        child: const ActivityMap(),
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 3,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ActivityMapContainerWidget(
+                              color: Colors.grey,
+                            ),
+                            ActivityMapContainerWidget(
+                              color: Color(0xFFBB66FF),
+                            ),
+                            ActivityMapContainerWidget(
+                              color: Color(0xFF9933FF),
+                            ),
+                            ActivityMapContainerWidget(
+                              color: Color(0xFF5C1F99),
+                            ),
+                            ActivityMapContainerWidget(
+                              color: Color(0xFF361259),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ),
             const SizedBox(
               height: 15,

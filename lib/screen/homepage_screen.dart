@@ -78,9 +78,11 @@ class _HomepageScreenState extends State<HomepageScreen> {
           ),
           floatingActionButton: const CircularButton(),
           body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Center(
@@ -94,7 +96,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                                   fontWeight: FontWeight.w500),
                               children: [
                                 TextSpan(
-                                  text: "'ya hoş geldin  Kullanıcı_adı",
+                                  text: "'ya Hoş Geldin \n Sevgili Öğrencimiz",
                                   style: TextStyle(
                                       color: tColor,
                                       fontWeight: FontWeight.w300),
@@ -111,7 +113,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                 Center(
                   child: Padding(
                     padding: EdgeInsets.all(screenWidth / 30),
-                    child: Card(
+                    child: Container(
                       color: Theme.of(context).colorScheme.background,
                       child: Padding(
                         padding: EdgeInsets.all(screenWidth / 80),
@@ -120,19 +122,22 @@ class _HomepageScreenState extends State<HomepageScreen> {
                             SizedBox(
                                 width: screenWidth / 3,
                                 child: Image.asset(istkodluyor)),
+                            SizedBox(height: 20),
                             const Text(
                               " Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
                               textAlign: TextAlign.center,
                             ),
+                            SizedBox(height: 20),
                             RichText(
                                 textAlign: TextAlign.center,
                                 text: TextSpan(
                                     text: "Aradığın",
                                     style: TextStyle(
-                                      color:
-                                          Theme.of(context).colorScheme.surface,
-                                      fontSize: 30,
-                                    ),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .surface,
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.w400),
                                     children: [
                                       TextSpan(
                                         text: " \"",

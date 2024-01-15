@@ -3,6 +3,7 @@ import 'package:tobetoapp/screen/calendar_screen.dart';
 import 'package:tobetoapp/screen/catalog.dart';
 import 'package:tobetoapp/screen/evaluation.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
+import 'package:tobetoapp/screen/login.dart';
 import 'package:tobetoapp/screen/profil.dart';
 
 class DrawerMenu extends StatefulWidget {
@@ -73,8 +74,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
             title: Text("Takvim"),
             leading: Icon(Icons.date_range),
             onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (ctx) =>  CalendarScreen()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (ctx) => CalendarScreen()));
             },
           ),
           const Divider(),
@@ -84,11 +85,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
               backgroundImage: AssetImage('assets/images/iconlogo.png'),
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(2.0),
             child: Card(
               color: Theme.of(context).colorScheme.background,
               shape: RoundedRectangleBorder(
@@ -110,6 +108,19 @@ class _DrawerMenuState extends State<DrawerMenu> {
               ),
             ),
           ),
+          ListTile(
+              title: const Text(
+                "Çıkış Yap",
+              ),
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Login(),
+                    ));
+              },
+              leading: const Icon(Icons.exit_to_app)),
+          SizedBox(height: 30),
           const Padding(
             padding: EdgeInsets.only(left: 20, top: 10),
             child: Text("© 2022 Tobeto"),
