@@ -5,9 +5,6 @@ import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/models/calendar_model.dart';
 import 'package:tobetoapp/widgets/calendar/filtercheckbutton.dart';
 
-
-
-
 bool aramaYapiliyorMu = false;
 
 Future<void> ara(String aramaKelimesi) async {
@@ -30,7 +27,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Educator? _selectedEducator;
 
   final TextEditingController _eventController = TextEditingController();
- 
 
   @override
   void initState() {
@@ -77,45 +73,48 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   },
                   icon: const Icon(Icons.search)),
           IconButton(
-              onPressed: () {showModalBottomSheet<void>(
-            context: context,
-            builder: (BuildContext context) {
-              return SizedBox(
-                
-                height: 500,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      const Text('Eğitmen'),
-                       DropdownButton<Educator>(
-            value: _selectedEducator,
-            hint: Text('Eğitmen Seçin'),
-            onChanged: (Educator? educator) {
-              setState(() {
-                _selectedEducator = educator;
-              });
-            },
-            items: widget.educators.map((Educator educator) {
-              return DropdownMenuItem<Educator>(
-                value: educator,
-                child: Text(educator.tamAd),
-              );
-            }).toList(),
-          ),
-          FilterCheckButton(),
-       
-                      ElevatedButton(
-                        child: const Text('Close BottomSheet'),
-                        onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                showModalBottomSheet<void>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(30),
+                          topLeft: Radius.circular(30)),
+                      child: Container(
+                        color: Theme.of(context).colorScheme.background,
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              const Text('Eğitmen'),
+                              DropdownButton<Educator>(
+                                value: _selectedEducator,
+                                hint: Text('Eğitmen Seçin', style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),),
+                                onChanged: (Educator? educator) {
+                                  setState(() {
+                                    _selectedEducator = educator;
+                                  });
+                                },
+                                items:
+                                    widget.educators.map((Educator educator) {
+                                  return DropdownMenuItem<Educator>(
+                                    value: educator,
+                                    child: Text(educator.tamAd,style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)),
+                                  );
+                                }).toList(),
+                              ),
+                              const FilterCheckButton(),
+                            ],
+                          ),
+                        ),
                       ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          );}, icon: const Icon(Icons.filter_list_rounded))
+                    );
+                  },
+                );
+              },
+              icon: const Icon(Icons.filter_list_rounded))
         ],
         centerTitle: true,
       ),
@@ -133,6 +132,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
             },
             startingDayOfWeek: StartingDayOfWeek.monday,
             daysOfWeekVisible: true,
+            daysOfWeekStyle: const DaysOfWeekStyle(
+                weekdayStyle: TextStyle(fontWeight: FontWeight.bold),
+                weekendStyle: TextStyle(fontWeight: FontWeight.bold)),
+            daysOfWeekHeight: 25,
             onDaySelected: (DateTime selectDay, DateTime focusDay) {
               setState(() {
                 selectedDay = selectDay;
