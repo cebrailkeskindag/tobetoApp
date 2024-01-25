@@ -195,3 +195,16 @@ List<CalendarModel> educationList = [
     author: "Ahmet Çetinkaya",
   ),
 ];
+
+List<Educator> educators = [
+    Educator(tamAd: "Ahmet Yılmaz"),
+    Educator(tamAd: "Ayşe Kaya"),
+    Educator(tamAd: "Mustafa Aydın"),
+    Educator(tamAd: "Zeynep Yıldız"),
+    Educator(tamAd: "Emre Demir"),
+  ];
+class Educator {
+  String tamAd;
+
+  Educator({required this.tamAd});
+}

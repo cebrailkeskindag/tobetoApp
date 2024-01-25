@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/screen/calendar_screen.dart';
 import 'package:tobetoapp/screen/catalog.dart';
 import 'package:tobetoapp/screen/evaluation.dart';
@@ -75,7 +76,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
             leading: Icon(Icons.date_range),
             onTap: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (ctx) => CalendarScreen()));
+                  .push(MaterialPageRoute(builder: (ctx) => CalendarScreen(educators: educators,)));
             },
           ),
           const Divider(),
