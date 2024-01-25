@@ -8,7 +8,7 @@ class InfoCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Card(
-        color: Colors.white,
+       
         elevation: 5,
         shape: Border(
             left: BorderSide(

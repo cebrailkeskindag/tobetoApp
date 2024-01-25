@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:tobetoapp/datas/datas.dart';
+
 import 'package:tobetoapp/models/calendar_model.dart';
+import 'package:tobetoapp/widgets/calendar/filtercheckbutton.dart';
+
+
+
 
 bool aramaYapiliyorMu = false;
 
@@ -10,7 +15,8 @@ Future<void> ara(String aramaKelimesi) async {
 }
 
 class CalendarScreen extends StatefulWidget {
-  const CalendarScreen({super.key});
+  const CalendarScreen({super.key, required this.educators});
+  final List<Educator> educators;
 
   @override
   _CalendarScreenState createState() => _CalendarScreenState();
@@ -21,8 +27,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
+  Educator? _selectedEducator;
 
   final TextEditingController _eventController = TextEditingController();
+ 
 
   @override
   void initState() {
@@ -69,7 +77,45 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   },
                   icon: const Icon(Icons.search)),
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.filter_list_rounded))
+              onPressed: () {showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return SizedBox(
+                
+                height: 500,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      const Text('Eğitmen'),
+                       DropdownButton<Educator>(
+            value: _selectedEducator,
+            hint: Text('Eğitmen Seçin'),
+            onChanged: (Educator? educator) {
+              setState(() {
+                _selectedEducator = educator;
+              });
+            },
+            items: widget.educators.map((Educator educator) {
+              return DropdownMenuItem<Educator>(
+                value: educator,
+                child: Text(educator.tamAd),
+              );
+            }).toList(),
+          ),
+          FilterCheckButton(),
+       
+                      ElevatedButton(
+                        child: const Text('Close BottomSheet'),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );}, icon: const Icon(Icons.filter_list_rounded))
         ],
         centerTitle: true,
       ),
