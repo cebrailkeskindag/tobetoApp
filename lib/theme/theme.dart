@@ -52,6 +52,7 @@ class AppTheme {
           ),
         ),
         cardTheme: CardTheme(color: AppColorLight.cardColor),
+        dropdownMenuTheme: DropdownMenuThemeData(textStyle: TextStyle(color: AppColorLight.textColor) )
         );
   }
 
@@ -104,7 +105,7 @@ class AppTheme {
           ),
         ),
         cardTheme: CardTheme(color: AppColorDark.cardColor),
-       
+        dropdownMenuTheme: DropdownMenuThemeData(textStyle: TextStyle(color: AppColorDark.textColor) )
         );
   }
 }

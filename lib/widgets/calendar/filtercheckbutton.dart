@@ -28,7 +28,7 @@ class _FilterCheckButtonState extends State<FilterCheckButton> {
                   option1 = value!;
                 });
               },
-              controlAffinity: ListTileControlAffinity.trailing,
+              controlAffinity: ListTileControlAffinity.leading,
             ),
             CheckboxListTile(
               title: Text('Devam Eden Dersler'),
@@ -38,6 +38,7 @@ class _FilterCheckButtonState extends State<FilterCheckButton> {
                   option2 = value!;
                 });
               },
+               controlAffinity: ListTileControlAffinity.leading,
             ),
             CheckboxListTile(
               title: Text('Satın Alınmış Dersler'),
@@ -47,6 +48,7 @@ class _FilterCheckButtonState extends State<FilterCheckButton> {
                   option3 = value!;
                 });
               },
+               controlAffinity: ListTileControlAffinity.leading,
             ),
             CheckboxListTile(
               title: Text('Başlamamış Dersler'),
@@ -56,6 +58,7 @@ class _FilterCheckButtonState extends State<FilterCheckButton> {
                   option4 = value!;
                 });
               },
+               controlAffinity: ListTileControlAffinity.leading,
             ),
           ],
         );
