@@ -47,6 +47,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: aramaYapiliyorMu
             ? TextField(
@@ -91,7 +92,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
                               const Text('Eğitmen'),
                               DropdownButton<Educator>(
                                 value: _selectedEducator,
-                                hint: Text('Eğitmen Seçin', style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),),
+                                hint: Text(
+                                  'Eğitmen Seçin',
+                                  style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary),
+                                ),
                                 onChanged: (Educator? educator) {
                                   setState(() {
                                     _selectedEducator = educator;
@@ -101,7 +108,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                     widget.educators.map((Educator educator) {
                                   return DropdownMenuItem<Educator>(
                                     value: educator,
-                                    child: Text(educator.tamAd,style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)),
+                                    child: Text(educator.tamAd,
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onSecondary)),
                                   );
                                 }).toList(),
                               ),

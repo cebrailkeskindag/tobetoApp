@@ -21,7 +21,7 @@ class _CatalogState extends State<Catalog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerMenu(),
+      endDrawer: const DrawerMenu(),
       appBar: AppBar(
           /*  title: aramaYapiliyorMu
             ? TextField(
@@ -119,7 +119,7 @@ class _CatalogState extends State<Catalog> {
               shrinkWrap:
                   true, // Bu satırı ekleyerek ListView'ı sarmalayabiliriz.
               physics:
-                  NeverScrollableScrollPhysics(), // ListView'ın kaydırılmasını devre dışı bırakır.
+                  const NeverScrollableScrollPhysics(), // ListView'ın kaydırılmasını devre dışı bırakır.
               itemCount: catalogList.length,
               itemBuilder: (ctx, index) => Padding(
                 padding: const EdgeInsets.all(8.0),

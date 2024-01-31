@@ -10,7 +10,7 @@ class CertificateEdit extends StatefulWidget {
 class _CertificateEditState extends State<CertificateEdit> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(

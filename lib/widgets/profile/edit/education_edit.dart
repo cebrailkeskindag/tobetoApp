@@ -11,7 +11,7 @@ class _EducationEditState extends State<EducationEdit> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 500,
       child: SingleChildScrollView(

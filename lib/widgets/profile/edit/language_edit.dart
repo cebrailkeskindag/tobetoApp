@@ -10,7 +10,7 @@ class LanguageEdit extends StatefulWidget {
 class _LanguageEditState extends State<LanguageEdit> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 500,
       child: SingleChildScrollView(

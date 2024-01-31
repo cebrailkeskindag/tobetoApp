@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/datas/datas.dart';
+import 'package:tobetoapp/models/profile_edit.dart';
 
 class SocialMediaEdit extends StatefulWidget {
   const SocialMediaEdit({Key? key}) : super(key: key);
@@ -8,9 +10,10 @@ class SocialMediaEdit extends StatefulWidget {
 }
 
 class _SocialMediaEditState extends State<SocialMediaEdit> {
+  SocialMedia? _selectedMedia;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 500,
       child: SingleChildScrollView(
@@ -18,15 +21,26 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              TextField(
-                decoration: InputDecoration(
-                    hintText: "Seçiniz*",
-                    hintStyle: const TextStyle(fontFamily: "Poppins"),
-                    suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.keyboard_arrow_down)),
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)))),
+              DropdownButtonFormField<SocialMedia>(
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.person),
+                ),
+                hint: const Text('Seçiniz'),
+                value:
+                    _selectedMedia, 
+                onChanged: (SocialMedia? socialMedia) {
+                  if (socialMedia != null) {
+                    setState(() {
+                      _selectedMedia = socialMedia;
+                    });
+                  }
+                },
+                items: socialmedias.map((SocialMedia socialMedia) {
+                  return DropdownMenuItem<SocialMedia>(
+                    value: socialMedia,
+                    child: Text(socialMedia.name),
+                  );
+                }).toList(),
               ),
               const SizedBox(height: 20),
               const TextField(

@@ -53,7 +53,7 @@ class Body extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             const Card(
               child: Padding(
                 padding: EdgeInsets.all(20),
@@ -74,7 +74,7 @@ class Body extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             const Card(
               child: Padding(
                 padding: EdgeInsets.all(20),
@@ -95,7 +95,7 @@ class Body extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Card(
               shadowColor: Theme.of(context).colorScheme.background,
               elevation: 5,
@@ -105,9 +105,9 @@ class Body extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Medya Hesaplarım", style: TextStyle(fontSize: 20)),
+                    const Text("Medya Hesaplarım", style: TextStyle(fontSize: 20)),
                     const Divider(thickness: 2),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     SizedBox(
@@ -200,7 +200,7 @@ class Body extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Card(
               child: Column(
                 children: [
@@ -208,14 +208,14 @@ class Body extends StatelessWidget {
                     "Tobeto Seviye Testlerim",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  Divider(),
+                  const Divider(),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
                         Card(
                           child: Padding(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             child: Container(
                               height: 120,
                               width: 300,
@@ -242,10 +242,10 @@ class Body extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Card(
                           child: Padding(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             child: Container(
                               height: 120,
                               width: 300,
@@ -278,7 +278,7 @@ class Body extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             const Padding(
               padding: EdgeInsets.only(left: 15.0, bottom: 10),
               child: Text(
@@ -306,7 +306,7 @@ class Body extends StatelessWidget {
                             ),
                           ))),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(

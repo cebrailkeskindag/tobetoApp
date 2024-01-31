@@ -47,12 +47,12 @@ class _EditScreenState extends State<EditScreen> {
               setState(() {
                 //print(tabController.index);
                 selectedIndex = tabController.index;
-                print("Selected index: $selectedIndex");
               });
             }
           });
 
           return Scaffold(
+              resizeToAvoidBottomInset: false,
               endDrawer: const DrawerMenu(),
               appBar: AppBar(
                 centerTitle: false,

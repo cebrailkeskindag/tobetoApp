@@ -1,7 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:tobetoapp/models/calendar_model.dart';
 import 'package:tobetoapp/models/catalog_model.dart';
 import 'package:tobetoapp/models/exam.dart';
 import 'package:tobetoapp/models/news.dart';
+import 'package:tobetoapp/models/profile_edit.dart';
 import 'package:tobetoapp/models/training.dart';
 
 const newsList = [
@@ -197,14 +199,18 @@ List<CalendarModel> educationList = [
 ];
 
 List<Educator> educators = [
-    Educator(tamAd: "Ahmet Yılmaz"),
-    Educator(tamAd: "Ayşe Kaya"),
-    Educator(tamAd: "Mustafa Aydın"),
-    Educator(tamAd: "Zeynep Yıldız"),
-    Educator(tamAd: "Emre Demir"),
-  ];
-class Educator {
-  String tamAd;
+  Educator(tamAd: "Ahmet Yılmaz"),
+  Educator(tamAd: "Ayşe Kaya"),
+  Educator(tamAd: "Mustafa Aydın"),
+  Educator(tamAd: "Zeynep Yıldız"),
+  Educator(tamAd: "Emre Demir"),
+];
 
-  Educator({required this.tamAd});
-}
+List<SocialMedia> socialmedias = [
+  SocialMedia(name: "Instagram"),
+  SocialMedia(name: "Twitter"),
+  SocialMedia(name: "Linkedn"),
+  SocialMedia(name: "Github"),
+  SocialMedia(name: "Dribble"),
+  SocialMedia(name: "Behance"),
+];
