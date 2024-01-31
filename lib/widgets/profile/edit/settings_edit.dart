@@ -10,7 +10,7 @@ class SettingsEdit extends StatefulWidget {
 class _SettingsEditState extends State<SettingsEdit> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 500,
       child: SingleChildScrollView(
@@ -18,36 +18,27 @@ class _SettingsEditState extends State<SettingsEdit> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                     labelText: "Eski şifre*",
-                    hintStyle: const TextStyle(fontFamily: "Poppins"),
-                    suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.keyboard_arrow_down)),
-                    border: const OutlineInputBorder(
+                    hintStyle: TextStyle(fontFamily: "Poppins"),
+                    border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)))),
               ),
               const SizedBox(height: 20),
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                     labelText: "Yeni Şifre*",
-                    hintStyle: const TextStyle(fontFamily: "Poppins"),
-                    suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.keyboard_arrow_down)),
-                    border: const OutlineInputBorder(
+                    hintStyle: TextStyle(fontFamily: "Poppins"),
+                    border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)))),
               ),
               const SizedBox(height: 20),
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                     labelText: "Yeni Şifre Tekrar*",
-                    hintStyle: const TextStyle(fontFamily: "Poppins"),
-                    suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.keyboard_arrow_down)),
-                    border: const OutlineInputBorder(
+                    hintStyle: TextStyle(fontFamily: "Poppins"),
+                    border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)))),
               ),
               const SizedBox(height: 20),

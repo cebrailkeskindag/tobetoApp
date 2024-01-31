@@ -72,8 +72,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
             },
           ),
           ListTile(
-            title: Text("Takvim"),
-            leading: Icon(Icons.date_range),
+            title: const Text("Takvim"),
+            leading: const Icon(Icons.date_range),
             onTap: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (ctx) => CalendarScreen(educators: educators,)));
@@ -121,7 +121,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
                     ));
               },
               leading: const Icon(Icons.exit_to_app)),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           const Padding(
             padding: EdgeInsets.only(left: 20, top: 10),
             child: Text("© 2022 Tobeto"),

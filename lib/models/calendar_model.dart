@@ -17,3 +17,9 @@ class CalendarModel {
   @override
   String toString() => this.title;
 }
+
+class Educator {
+  String tamAd;
+
+  Educator({required this.tamAd});
+}

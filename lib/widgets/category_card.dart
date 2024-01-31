@@ -47,7 +47,7 @@ class CategoryCard extends StatelessWidget {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(300, 34),
-                          backgroundColor: Color.fromRGBO(103, 82, 195, 1)),
+                          backgroundColor: const Color.fromRGBO(103, 82, 195, 1)),
                       child: const Text(
                         "Başla",
                         style: TextStyle(
@@ -75,7 +75,7 @@ class CategoryCard extends StatelessWidget {
                     Colors.purple,
                     Colors.blueAccent
                   ],
-                      transform: GradientRotation(15),
+                      transform: const GradientRotation(15),
                       begin: Alignment.topRight,
                       end: Alignment.bottomLeft)),
               width: screenWidth,
@@ -93,7 +93,7 @@ class CategoryCard extends StatelessWidget {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(300, 34),
-                          backgroundColor: Color.fromRGBO(103, 82, 195, 1)),
+                          backgroundColor: const Color.fromRGBO(103, 82, 195, 1)),
                       child: const Text(
                         "Başla",
                         style: TextStyle(
@@ -139,7 +139,7 @@ class CategoryCard extends StatelessWidget {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(300, 34),
-                          backgroundColor: Color.fromRGBO(103, 82, 195, 1)),
+                          backgroundColor: const Color.fromRGBO(103, 82, 195, 1)),
                       child: const Text(
                         "Başla",
                         style: TextStyle(
