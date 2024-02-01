@@ -23,3 +23,38 @@ class Educator {
 
   Educator({required this.tamAd});
 }
+
+class Province {
+  String ilAd;
+  Province({
+    required this.ilAd,
+  });
+}
+
+class Education {
+  String egitim;
+  Education({
+    required this.egitim,
+  });
+}
+
+class Perfection {
+  String compet;
+  Perfection({
+    required this.compet,
+  });
+}
+
+class Language {
+  String dil;
+  Language({
+    required this.dil,
+  });
+}
+
+class Level {
+  String level;
+  Level({
+    required this.level,
+  });
+}

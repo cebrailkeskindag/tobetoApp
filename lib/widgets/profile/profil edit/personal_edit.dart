@@ -1,4 +1,7 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/datas/datas.dart';
+import 'package:tobetoapp/models/calendar_model.dart';
 
 class PersonalEdit extends StatefulWidget {
   const PersonalEdit({Key? key}) : super(key: key);
@@ -9,9 +12,10 @@ class PersonalEdit extends StatefulWidget {
 
 class _PersonalEditState extends State<PersonalEdit> {
   DateTime? selectedDate;
+  Province? selectedprovince;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 500,
       child: SingleChildScrollView(
@@ -68,26 +72,31 @@ class _PersonalEditState extends State<PersonalEdit> {
                         borderRadius: BorderRadius.all(Radius.circular(15)))),
               ),
               const SizedBox(height: 20),
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                     labelText: "Telefon Numaranız*",
-                    hintStyle: const TextStyle(fontFamily: "Poppins"),
-                    border: const OutlineInputBorder(
+                    hintStyle: TextStyle(fontFamily: "Poppins"),
+                    border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)))),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
                 decoration: InputDecoration(
-                 // labelText: "Doğum Tarihiniz",
+                  // labelText: "Doğum Tarihiniz",
                   hintText: selectedDate != null
-                      ? "${selectedDate!.toLocal().day}/${selectedDate!.toLocal().month}/${selectedDate!.toLocal().year}"
-                      : "Tarih Seçin",
+                      ? "${selectedDate!.toLocal().day.toString().padLeft(2, '0')}/${selectedDate!.toLocal().month.toString().padLeft(2, '0')}/${selectedDate!.toLocal().year}"
+                      : "Tarih",
                   hintStyle: const TextStyle(fontFamily: "Poppins"),
                   suffixIcon: IconButton(
                     onPressed: () async {
                       final DateTime? picked = await showDatePicker(
+                        builder: (context, child) => Theme(
+                            data: ThemeData.light().copyWith(
+                              primaryColor: Colors.white,
+                            ),
+                            child: child!),
                         context: context,
                         initialDate: selectedDate ?? DateTime.now(),
                         firstDate: DateTime(1900),
@@ -99,7 +108,7 @@ class _PersonalEditState extends State<PersonalEdit> {
                         });
                       }
                     },
-                    icon: const Icon(Icons.calendar_today),
+                    icon: const Icon(Icons.calendar_month),
                   ),
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -125,21 +134,57 @@ class _PersonalEditState extends State<PersonalEdit> {
               const SizedBox(height: 20),
               const TextField(
                 decoration: InputDecoration(
-                    labelText: "Ülke*",
-                    hintStyle: TextStyle(fontFamily: "Poppins"),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)))),
+                  labelText: "Ülke*",
+                  hintStyle: TextStyle(fontFamily: "Poppins"),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                ),
               ),
               const SizedBox(height: 20),
-              TextField(
+              DropdownButtonFormField2<Province>(
+                isExpanded: true,
                 decoration: InputDecoration(
-                    labelText: "İl*",
-                    hintStyle: const TextStyle(fontFamily: "Poppins"),
-                    suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.keyboard_arrow_down)),
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)))),
+                  contentPadding: const EdgeInsets.all(15),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  labelText: "Şehir Seçiniz*",
+                  hintText: "İstanbul",
+                  hintStyle: const TextStyle(fontFamily: "Poppins"),
+                ),
+                value: selectedprovince,
+                onChanged: (Province? province) {
+                  if (province != null) {
+                    setState(() {
+                      selectedprovince = province;
+                    });
+                  }
+                },
+                items: province.map((Province province) {
+                  return DropdownMenuItem<Province>(
+                    enabled: true,
+                    value: province,
+                    child: Text(
+                      province.ilAd,
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal),
+                    ),
+                  );
+                }).toList(),
+                iconStyleData: const IconStyleData(
+                  icon: Icon(
+                    Icons.arrow_drop_down,
+                    color: Colors.black45,
+                  ),
+                ),
+                dropdownStyleData: const DropdownStyleData(
+                  maxHeight: 200,
+                  width: 200,
+                  direction: DropdownDirection.left,
+                ),
+                menuItemStyleData: const MenuItemStyleData(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                ),
               ),
               const SizedBox(height: 20),
               TextField(

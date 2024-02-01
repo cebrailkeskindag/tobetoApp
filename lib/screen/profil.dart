@@ -1,13 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/widgets/profile/background_sliver.dart';
-import 'package:tobetoapp/widgets/profile/body_sliver.dart';
-import 'package:tobetoapp/widgets/profile/button_back.dart';
-import 'package:tobetoapp/widgets/profile/cover_photo.dart';
-import 'package:tobetoapp/widgets/profile/cut_rectangle.dart';
-import 'package:tobetoapp/widgets/profile/data_cut_rentagle.dart';
-import 'package:tobetoapp/widgets/profile/edit_circle_button.dart';
+import 'package:tobetoapp/widgets/profile/profile%20homepage/background_sliver.dart';
+import 'package:tobetoapp/widgets/profile/profile%20homepage/body_sliver.dart';
+import 'package:tobetoapp/widgets/profile/profile%20homepage/button_back.dart';
+import 'package:tobetoapp/widgets/profile/profile%20homepage/cover_photo.dart';
+import 'package:tobetoapp/widgets/profile/profile%20homepage/cut_rectangle.dart';
+import 'package:tobetoapp/widgets/profile/profile%20homepage/data_cut_rentagle.dart';
+import 'package:tobetoapp/widgets/profile/profile%20homepage/edit_circle_button.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);

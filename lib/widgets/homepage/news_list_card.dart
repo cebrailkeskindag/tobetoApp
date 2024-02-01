@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/models/news.dart';
-import 'package:tobetoapp/widgets/news_card.dart';
+import 'package:tobetoapp/widgets/homepage/news_card.dart';
 
 class NewsListCard extends StatelessWidget {
   const NewsListCard({Key? key, required this.news}) : super(key: key);

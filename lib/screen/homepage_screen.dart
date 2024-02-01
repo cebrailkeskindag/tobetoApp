@@ -3,15 +3,15 @@ import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/models/exam.dart';
 import 'package:tobetoapp/models/news.dart';
 import 'package:tobetoapp/models/training.dart';
-import 'package:tobetoapp/widgets/circular_button.dart';
-import 'package:tobetoapp/widgets/info_card.dart';
-import 'package:tobetoapp/widgets/category_card.dart';
+import 'package:tobetoapp/widgets/homepage/circular_button.dart';
+import 'package:tobetoapp/widgets/homepage/info_card.dart';
+import 'package:tobetoapp/widgets/homepage/category_card.dart';
 
-import 'package:tobetoapp/widgets/drawer.dart';
-import 'package:tobetoapp/widgets/exam_card.dart';
-import 'package:tobetoapp/widgets/news_card.dart';
-import 'package:tobetoapp/widgets/survey_card.dart';
-import 'package:tobetoapp/widgets/trainings_card.dart';
+import 'package:tobetoapp/widgets/homepage/drawer.dart';
+import 'package:tobetoapp/widgets/homepage/exam_card.dart';
+import 'package:tobetoapp/widgets/homepage/news_card.dart';
+import 'package:tobetoapp/widgets/homepage/survey_card.dart';
+import 'package:tobetoapp/widgets/homepage/trainings_card.dart';
 
 import '../theme/app_color.dart';
 

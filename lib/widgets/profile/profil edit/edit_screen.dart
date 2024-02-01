@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/widgets/drawer.dart';
-import 'package:tobetoapp/widgets/profile/edit/certificate_edit.dart';
-import 'package:tobetoapp/widgets/profile/edit/education_edit.dart';
-import 'package:tobetoapp/widgets/profile/edit/experience_edit.dart';
-import 'package:tobetoapp/widgets/profile/edit/language_edit.dart';
-import 'package:tobetoapp/widgets/profile/edit/perfection_edit.dart';
-import 'package:tobetoapp/widgets/profile/edit/personal_edit.dart';
-import 'package:tobetoapp/widgets/profile/edit/settings_edit.dart';
-import 'package:tobetoapp/widgets/profile/edit/social_media_edit.dart';
+import 'package:tobetoapp/widgets/homepage/drawer.dart';
+import 'package:tobetoapp/widgets/profile/profil%20edit/certificate_edit.dart';
+import 'package:tobetoapp/widgets/profile/profil%20edit/education_edit.dart';
+import 'package:tobetoapp/widgets/profile/profil%20edit/experience_edit.dart';
+import 'package:tobetoapp/widgets/profile/profil%20edit/language_edit.dart';
+import 'package:tobetoapp/widgets/profile/profil%20edit/perfection_edit.dart';
+import 'package:tobetoapp/widgets/profile/profil%20edit/personal_edit.dart';
+import 'package:tobetoapp/widgets/profile/profil%20edit/settings_edit.dart';
+import 'package:tobetoapp/widgets/profile/profil%20edit/social_media_edit.dart';
 
 const List<Tab> tabs = <Tab>[
   Tab(icon: Icon(Icons.person_outline)),
