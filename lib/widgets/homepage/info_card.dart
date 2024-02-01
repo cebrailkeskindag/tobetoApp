@@ -8,7 +8,6 @@ class InfoCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Card(
-       
         elevation: 5,
         shape: Border(
             left: BorderSide(
@@ -54,7 +53,7 @@ class InfoCard extends StatelessWidget {
               const Row(
                 children: [
                   Icon(
-                    Icons.check,
+                    Icons.share,
                     size: 20,
                   ),
                   Text(

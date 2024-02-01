@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/widgets/profile/activite_map.dart';
+import 'package:tobetoapp/widgets/profile/profile%20homepage/activite_map.dart';
 
 class Body extends StatelessWidget {
   const Body({
@@ -105,7 +105,8 @@ class Body extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Medya Hesaplarım", style: TextStyle(fontSize: 20)),
+                    const Text("Medya Hesaplarım",
+                        style: TextStyle(fontSize: 20)),
                     const Divider(thickness: 2),
                     const SizedBox(
                       height: 10,

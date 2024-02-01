@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/widgets/profile/edit/edit_screen.dart';
+import 'package:tobetoapp/widgets/profile/profil%20edit/edit_screen.dart';
 
 class EditCircleButton extends StatelessWidget {
   const EditCircleButton({
@@ -34,8 +34,8 @@ class EditCircleButton extends StatelessWidget {
                         color: Colors.white,
                       ),
                       onTap: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (ctx) => const EditScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (ctx) => const EditScreen()));
                       },
                     ),
                   ),

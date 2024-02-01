@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/widgets/profile/custom_bottom_description.dart';
+import 'package:tobetoapp/widgets/profile/profile%20homepage/custom_bottom_description.dart';
 
 class DataCutRectangle extends StatelessWidget {
   const DataCutRectangle({

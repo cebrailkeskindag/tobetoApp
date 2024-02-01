@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
@@ -21,13 +22,15 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              DropdownButtonFormField<SocialMedia>(
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.person),
+              DropdownButtonFormField2<SocialMedia>(
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(15),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
                 hint: const Text('Seçiniz'),
-                value:
-                    _selectedMedia, 
+                value: _selectedMedia,
                 onChanged: (SocialMedia? socialMedia) {
                   if (socialMedia != null) {
                     setState(() {
