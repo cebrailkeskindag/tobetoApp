@@ -32,7 +32,7 @@ class CatalogWidget extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
                         const Icon(
@@ -46,16 +46,16 @@ class CatalogWidget extends StatelessWidget {
                             fontSize: 17.0,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Icon(
+                        const Icon(
                           Icons.access_time,
                           color: Colors.white,
                         ),
                         Text(
                           catalogModel.time,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 17.0,
                           ),
@@ -64,7 +64,7 @@ class CatalogWidget extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
                         Padding(

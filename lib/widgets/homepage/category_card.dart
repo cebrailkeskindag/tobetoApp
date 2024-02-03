@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/screen/evaluation.dart';
+import 'package:tobetoapp/screen/profil.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({Key? key}) : super(key: key);
@@ -44,10 +46,14 @@ class CategoryCard extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (ctx) => const ProfilePage()));
+                      },
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(300, 34),
-                          backgroundColor: const Color.fromRGBO(103, 82, 195, 1)),
+                          backgroundColor:
+                              const Color.fromRGBO(103, 82, 195, 1)),
                       child: const Text(
                         "Başla",
                         style: TextStyle(
@@ -90,10 +96,14 @@ class CategoryCard extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (ctx) => const Evaluation()));
+                      },
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(300, 34),
-                          backgroundColor: const Color.fromRGBO(103, 82, 195, 1)),
+                          backgroundColor:
+                              const Color.fromRGBO(103, 82, 195, 1)),
                       child: const Text(
                         "Başla",
                         style: TextStyle(
@@ -139,7 +149,8 @@ class CategoryCard extends StatelessWidget {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(300, 34),
-                          backgroundColor: const Color.fromRGBO(103, 82, 195, 1)),
+                          backgroundColor:
+                              const Color.fromRGBO(103, 82, 195, 1)),
                       child: const Text(
                         "Başla",
                         style: TextStyle(

@@ -24,7 +24,7 @@ class EvaItem extends StatelessWidget {
                 Color.fromARGB(255, 1, 48, 119),
                 Color.fromARGB(255, 149, 181, 236)
               ],
-                  transform: const GradientRotation(15),
+                  transform: GradientRotation(15),
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           width: screenWidth,
@@ -37,12 +37,12 @@ class EvaItem extends StatelessWidget {
                   Icons.list_alt_outlined,
                   color: Colors.white,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
                   title,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
                 const Spacer(),
                 ElevatedButton(onPressed: () {}, child: const Text("Başla"))

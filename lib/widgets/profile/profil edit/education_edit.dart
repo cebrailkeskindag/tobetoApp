@@ -1,7 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
-import 'package:tobetoapp/models/calendar_model.dart';
+import 'package:tobetoapp/models/profile_edit.dart';
 
 class EducationEdit extends StatefulWidget {
   const EducationEdit({Key? key}) : super(key: key);
@@ -43,12 +43,12 @@ class _EducationEditState extends State<EducationEdit> {
                     });
                   }
                 },
-                items: education.map((Education education) {
+                items: educationLevels.map((Education education) {
                   return DropdownMenuItem<Education>(
                     enabled: true,
                     value: education,
                     child: Text(
-                      education.egitim,
+                      education.eduLevel,
                       style: const TextStyle(
                           fontSize: 15, fontWeight: FontWeight.normal),
                     ),

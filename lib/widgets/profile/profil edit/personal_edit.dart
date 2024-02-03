@@ -1,7 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
-import 'package:tobetoapp/models/calendar_model.dart';
+import 'package:tobetoapp/models/profile_edit.dart';
 
 class PersonalEdit extends StatefulWidget {
   const PersonalEdit({Key? key}) : super(key: key);
@@ -160,12 +160,12 @@ class _PersonalEditState extends State<PersonalEdit> {
                     });
                   }
                 },
-                items: province.map((Province province) {
+                items: provinces.map((Province province) {
                   return DropdownMenuItem<Province>(
                     enabled: true,
                     value: province,
                     child: Text(
-                      province.ilAd,
+                      province.city,
                       style: const TextStyle(
                           fontSize: 15, fontWeight: FontWeight.normal),
                     ),

@@ -82,7 +82,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Center(
@@ -122,12 +122,12 @@ class _HomepageScreenState extends State<HomepageScreen> {
                             SizedBox(
                                 width: screenWidth / 3,
                                 child: Image.asset(istkodluyor)),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             const Text(
                               " Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
                               textAlign: TextAlign.center,
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             RichText(
                                 textAlign: TextAlign.center,
                                 text: TextSpan(
