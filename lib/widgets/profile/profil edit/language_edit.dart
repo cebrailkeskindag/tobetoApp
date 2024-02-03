@@ -1,7 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
-import 'package:tobetoapp/models/calendar_model.dart';
+import 'package:tobetoapp/models/profile_edit.dart';
 
 class LanguageEdit extends StatefulWidget {
   const LanguageEdit({Key? key}) : super(key: key);
@@ -41,12 +41,12 @@ class _LanguageEditState extends State<LanguageEdit> {
                     });
                   }
                 },
-                items: language.map((Language language) {
+                items: languages.map((Language language) {
                   return DropdownMenuItem<Language>(
                     enabled: true,
                     value: language,
                     child: Text(
-                      language.dil,
+                      language.language,
                       style: const TextStyle(
                           fontSize: 15, fontWeight: FontWeight.normal),
                     ),
@@ -86,7 +86,7 @@ class _LanguageEditState extends State<LanguageEdit> {
                     });
                   }
                 },
-                items: level.map((Level level) {
+                items: levels.map((Level level) {
                   return DropdownMenuItem<Level>(
                     enabled: true,
                     value: level,

@@ -78,7 +78,7 @@ class _LoginState extends State<Login> {
                         obscureText: !_isPasswordVisible,
                         decoration: InputDecoration(
                             labelText: "Parola giriniz",
-                            hintStyle: TextStyle(fontFamily: "Poppins"),
+                            hintStyle: const TextStyle(fontFamily: "Poppins"),
                             prefixIcon: const Icon(Icons.lock),
                             suffixIcon: GestureDetector(
                               onTap: () {
@@ -124,7 +124,7 @@ class _LoginState extends State<Login> {
                         TextStyle(color: Colors.white, fontFamily: "Poppins"),
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -170,7 +170,7 @@ class _LoginState extends State<Login> {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

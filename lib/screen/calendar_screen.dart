@@ -3,6 +3,7 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:tobetoapp/datas/datas.dart';
 
 import 'package:tobetoapp/models/calendar_model.dart';
+import 'package:tobetoapp/models/profile_edit.dart';
 import 'package:tobetoapp/widgets/calendar/filtercheckbutton.dart';
 
 bool aramaYapiliyorMu = false;
@@ -108,7 +109,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                     widget.educators.map((Educator educator) {
                                   return DropdownMenuItem<Educator>(
                                     value: educator,
-                                    child: Text(educator.tamAd,
+                                    child: Text(educator.eduName,
                                         style: TextStyle(
                                             color: Theme.of(context)
                                                 .colorScheme

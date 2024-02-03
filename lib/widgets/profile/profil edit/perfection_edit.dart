@@ -1,7 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
-import 'package:tobetoapp/models/calendar_model.dart';
+import 'package:tobetoapp/models/profile_edit.dart';
 
 class PerfectionEdit extends StatefulWidget {
   const PerfectionEdit({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class _PerfectionEditState extends State<PerfectionEdit> {
                     });
                   }
                 },
-                items: compet.map((Perfection compet) {
+                items: compets.map((Perfection compet) {
                   return DropdownMenuItem<Perfection>(
                     enabled: true,
                     value: compet,

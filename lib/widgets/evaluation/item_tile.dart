@@ -18,8 +18,8 @@ class ItemTile extends StatelessWidget {
 
         title: Row(
           children: [
-            Icon(Icons.list_alt_outlined),
-            Text("Title"),
+            const Icon(Icons.list_alt_outlined),
+            const Text("Title"),
             ElevatedButton(onPressed: () {}, child: const Text("Başla"))
           ],
         ),
