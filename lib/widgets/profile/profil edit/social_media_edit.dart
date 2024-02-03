@@ -23,6 +23,7 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
           child: Column(
             children: [
               DropdownButtonFormField2<SocialMedia>(
+                isExpanded: true,
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.all(15),
                   border: OutlineInputBorder(
