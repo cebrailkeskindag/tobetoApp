@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tobetoapp/blocs/auth_bloc/auth_bloc.dart';
+import 'package:tobetoapp/blocs/auth_bloc/auth_event.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
 import 'package:tobetoapp/theme/app_color.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+  String _email = '';
+  String _password = '';
+  bool _isAuth = false;
+
+  void _submit() {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      context.read<AuthBloc>().add(Login(email: _email, password: _password));
+    }
+  }
+
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isPasswordVisible = false;
@@ -54,6 +71,7 @@ class _LoginState extends State<Login> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 30, right: 30),
                     child: TextField(
+                      onChanged: (value) => _email = value,
                       controller: _usernameController,
                       keyboardType: TextInputType.name,
                       decoration: const InputDecoration(
@@ -74,6 +92,7 @@ class _LoginState extends State<Login> {
                     child: SizedBox(
                       height: 50,
                       child: TextField(
+                        onChanged: (value) => _password = value,
                         controller: _passwordController,
                         obscureText: !_isPasswordVisible,
                         decoration: InputDecoration(
@@ -115,8 +134,11 @@ class _LoginState extends State<Login> {
                 ElevatedButton(
                   style: buttonStyle,
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (ctx) => const HomepageScreen()));
+                    print(_email);
+                    print(_password);
+                    _submit();
+                    /* Navigator.of(context).push(MaterialPageRoute(
+                        builder: (ctx) => const HomepageScreen()));*/
                   },
                   child: const Text(
                     "GİRİŞ YAP",
