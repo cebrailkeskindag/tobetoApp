@@ -4,7 +4,7 @@ import 'package:tobetoapp/screen/calendar_screen.dart';
 import 'package:tobetoapp/screen/catalog.dart';
 import 'package:tobetoapp/screen/evaluation.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
-import 'package:tobetoapp/screen/login.dart';
+import 'package:tobetoapp/screen/loginpage.dart';
 import 'package:tobetoapp/screen/profil.dart';
 
 class DrawerMenu extends StatefulWidget {
@@ -75,8 +75,10 @@ class _DrawerMenuState extends State<DrawerMenu> {
             title: const Text("Takvim"),
             leading: const Icon(Icons.date_range),
             onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (ctx) => CalendarScreen(educators: educators,)));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (ctx) => CalendarScreen(
+                        educators: educators,
+                      )));
             },
           ),
           const Divider(),
@@ -117,7 +119,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const Login(),
+                      builder: (context) => const LoginPage(),
                     ));
               },
               leading: const Icon(Icons.exit_to_app)),

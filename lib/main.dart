@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/screen/login.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tobetoapp/blocs/auth_bloc/auth_bloc.dart';
+import 'package:tobetoapp/firebase_options.dart';
+import 'package:tobetoapp/screen/loginpage.dart';
 import 'package:tobetoapp/theme/theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(MultiBlocProvider(
+    providers: [BlocProvider<AuthBloc>(create: (context) => AuthBloc())],
+    child: const MaterialApp(
+      home: MyApp(),
+    ),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,8 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Tobeto',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: const Login(),
-      
+      home: const LoginPage(),
     );
   }
 }
