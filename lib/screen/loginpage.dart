@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_bloc.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_event.dart';
+import 'package:tobetoapp/blocs/auth_bloc/auth_state.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
+import 'package:tobetoapp/screen/registerpage.dart';
 import 'package:tobetoapp/theme/app_color.dart';
 
 class LoginPage extends StatefulWidget {
@@ -19,12 +22,31 @@ class _LoginPageState extends State<LoginPage> {
   String _email = '';
   String _password = '';
   bool _isAuth = false;
-
-  void _submit() {
-    if (_formKey.currentState!.validate()) {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  void _submit() async {
+    //context.read<AuthBloc>().add(Login(email: _email, password: _email));
+    /*if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      context.read<AuthBloc>().add(Login(email: _email, password: _password));
-    }
+      
+    }*/
+   try {
+                  final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+                    email: _email,
+                    password: _password,
+                  );
+                  final User? user = userCredential.user;
+                  if (user != null) {
+                    // Kullanıcı giriş yaptı, yapılacak işlemler buraya yazılabilir
+                    // Örneğin, anasayfaya yönlendirme yapılabilir
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomepageScreen()),
+                  );
+                  }
+                } catch (e) {
+                  print('Error: $e');
+                  // Hata durumunda kullanıcıya bilgi verilebilir
+                }
   }
 
   final TextEditingController _usernameController = TextEditingController();
@@ -43,7 +65,16 @@ class _LoginPageState extends State<LoginPage> {
         textStyle: const TextStyle(fontSize: 16),
         backgroundColor: (AppColorDark.elevatedButtonColor),
         minimumSize: const Size(290, 40));
-    return Scaffold(
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is Authenticated) {
+          // Kullanıcı oturum açtıysa anasayfaya yönlendir
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => HomepageScreen()),
+          );
+        }
+      },
+      child:Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
         decoration: BoxDecoration(
@@ -55,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
           child: SizedBox(
               child: SizedBox(
             width: 400,
-            height: 420,
+            height: 485,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -142,6 +173,20 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: const Text(
                     "GİRİŞ YAP",
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: "Poppins"),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                ElevatedButton(
+                  style: buttonStyle,
+                  onPressed: () {
+                   
+                     Navigator.of(context).push(MaterialPageRoute(
+                        builder: (ctx) => const RegisterPage()));
+                  },
+                  child: const Text(
+                    "KAYIT OL",
                     style:
                         TextStyle(color: Colors.white, fontFamily: "Poppins"),
                   ),
@@ -241,6 +286,9 @@ class _LoginPageState extends State<LoginPage> {
           )),
         ),
       ),
+    ),
     );
   }
+
+
 }

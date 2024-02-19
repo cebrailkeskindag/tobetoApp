@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/screen/calendar_screen.dart';
@@ -115,12 +116,21 @@ class _DrawerMenuState extends State<DrawerMenu> {
               title: const Text(
                 "Çıkış Yap",
               ),
-              onTap: () {
-                Navigator.pushReplacement(
+              onTap: () async{
+
+                try {
+          await FirebaseAuth.instance.signOut();
+         
+          Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const LoginPage(),
                     ));
+        } catch (e) {
+          print('Error: $e');
+          // Hata durumunda kullanıcıya bilgi verebilirsiniz
+        }
+                
               },
               leading: const Icon(Icons.exit_to_app)),
           const SizedBox(height: 30),

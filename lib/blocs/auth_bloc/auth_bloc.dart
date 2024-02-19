@@ -26,6 +26,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         UserCredential userCredential =
             await _firebaseAuth.signInWithEmailAndPassword(
                 email: event.email, password: event.password);
+                
       } on FirebaseAuthException catch (e) {
         emit(NotAuthenticated(errorMessage: e.message));
       }

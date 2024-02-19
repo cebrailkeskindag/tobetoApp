@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/models/exam.dart';
@@ -30,8 +32,30 @@ class HomepageScreen extends StatefulWidget {
 }
 
 int selectedIndex = 0;
+String _name = '';
+String _surname = '';
+final firebaseAuthInstance = FirebaseAuth.instance;
+
+final firebaseFireStore = FirebaseFirestore.instance;
 
 class _HomepageScreenState extends State<HomepageScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Sayfa yüklendiğinde bu fonksiyon çağrılır
+    _getUserInfo();
+  }
+
+  void _getUserInfo() async {
+    final user = firebaseAuthInstance.currentUser;
+    final document = firebaseFireStore.collection("users").doc(user!.uid);
+    final documentSnapshot = await document.get();
+
+    setState(() {
+      _name = documentSnapshot.get("name");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Brightness currentBrightness = MediaQuery.of(context).platformBrightness;
@@ -49,6 +73,9 @@ class _HomepageScreenState extends State<HomepageScreen> {
     // Ekran genişliği
     double screenWidth = mediaQuery.size.width;
 
+    String welcomeText = _name.isNotEmpty
+        ? "'ya Hoş Geldin, ${_name}"
+        : "'ya Hoş Geldin, Sevgili Öğrencimiz";
     // Ekran yüksekliği
     //double screenHeight = mediaQuery.size.height;
     return DefaultTabController(
@@ -96,7 +123,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                                   fontWeight: FontWeight.w500),
                               children: [
                                 TextSpan(
-                                  text: "'ya Hoş Geldin \n Sevgili Öğrencimiz",
+                                  text: welcomeText,
                                   style: TextStyle(
                                       color: tColor,
                                       fontWeight: FontWeight.w300),
