@@ -1,4 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:tobetoapp/models/calendar_model.dart';
 import 'package:tobetoapp/models/catalog_model.dart';
 import 'package:tobetoapp/models/exam.dart';
@@ -6,6 +9,9 @@ import 'package:tobetoapp/models/news.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
 import 'package:tobetoapp/models/training.dart';
 
+final firebaseAuthInstance = FirebaseAuth.instance;
+final firebaseStorageInstance = FirebaseStorage.instance;
+final firebaseFirestore = FirebaseFirestore.instance;
 const newsList = [
   News(
       id: "1",
@@ -120,6 +126,7 @@ const trainingsList = [
       title: "Hoşgeldin Buluşması - 2"),
 ];
 
+/*
 const examList = [
   Exam(
       id: "1",
@@ -137,6 +144,24 @@ const examList = [
       examClass: "Herkes İçin Kodlama 1C",
       examTime: "45 Dakika")
 ];
+*/
+Future<List<Exam>> _getExamlist(String userEmail) async {
+  final querySnapshot = await firebaseFirestore.collection("messages")
+      .where("userEmail", isEqualTo: userEmail)
+      .get();
+
+  final examList = querySnapshot.docs.map((doc) {
+    final data = doc.data();
+    return Exam.fromJson(data);
+  }).toList();
+
+  // Mesajları tarihe göre sırala
+  examList.sort((a, b) {
+    return a.date.compareTo(b.date);
+  });
+
+  return examList;
+}
 
 List<CalendarModel> educationList = [
   CalendarModel(

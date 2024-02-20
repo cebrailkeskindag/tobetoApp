@@ -1,15 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/models/training.dart';
+import 'package:intl/intl.dart';
+import 'package:tobetoapp/models/edu.dart';
 
 class TrainingsCard extends StatelessWidget {
-  const TrainingsCard({Key? key, required this.training}) : super(key: key);
-  final Training training;
+  const TrainingsCard({Key? key, required this.edu}) : super(key: key);
+  final Edu edu;
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQuery = MediaQuery.of(context);
+    String formatTimestamp(Timestamp timestamp, String format) {
+      DateTime dateTime = timestamp.toDate();
+      return DateFormat(format).format(dateTime);
+    }
 
-    // Ekran genişliği
+    MediaQueryData mediaQuery = MediaQuery.of(context);
     double screenWidth = mediaQuery.size.width;
+    String formattedDate = formatTimestamp(edu.date, 'yyyy-MM-dd – kk:mm');
     return SizedBox(
       width: screenWidth,
       child: Column(
@@ -25,18 +31,37 @@ class TrainingsCard extends StatelessWidget {
                       topRight: Radius.circular(12),
                       topLeft: Radius.circular(12),
                     ), // Yuvarlanan köşe
-                    child: Image.asset(
-                      training.imagePath,
+                    child: Image.network(
+                      edu.imageUrl,
                       width: double.infinity,
                       height: 180,
                       fit: BoxFit.cover,
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child;
+                        } else {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          );
+                        }
+                      },
+                      errorBuilder: (BuildContext context, Object exception,
+                          StackTrace? stackTrace) {
+                        return Text('Resim yüklenirken bir hata oluştu');
+                      },
                     ),
                   ),
                   Text(
-                    training.title,
+                    edu.title,
                   ),
                   Text(
-                    training.time,
+                    formattedDate,
                   ),
                   ElevatedButton(
                       onPressed: () {}, child: const Text("Eğitime Git"))

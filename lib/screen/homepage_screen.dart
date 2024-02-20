@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/models/exam.dart';
 import 'package:tobetoapp/models/news.dart';
 import 'package:tobetoapp/models/training.dart';
 import 'package:tobetoapp/widgets/homepage/circular_button.dart';
+import 'package:tobetoapp/widgets/homepage/education_firebase.dart';
+import 'package:tobetoapp/widgets/homepage/exam_firebase.dart';
 import 'package:tobetoapp/widgets/homepage/info_card.dart';
 import 'package:tobetoapp/widgets/homepage/category_card.dart';
 
@@ -34,6 +37,9 @@ class HomepageScreen extends StatefulWidget {
 int selectedIndex = 0;
 String _name = '';
 String _surname = '';
+String _usermail = '';
+String _usermailExam = '';
+String _title = '';
 final firebaseAuthInstance = FirebaseAuth.instance;
 
 final firebaseFireStore = FirebaseFirestore.instance;
@@ -50,9 +56,28 @@ class _HomepageScreenState extends State<HomepageScreen> {
     final user = firebaseAuthInstance.currentUser;
     final document = firebaseFireStore.collection("users").doc(user!.uid);
     final documentSnapshot = await document.get();
+    var eduListCollectionRef = document.collection('educationList').doc("edu4");
+    var querySnapshot = await eduListCollectionRef.get();
+    //firebaseFireStore.collection("educationList").doc("Zx9tcizMPC1RBLe4pcPs");
+    //final documentSnapshotExam = await documentExam.get();
+    String formatTimestamp(Timestamp timestamp, String format) {
+      DateTime dateTime = timestamp.toDate();
+      return DateFormat(format).format(dateTime);
+    }
 
     setState(() {
       _name = documentSnapshot.get("name");
+      _usermail = documentSnapshot.get("email");
+      _title = querySnapshot.get("title");
+      // _usermailExam = documentSnapshotExam.get("usermail");
+      print("title ${_title}");
+      print("imageUrl ${querySnapshot.get("imageUrl")}");
+      print("videoUrl ${querySnapshot.get("videoUrl")}");
+      print("videoLength ${querySnapshot.get("videoLength")}");
+      print(
+          "date ${formatTimestamp(querySnapshot.get("date"), 'yyyy-MM-dd – kk:mm')}");
+      print("id ${querySnapshot.get("id")}");
+      print("uid ${querySnapshot.get("uid")}");
     });
   }
 
@@ -218,16 +243,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                   ),
                 ),
                 SizedBox(
-                  width: screenWidth / 0.20,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        for (Exam exam in examList) ExamCard(exam: exam),
-                      ],
-                    ),
-                  ),
-                ),
+                    width: screenWidth / 0.20, child: const ExamFirebase()),
                 SizedBox(
                     width: screenWidth / 0.20, child: const CategoryCard()),
               ],
@@ -247,11 +263,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              for (Training training in trainingsList)
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TrainingsCard(training: training),
-                ),
+              const EducationFirebase(),
               Center(
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
