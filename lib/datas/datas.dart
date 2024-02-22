@@ -16,12 +16,14 @@ const newsList = [
   News(
       id: "1",
       title: "Yeni Grupların Discord'a Katılımı",
-      newsDate: "07.12.2023"),
+      newsDate: "07.12.2023",
+      uid: ''),
   News(
       id: "2",
       title: "4 Aralık Online Hoşgeldin Buluşması",
-      newsDate: "29.11.2023"),
-  News(id: "3", title: "Önemli Bilgilendirme", newsDate: "23.11.2023"),
+      newsDate: "29.11.2023",
+      uid: ''),
+  News(id: "3", title: "Önemli Bilgilendirme", newsDate: "23.11.2023", uid: ''),
 ];
 
 const catalogList = [
@@ -146,7 +148,8 @@ const examList = [
 ];
 */
 Future<List<Exam>> _getExamlist(String userEmail) async {
-  final querySnapshot = await firebaseFirestore.collection("messages")
+  final querySnapshot = await firebaseFirestore
+      .collection("messages")
       .where("userEmail", isEqualTo: userEmail)
       .get();
 
@@ -323,7 +326,6 @@ List<Province> provinces = [
   Province(city: 'Yozgat'),
   Province(city: 'Zonguldak'),
 ];
-
 
 List<Education> educationLevels = [
   Education(eduLevel: " Lisans"),
