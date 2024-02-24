@@ -1,37 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:lecle_yoyo_player/lecle_yoyo_player.dart';
 import 'package:video_player/video_player.dart';
+import 'package:chewie/chewie.dart';
 
 class EduVideoPlayer extends StatefulWidget {
-  const EduVideoPlayer({Key? key}) : super(key: key);
+  final Uri videoUrl;
+
+  EduVideoPlayer({required this.videoUrl});
 
   @override
   _EduVideoPlayerState createState() => _EduVideoPlayerState();
 }
 
 class _EduVideoPlayerState extends State<EduVideoPlayer> {
-  bool fullscreen = false;
-  late VideoPlayerController _controller;
+  late VideoPlayerController _videoPlayerController;
+  late ChewieController _chewieController;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.networkUrl(Uri.parse(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'))
-      ..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        setState(() {});
-      });
+    _videoPlayerController = VideoPlayerController.networkUrl(widget.videoUrl);
+
+    _chewieController = ChewieController(
+      videoPlayerController: _videoPlayerController,
+      autoPlay: true,
+      looping: true,
+      // Bunlar opsiyonel, video oynatıcı kontrolleri ve görünümü özelleştirmek için kullanılabilir
+      aspectRatio: 16 / 9,
+      showControls: true,
+      materialProgressColors: ChewieProgressColors(
+        playedColor: Colors.red,
+        handleColor: Colors.blue,
+        backgroundColor: Colors.grey,
+        bufferedColor: Colors.lightGreen,
+      ),
+    );
+
+    // Duration videoLength = _videoPlayerController.value.duration;
+    // print('Video uzunluğu: ${videoLength.inSeconds} saniye');
   }
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: _controller.value.isInitialized
-          ? AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: VideoPlayer(_controller),
-            )
-          : Container(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Eğitim'),
+      ),
+      body: Center(
+        child: Chewie(
+          controller: _chewieController,
+        ),
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _videoPlayerController.dispose();
+    _chewieController.dispose();
   }
 }

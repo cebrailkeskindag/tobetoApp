@@ -65,8 +65,8 @@ class _HomepageScreenState extends State<HomepageScreen> {
       DateTime dateTime = timestamp.toDate();
       return DateFormat(format).format(dateTime);
     }
-
-    setState(() {
+if (mounted) {
+  setState(() {
       _name = documentSnapshot.get("name");
       _usermail = documentSnapshot.get("email");
       _title = querySnapshot.get("title");
@@ -81,6 +81,8 @@ class _HomepageScreenState extends State<HomepageScreen> {
       print("uid ${querySnapshot.get("uid")}");
     });
   }
+}
+    
 
   @override
   Widget build(BuildContext context) {

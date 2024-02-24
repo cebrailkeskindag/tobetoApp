@@ -7,6 +7,7 @@ import 'package:tobetoapp/screen/edu_video_player.dart';
 class TrainingsCard extends StatelessWidget {
   const TrainingsCard({Key? key, required this.edu}) : super(key: key);
   final Edu edu;
+  
   @override
   Widget build(BuildContext context) {
     String formatTimestamp(Timestamp timestamp, String format) {
@@ -17,6 +18,7 @@ class TrainingsCard extends StatelessWidget {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     double screenWidth = mediaQuery.size.width;
     String formattedDate = formatTimestamp(edu.date, 'yyyy-MM-dd – kk:mm');
+    Uri videoUri = Uri.parse('https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4');
     return SizedBox(
       width: screenWidth,
       child: Column(
@@ -67,7 +69,7 @@ class TrainingsCard extends StatelessWidget {
                   ElevatedButton(
                       onPressed: () {
                          Navigator.of(context).push(MaterialPageRoute(
-                    builder: (ctx) => const EduVideoPlayer()));
+                    builder: (ctx) => EduVideoPlayer(videoUrl: videoUri,)));
                         
                       }, child: const Text("Eğitime Git"))
                 ],
