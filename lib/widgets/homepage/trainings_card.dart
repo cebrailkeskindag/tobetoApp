@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tobetoapp/models/edu.dart';
+import 'package:tobetoapp/screen/edu_video_player.dart';
 
 class TrainingsCard extends StatelessWidget {
   const TrainingsCard({Key? key, required this.edu}) : super(key: key);
@@ -53,7 +54,7 @@ class TrainingsCard extends StatelessWidget {
                       },
                       errorBuilder: (BuildContext context, Object exception,
                           StackTrace? stackTrace) {
-                        return Text('Resim yüklenirken bir hata oluştu');
+                        return const Text('Resim yüklenirken bir hata oluştu');
                       },
                     ),
                   ),
@@ -64,7 +65,11 @@ class TrainingsCard extends StatelessWidget {
                     formattedDate,
                   ),
                   ElevatedButton(
-                      onPressed: () {}, child: const Text("Eğitime Git"))
+                      onPressed: () {
+                         Navigator.of(context).push(MaterialPageRoute(
+                    builder: (ctx) => const EduVideoPlayer()));
+                        
+                      }, child: const Text("Eğitime Git"))
                 ],
               ),
             ),

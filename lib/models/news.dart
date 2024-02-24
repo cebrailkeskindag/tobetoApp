@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class News {
   // Ctor'da default değer
   const News(
@@ -8,7 +10,7 @@ class News {
 
   final String id;
   final String title;
-  final String newsDate;
+  final Timestamp newsDate;
   final String uid;
 
   factory News.fromJson(Map<String, dynamic> json) => News(
@@ -18,5 +20,4 @@ class News {
         newsDate: json['newsDate'],
       );
 
-  get date => null;
 }

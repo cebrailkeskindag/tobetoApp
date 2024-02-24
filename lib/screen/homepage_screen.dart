@@ -15,6 +15,7 @@ import 'package:tobetoapp/widgets/homepage/category_card.dart';
 import 'package:tobetoapp/widgets/homepage/drawer.dart';
 import 'package:tobetoapp/widgets/homepage/exam_card.dart';
 import 'package:tobetoapp/widgets/homepage/news_card.dart';
+import 'package:tobetoapp/widgets/homepage/news_card_firebase.dart';
 import 'package:tobetoapp/widgets/homepage/survey_card.dart';
 import 'package:tobetoapp/widgets/homepage/trainings_card.dart';
 
@@ -305,15 +306,11 @@ class _HomepageScreenState extends State<HomepageScreen> {
           ),
         );
       case 2:
-        return SingleChildScrollView(
+        return const SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              for (News news in newsList)
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: NewsCard(news: news),
-                ),
+              SizedBox(child: NewsCardFirebase()),
             ],
           ),
         );

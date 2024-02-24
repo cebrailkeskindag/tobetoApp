@@ -17,6 +17,7 @@ class NewsCard extends StatefulWidget {
 }
 
 class _NewsCardState extends State<NewsCard> {
+
   late Future<List<News>> _newsListFuture;
   Future<List<News>> _getNewslist() async {
     final user = firebaseAuthInstance.currentUser;
@@ -33,7 +34,7 @@ class _NewsCardState extends State<NewsCard> {
 
     // Mesajları tarihe göre sırala
     newsList.sort((a, b) {
-      return a.date.compareTo(b.date);
+      return a.newsDate.compareTo(b.newsDate);
     });
 
     return newsList;
@@ -47,6 +48,8 @@ class _NewsCardState extends State<NewsCard> {
 
   @override
   Widget build(BuildContext context) {
+    Timestamp timestamp = widget.news.newsDate;
+  String newsDateString = timestamp.toDate().toString();
     MediaQueryData mediaQuery = MediaQuery.of(context);
     // Ekran genişliği
     double screenWidth = mediaQuery.size.width;
@@ -129,7 +132,7 @@ class _NewsCardState extends State<NewsCard> {
                         children: [
                           const Icon(Icons.calendar_month_outlined),
                           Text(
-                            widget.news.newsDate,
+                            newsDateString,
                             style: const TextStyle(fontSize: 14),
                           ),
                           const Spacer(),

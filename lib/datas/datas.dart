@@ -4,14 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:tobetoapp/models/calendar_model.dart';
 import 'package:tobetoapp/models/catalog_model.dart';
-import 'package:tobetoapp/models/exam.dart';
-import 'package:tobetoapp/models/news.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
-import 'package:tobetoapp/models/training.dart';
 
 final firebaseAuthInstance = FirebaseAuth.instance;
 final firebaseStorageInstance = FirebaseStorage.instance;
 final firebaseFirestore = FirebaseFirestore.instance;
+/*
 const newsList = [
   News(
       id: "1",
@@ -24,7 +22,7 @@ const newsList = [
       newsDate: "29.11.2023",
       uid: ''),
   News(id: "3", title: "Önemli Bilgilendirme", newsDate: "23.11.2023", uid: ''),
-];
+];*/
 
 const catalogList = [
   CatalogModel(
@@ -104,7 +102,7 @@ const catalogList = [
       time: "17dk",
       title: "Müşteri Ne İster?")
 ];
-
+/*
 const trainingsList = [
   Training(
       id: "1",
@@ -127,7 +125,7 @@ const trainingsList = [
       time: "2 Ekim 2023 03:00",
       title: "Hoşgeldin Buluşması - 2"),
 ];
-
+*/
 /*
 const examList = [
   Exam(
@@ -147,25 +145,6 @@ const examList = [
       examTime: "45 Dakika")
 ];
 */
-Future<List<Exam>> _getExamlist(String userEmail) async {
-  final querySnapshot = await firebaseFirestore
-      .collection("messages")
-      .where("userEmail", isEqualTo: userEmail)
-      .get();
-
-  final examList = querySnapshot.docs.map((doc) {
-    final data = doc.data();
-    return Exam.fromJson(data);
-  }).toList();
-
-  // Mesajları tarihe göre sırala
-  examList.sort((a, b) {
-    return a.date.compareTo(b.date);
-  });
-
-  return examList;
-}
-
 List<CalendarModel> educationList = [
   CalendarModel(
       id: "1",
