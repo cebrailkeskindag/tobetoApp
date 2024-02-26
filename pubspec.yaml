@@ -52,6 +52,7 @@ dependencies:
   video_player: ^2.8.2
   chewie: ^1.7.5
   image_picker: ^1.0.7
+  dots_indicator: ^3.0.0
 
 
 dev_dependencies:

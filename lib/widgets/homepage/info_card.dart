@@ -53,7 +53,7 @@ class InfoCard extends StatelessWidget {
               const Row(
                 children: [
                   Icon(
-                    Icons.share,
+                    Icons.check,
                     size: 20,
                   ),
                   Text(

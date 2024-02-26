@@ -16,8 +16,10 @@ import 'package:tobetoapp/widgets/homepage/drawer.dart';
 import 'package:tobetoapp/widgets/homepage/exam_card.dart';
 import 'package:tobetoapp/widgets/homepage/news_card.dart';
 import 'package:tobetoapp/widgets/homepage/news_card_firebase.dart';
+import 'package:tobetoapp/widgets/homepage/page_view.dart';
 import 'package:tobetoapp/widgets/homepage/survey_card.dart';
 import 'package:tobetoapp/widgets/homepage/trainings_card.dart';
+import 'package:tobetoapp/datas/datas.dart';
 
 import '../theme/app_color.dart';
 
@@ -46,6 +48,11 @@ final firebaseAuthInstance = FirebaseAuth.instance;
 final firebaseFireStore = FirebaseFirestore.instance;
 
 class _HomepageScreenState extends State<HomepageScreen> {
+  PageController pageController = PageController(viewportFraction: 0.85);
+  var _currPageValue = 0.0;
+  double _scalefactor = 0.8;
+  double _height = 220;
+
   @override
   void initState() {
     super.initState();
@@ -65,24 +72,41 @@ class _HomepageScreenState extends State<HomepageScreen> {
       DateTime dateTime = timestamp.toDate();
       return DateFormat(format).format(dateTime);
     }
-if (mounted) {
-  setState(() {
-      _name = documentSnapshot.get("name");
-      _usermail = documentSnapshot.get("email");
-      _title = querySnapshot.get("title");
-      // _usermailExam = documentSnapshotExam.get("usermail");
-      print("title ${_title}");
-      print("imageUrl ${querySnapshot.get("imageUrl")}");
-      print("videoUrl ${querySnapshot.get("videoUrl")}");
-      print("videoLength ${querySnapshot.get("videoLength")}");
-      print(
-          "date ${formatTimestamp(querySnapshot.get("date"), 'yyyy-MM-dd – kk:mm')}");
-      print("id ${querySnapshot.get("id")}");
-      print("uid ${querySnapshot.get("uid")}");
+
+    if (mounted) {
+      setState(() {
+        _name = documentSnapshot.get("name");
+
+        _usermail = documentSnapshot.get("email");
+        _title = querySnapshot.get("title");
+        // _usermailExam = documentSnapshotExam.get("usermail");
+        print("title ${_title}");
+        print("imageUrl ${querySnapshot.get("imageUrl")}");
+        print("videoUrl ${querySnapshot.get("videoUrl")}");
+        print("videoLength ${querySnapshot.get("videoLength")}");
+        print(
+            "date ${formatTimestamp(querySnapshot.get("date"), 'yyyy-MM-dd – kk:mm')}");
+        print("id ${querySnapshot.get("id")}");
+        print("uid ${querySnapshot.get("uid")}");
+      });
+    }
+  }
+
+  @override
+  void initState1() {
+    super.initState();
+    pageController.addListener(() {
+      setState(() {
+        _currPageValue = pageController.page!;
+      });
     });
   }
-}
-    
+
+  @override
+  void dispose() {
+    super.dispose();
+    pageController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,34 +161,6 @@ if (mounted) {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 50),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Center(
-                      child: RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                              text: "TOBETO",
-                              style: const TextStyle(
-                                  color: Colors.purple,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w500),
-                              children: [
-                                TextSpan(
-                                  text: welcomeText,
-                                  style: TextStyle(
-                                      color: tColor,
-                                      fontWeight: FontWeight.w300),
-                                )
-                              ]))),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(screenWidth / 20),
-                  child: const Text(
-                    "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!",
-                    textAlign: TextAlign.center,
-                  ),
-                ),
                 Center(
                   child: Padding(
                     padding: EdgeInsets.all(screenWidth / 30),
@@ -174,59 +170,7 @@ if (mounted) {
                         padding: EdgeInsets.all(screenWidth / 80),
                         child: Column(
                           children: [
-                            SizedBox(
-                                width: screenWidth / 3,
-                                child: Image.asset(istkodluyor)),
-                            const SizedBox(height: 20),
-                            const Text(
-                              " Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(height: 20),
-                            RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                    text: "Aradığın",
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .surface,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w400),
-                                    children: [
-                                      TextSpan(
-                                        text: " \"",
-                                        style: TextStyle(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .secondary,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      TextSpan(
-                                        text: "İş",
-                                        style: TextStyle(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .surface,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: "\"",
-                                        style: TextStyle(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .secondary,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      TextSpan(
-                                        text: " Burada!",
-                                        style: TextStyle(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .surface,
-                                        ),
-                                      )
-                                    ])),
+                            homePageView(),
                             const TabBar(
                               isScrollable: true,
                               tabs: tabs,

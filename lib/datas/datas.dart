@@ -4,7 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:tobetoapp/models/calendar_model.dart';
 import 'package:tobetoapp/models/catalog_model.dart';
+import 'package:tobetoapp/models/homepagemodel.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
+import 'package:tobetoapp/screen/homepage_screen.dart';
 
 final firebaseAuthInstance = FirebaseAuth.instance;
 final firebaseStorageInstance = FirebaseStorage.instance;
@@ -373,4 +375,36 @@ List<Level> levels = [
   Level(level: "Orta Seviye (B1, B2)"),
   Level(level: "İleri Seviye (C1, C2)"),
   Level(level: "Ana Dil"),
+];
+
+/*void _getUserInfo() async {
+  final user = firebaseAuthInstance.currentUser;
+  final document = firebaseFireStore.collection("users").doc(user!.uid);
+  final documentSnapshot = await document.get();
+  var eduListCollectionRef = document.collection('educationList').doc("edu4");
+  var querySnapshot = await eduListCollectionRef.get();
+
+   if (mounted) {
+      setState(() {
+        _namePage = documentSnapshot.get("name");
+       
+      });
+    }
+  }
+  */
+
+String _namePage = "";
+String welcomeText = _namePage.isNotEmpty
+    ? "'ya Hoş Geldin, ${_namePage}"
+    : "'ya Hoş Geldin, Sevgili Öğrencimiz";
+List<PageModel> pages = [
+  PageModel(title: welcomeText, image: "assets/images/hs1.jpg"),
+  PageModel(
+      title:
+          "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!",
+      image: "assets/images/hs2.jpg"),
+  PageModel(
+      title: "Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
+      image: "assets/images/hs3.jpg"),
+  PageModel(title: "Aradığın  “İş”  Burada!", image: "assets/images/hs4.jpg"),
 ];
