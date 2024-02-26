@@ -47,8 +47,11 @@ class _LanguageEditState extends State<LanguageEdit> {
                     value: language,
                     child: Text(
                       language.language,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.normal),
+                      style:  TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal, 
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary,),
                     ),
                   );
                 }).toList(),
@@ -92,8 +95,11 @@ class _LanguageEditState extends State<LanguageEdit> {
                     value: level,
                     child: Text(
                       level.level,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.normal),
+                      style: TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary,),
                     ),
                   );
                 }).toList(),

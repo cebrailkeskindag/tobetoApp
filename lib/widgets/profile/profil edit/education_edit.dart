@@ -49,8 +49,11 @@ class _EducationEditState extends State<EducationEdit> {
                     value: education,
                     child: Text(
                       education.eduLevel,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.normal),
+                      style:  TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary,),
                     ),
                   );
                 }).toList(),
@@ -94,7 +97,10 @@ class _EducationEditState extends State<EducationEdit> {
                   hintText: selectedDate != null
                       ? "${selectedDate!.toLocal().year}"
                       : "Başlangıç Yılı",
-                  hintStyle: const TextStyle(fontFamily: "Poppins"),
+                  hintStyle:  TextStyle(fontFamily: "Poppins",
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary,),
                   suffixIcon: IconButton(
                     onPressed: () async {
                       final DateTime? picked = await showDatePicker(
@@ -128,7 +134,10 @@ class _EducationEditState extends State<EducationEdit> {
                   hintText: selectedendDate != null
                       ? "${selectedendDate!.toLocal().year}"
                       : "Mezuniyet Yılı",
-                  hintStyle: const TextStyle(fontFamily: "Poppins"),
+                  hintStyle:  TextStyle(fontFamily: "Poppins",
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary,),
                   suffixIcon: IconButton(
                     onPressed: () async {
                       final DateTime? picked = await showDatePicker(

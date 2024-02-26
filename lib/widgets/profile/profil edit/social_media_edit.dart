@@ -30,7 +30,10 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
-                hint: const Text('Seçiniz'),
+                hint:  Text('Seçiniz',style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary),),
                 value: _selectedMedia,
                 onChanged: (SocialMedia? socialMedia) {
                   if (socialMedia != null) {
@@ -42,15 +45,21 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
                 items: socialmedias.map((SocialMedia socialMedia) {
                   return DropdownMenuItem<SocialMedia>(
                     value: socialMedia,
-                    child: Text(socialMedia.name),
+                    child: Text(socialMedia.name ,style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary),),
                   );
                 }).toList(),
               ),
               const SizedBox(height: 20),
-              const TextField(
+               TextField(
                 decoration: InputDecoration(
                     hintText: "https://",
-                    hintStyle: TextStyle(fontFamily: "Poppins"),
+                    hintStyle: TextStyle(fontFamily: "Poppins",
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary,),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)))),
               ),

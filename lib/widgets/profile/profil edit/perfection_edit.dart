@@ -46,8 +46,11 @@ class _PerfectionEditState extends State<PerfectionEdit> {
                     value: compet,
                     child: Text(
                       compet.compet,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.normal),
+                      style:  TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary,),
                     ),
                   );
                 }).toList(),
