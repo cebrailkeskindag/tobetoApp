@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
@@ -16,6 +17,46 @@ class DrawerMenu extends StatefulWidget {
 }
 
 class _DrawerMenuState extends State<DrawerMenu> {
+  String _name = '';
+  String _surname = '';
+  String userName = "Kullanıcı Adı";
+  String _imageUrl = "";
+
+  final firebaseAuthInstance = FirebaseAuth.instance;
+
+  final firebaseFireStore = FirebaseFirestore.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    // Sayfa yüklendiğinde bu fonksiyon çağrılır
+    _getUserInfo();
+  }
+
+  void _getUserInfo() async {
+    final user = firebaseAuthInstance.currentUser;
+    final document = firebaseFireStore.collection("users").doc(user!.uid);
+    final documentSnapshot = await document.get();
+    var profileCollectionRef = document.collection('profile').doc("personal");
+    var querySnapshot = await profileCollectionRef.get();
+    //  final profileDocument =
+    // firebaseFireStore.collection("profile").doc("personal");
+    //  final documentSnapshotProfile = await profileDocument.get();
+
+    if (mounted) {
+      setState(() {
+        _name = documentSnapshot.get("name");
+        _surname = documentSnapshot.get("surname");
+        _imageUrl = querySnapshot.get("imageUrl");
+        print("$_imageUrl");
+
+        if (_name.isNotEmpty) {
+          userName = "$_name $_surname";
+        }
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Brightness currentBrightness = MediaQuery.of(context).platformBrightness;
@@ -100,13 +141,26 @@ class _DrawerMenuState extends State<DrawerMenu> {
                 padding: const EdgeInsets.all(10),
                 child: Row(
                   children: [
-                    const Text("Kullanıcı adı"),
+                    Text(
+                      userName,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     const Spacer(),
-                    Image.asset(
-                      'assets/images/ic_user.png',
-                      width: 40.0,
-                      height: 40.0,
-                    )
+                    _imageUrl.isEmpty
+                        ? ClipOval(
+                            child: Image.asset(
+                              'assets/images/ic_user.png',
+                              width: 40.0,
+                              height: 40.0,
+                            ),
+                          )
+                        : ClipOval(
+                            child: Image.network(
+                              _imageUrl,
+                              width: 40.0,
+                              height: 40.0,
+                            ),
+                          )
                   ],
                 ),
               ),
@@ -116,21 +170,19 @@ class _DrawerMenuState extends State<DrawerMenu> {
               title: const Text(
                 "Çıkış Yap",
               ),
-              onTap: () async{
-
+              onTap: () async {
                 try {
-          await FirebaseAuth.instance.signOut();
-         
-          Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginPage(),
-                    ));
-        } catch (e) {
-          print('Error: $e');
-          // Hata durumunda kullanıcıya bilgi verebilirsiniz
-        }
-                
+                  await FirebaseAuth.instance.signOut();
+
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ));
+                } catch (e) {
+                  print('Error: $e');
+                  // Hata durumunda kullanıcıya bilgi verebilirsiniz
+                }
               },
               leading: const Icon(Icons.exit_to_app)),
           const SizedBox(height: 30),

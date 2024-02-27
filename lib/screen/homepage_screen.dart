@@ -213,7 +213,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
               const EducationFirebase(),
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(5.0),
                   child: Column(
                     children: [
                       Container(

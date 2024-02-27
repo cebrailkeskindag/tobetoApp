@@ -238,9 +238,8 @@ class _PersonalEditState extends State<PersonalEdit> {
                       ? "${selectedDate!.toLocal().day.toString().padLeft(2, '0')}/${selectedDate!.toLocal().month.toString().padLeft(2, '0')}/${selectedDate!.toLocal().year}"
                       : "Doğum Tarihiniz",
                   hintStyle: TextStyle(
-                    fontFamily: "Poppins",
-                    color: Theme.of(context).colorScheme.onSecondary,
-                  ),
+                      fontFamily: "Poppins",
+                      color: Theme.of(context).colorScheme.surface),
                   suffixIcon: IconButton(
                     onPressed: () async {
                       final DateTime? picked = await showDatePicker(

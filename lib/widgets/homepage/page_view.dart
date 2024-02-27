@@ -36,7 +36,7 @@ class _homePageViewState extends State<homePageView> {
     return Column(
       children: [
         Container(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.background,
           height: 320,
           child: PageView.builder(
               controller: pageController,
@@ -48,10 +48,9 @@ class _homePageViewState extends State<homePageView> {
         DotsIndicator(
           dotsCount: pages.length,
           position: _currPageValue.toInt(),
-          decorator: const DotsDecorator(
-            color: Colors.grey, // Inactive color
-            activeColor: Colors.purple,
-          ),
+          decorator: DotsDecorator(
+              color: Colors.grey, // Inactive color
+              activeColor: Theme.of(context).primaryColor),
         ),
       ],
     );

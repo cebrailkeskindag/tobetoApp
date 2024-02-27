@@ -5,55 +5,55 @@ import 'package:tobetoapp/theme/app_color.dart';
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
-      useMaterial3: true,
-      colorScheme: AppColorLight.colorScheme,
-      primaryColor: AppColorLight.colorScheme.primary,
-      scaffoldBackgroundColor: AppColorLight.colorScheme.background,
-      drawerTheme:
-          DrawerThemeData(backgroundColor: AppColorLight.drawerBacgroundColor),
-      listTileTheme: ListTileThemeData(
-          titleTextStyle: GoogleFonts.poppins(
+        useMaterial3: true,
+        colorScheme: AppColorLight.colorScheme,
+        primaryColor: AppColorLight.colorScheme.primary,
+        scaffoldBackgroundColor: AppColorLight.colorScheme.background,
+        drawerTheme: DrawerThemeData(
+            backgroundColor: AppColorLight.drawerBacgroundColor),
+        listTileTheme: ListTileThemeData(
+            titleTextStyle: GoogleFonts.poppins(
+              fontSize: 18.0,
+              color: AppColorLight.textColor,
+            ),
+            iconColor: AppColorLight.iconColor),
+        iconTheme: IconThemeData(color: AppColorLight.iconColor),
+        textTheme: TextTheme(
+          titleLarge: GoogleFonts.poppins(
             fontSize: 18.0,
             color: AppColorLight.textColor,
           ),
-          iconColor: AppColorLight.iconColor),
-      iconTheme: IconThemeData(color: AppColorLight.iconColor),
-      textTheme: TextTheme(
-        titleLarge: GoogleFonts.poppins(
-          fontSize: 18.0,
-          color: AppColorLight.textColor,
+          bodyMedium: GoogleFonts.poppins(
+            fontSize: 18.0,
+            color: AppColorLight.textColor,
+          ),
+          displaySmall: GoogleFonts.poppins(),
         ),
-        bodyMedium: GoogleFonts.poppins(
-          fontSize: 18.0,
-          color: AppColorLight.textColor,
+        appBarTheme: AppBarTheme(
+          centerTitle: true,
+          color: AppColorLight.appBarBacgroundColor,
+          iconTheme: IconThemeData(color: AppColorLight.iconColor),
+          titleTextStyle: GoogleFonts.poppins(
+            fontSize: 22.0,
+            color: AppColorLight.appBartextColor,
+          ),
         ),
-        displaySmall: GoogleFonts.poppins(),
-      ),
-      appBarTheme: AppBarTheme(
-        centerTitle: true,
-        color: AppColorLight.appBarBacgroundColor,
-        iconTheme: IconThemeData(color: AppColorLight.iconColor),
-        titleTextStyle: GoogleFonts.poppins(
-          fontSize: 22.0,
-          color: AppColorLight.appBartextColor,
+        inputDecorationTheme: InputDecorationTheme(
+          labelStyle: TextStyle(
+            color: AppColorLight.textColor,
+          ),
+          prefixIconColor: AppColorLight.iconColor,
+          suffixIconColor: AppColorLight.iconColor,
         ),
-      ),
-      inputDecorationTheme: InputDecorationTheme(
-        labelStyle: TextStyle(
-          color: AppColorLight.textColor,
-        ),
-        prefixIconColor: AppColorLight.iconColor,
-        suffixIconColor: AppColorLight.iconColor,
-      ),
-     elevatedButtonTheme: ElevatedButtonThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColorLight.elevatedButtonColor,
             foregroundColor: AppColorLight.colorScheme.onPrimary,
           ),
         ),
         cardTheme: CardTheme(color: AppColorLight.cardColor),
-        dropdownMenuTheme: DropdownMenuThemeData(textStyle: TextStyle(color: AppColorLight.textColor) )
-        );
+        dropdownMenuTheme: DropdownMenuThemeData(
+            textStyle: TextStyle(color: AppColorLight.textColor)));
   }
 
   static ThemeData get darkTheme {
@@ -101,11 +101,11 @@ class AppTheme {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColorDark.elevatedButtonColor,
-            foregroundColor:  AppColorDark.colorScheme.onPrimary,
+            foregroundColor: AppColorDark.colorScheme.onPrimary,
           ),
         ),
         cardTheme: CardTheme(color: AppColorDark.cardColor),
-        dropdownMenuTheme: DropdownMenuThemeData(textStyle: TextStyle(color: AppColorDark.textColor) )
-        );
+        dropdownMenuTheme: DropdownMenuThemeData(
+            textStyle: TextStyle(color: AppColorDark.textColor)));
   }
 }

@@ -17,7 +17,6 @@ class NewsCard extends StatefulWidget {
 }
 
 class _NewsCardState extends State<NewsCard> {
-
   late Future<List<News>> _newsListFuture;
   Future<List<News>> _getNewslist() async {
     final user = firebaseAuthInstance.currentUser;
@@ -49,7 +48,7 @@ class _NewsCardState extends State<NewsCard> {
   @override
   Widget build(BuildContext context) {
     Timestamp timestamp = widget.news.newsDate;
-  String newsDateString = timestamp.toDate().toString();
+    String newsDateString = timestamp.toDate().toString();
     MediaQueryData mediaQuery = MediaQuery.of(context);
     // Ekran genişliği
     double screenWidth = mediaQuery.size.width;
@@ -60,7 +59,12 @@ class _NewsCardState extends State<NewsCard> {
         final newsList = snapshot.data ?? [];
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: SizedBox(
+              width: 100,
+              height: 100,
+              child: CircularProgressIndicator(
+                  strokeAlign: BorderSide.strokeAlignCenter),
+            ),
           ); // Veri yüklenirken bekleyici göster
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
@@ -68,6 +72,12 @@ class _NewsCardState extends State<NewsCard> {
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Card(
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+                side: BorderSide(
+                    color: Theme.of(context).colorScheme.secondary, width: 8),
+              ),
               child: Column(
                 children: [
                   Image.asset(
@@ -90,16 +100,17 @@ class _NewsCardState extends State<NewsCard> {
               width: screenWidth,
               child: Card(
                 elevation: 5,
-                shape: Border(
-                  left: BorderSide(
-                    color: Theme.of(context).colorScheme.secondary,
-                    width: 8,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: Theme.of(context).primaryColor,
+                    width: 6,
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 12.0, top: 8.0, bottom: 8.0, right: 8.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
@@ -118,6 +129,7 @@ class _NewsCardState extends State<NewsCard> {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 16),
                       Row(
                         children: [
                           Text(
@@ -128,6 +140,7 @@ class _NewsCardState extends State<NewsCard> {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 16),
                       Row(
                         children: [
                           const Icon(Icons.calendar_month_outlined),
@@ -138,7 +151,12 @@ class _NewsCardState extends State<NewsCard> {
                           const Spacer(),
                           TextButton(
                               onPressed: () {},
-                              child: const Text("Devamını Oku"))
+                              child: const Text(
+                                "Devamını Oku",
+                                style: TextStyle(
+                                  color: Color.fromRGBO(93, 5, 118, 0.9),
+                                ),
+                              ))
                         ],
                       ),
                     ],

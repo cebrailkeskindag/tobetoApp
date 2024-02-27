@@ -30,10 +30,11 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
-                hint:  Text('Seçiniz',style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSecondary),),
+                hint: Text(
+                  'Seçiniz',
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.surface),
+                ),
                 value: _selectedMedia,
                 onChanged: (SocialMedia? socialMedia) {
                   if (socialMedia != null) {
@@ -45,21 +46,22 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
                 items: socialmedias.map((SocialMedia socialMedia) {
                   return DropdownMenuItem<SocialMedia>(
                     value: socialMedia,
-                    child: Text(socialMedia.name ,style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSecondary),),
+                    child: Text(
+                      socialMedia.name,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.surface),
+                    ),
                   );
                 }).toList(),
               ),
               const SizedBox(height: 20),
-               TextField(
+              TextField(
                 decoration: InputDecoration(
                     hintText: "https://",
-                    hintStyle: TextStyle(fontFamily: "Poppins",
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSecondary,),
+                    hintStyle: TextStyle(
+                      fontFamily: "Poppins",
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)))),
               ),

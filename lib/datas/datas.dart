@@ -393,12 +393,8 @@ List<Level> levels = [
   }
   */
 
-String _namePage = "";
-String welcomeText = _namePage.isNotEmpty
-    ? "'ya Hoş Geldin, ${_namePage}"
-    : "'ya Hoş Geldin, Sevgili Öğrencimiz";
 List<PageModel> pages = [
-  PageModel(title: welcomeText, image: "assets/images/hs1.jpg"),
+  PageModel(title: "TOBETO'ya Hoş geldin!", image: "assets/images/hs1.jpg"),
   PageModel(
       title:
           "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!",

@@ -9,16 +9,16 @@ import 'package:tobetoapp/widgets/homepage/trainings_card.dart';
 final firebaseAuthInstance = FirebaseAuth.instance;
 final firebaseStorageInstance = FirebaseStorage.instance;
 final firebaseFirestore = FirebaseFirestore.instance;
+
 class EducationFirebase extends StatefulWidget {
-  const EducationFirebase({ Key? key }) : super(key: key);
+  const EducationFirebase({Key? key}) : super(key: key);
 
   @override
   _EducationFirebaseState createState() => _EducationFirebaseState();
 }
- 
-class _EducationFirebaseState extends State<EducationFirebase> {
 
-   late Future<List<Edu>> _eduListFuture;
+class _EducationFirebaseState extends State<EducationFirebase> {
+  late Future<List<Edu>> _eduListFuture;
 
   Future<List<Edu>> _getEdulist() async {
     final user = firebaseAuthInstance.currentUser;
@@ -27,7 +27,7 @@ class _EducationFirebaseState extends State<EducationFirebase> {
 // Belirli belgeye ait alt koleksiyona erişin
     var eduListCollectionRef = userDocRef.collection('educationList');
     var querySnapshot = await eduListCollectionRef.get();
- 
+
     final eduList = querySnapshot.docs.map((doc) {
       final data = doc.data();
       return Edu.fromJson(data);
@@ -59,13 +59,18 @@ class _EducationFirebaseState extends State<EducationFirebase> {
       builder: (context, snapshot) {
         final eduList = snapshot.data ?? [];
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator(); // Veri yüklenirken bekleyici göster
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else if (eduList.isEmpty) {
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
               child: Column(
                 children: [
                   Image.asset(
@@ -75,22 +80,34 @@ class _EducationFirebaseState extends State<EducationFirebase> {
                   const Text(
                     "Tanımlanmış herhangi bir eğitim bulunmamaktadır.",
                     textAlign: TextAlign.center,
-                  )
+                  ),
                 ],
               ),
             ),
           );
         } else {
           // Veri başarıyla geldiyse
-
-          return SizedBox(
-            width: screenWidth / 0.20,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  for (Edu edu in eduList) TrainingsCard(edu: edu),
-                ],
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: SizedBox(
+                width: screenWidth,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      for (Edu edu in eduList)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0), // Boşluk ekle
+                          child: TrainingsCard(edu: edu),
+                        ),
+                    ],
+                  ),
+                ),
               ),
             ),
           );

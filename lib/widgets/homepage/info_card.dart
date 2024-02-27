@@ -9,13 +9,15 @@ class InfoCard extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: Card(
         elevation: 5,
-        shape: Border(
-            left: BorderSide(
-          color: Theme.of(context).colorScheme.secondary,
-          width: 8,
-        )),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20), // Adjust the value as needed
+          side: BorderSide(
+            color: Theme.of(context).primaryColor,
+            width: 6,
+          ),
+        ),
         child: Padding(
-          padding: const EdgeInsets.only(left: 12.0, top: 8.0, bottom: 8.0),
+          padding: const EdgeInsets.only(left: 16.0, bottom: 16.0, top: 16.0),
           child: Column(
             children: [
               Row(
@@ -41,7 +43,12 @@ class InfoCard extends StatelessWidget {
                         maxWidth: 100,
                         maxHeight: 20,
                       ),
-                      color: const Color.fromARGB(255, 22, 62, 23),
+                      color: Color.fromRGBO(
+                        27,
+                        227,
+                        240,
+                        1,
+                      ),
                       child: const Text(
                         '  Kabul Edildi',
                         style: TextStyle(fontSize: 12, color: Colors.white),
@@ -50,11 +57,15 @@ class InfoCard extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(height: 8),
               const Row(
                 children: [
-                  Icon(
-                    Icons.check,
-                    size: 20,
+                  Padding(
+                    padding: EdgeInsets.only(right: 8.0),
+                    child: Icon(
+                      Icons.check,
+                      size: 20,
+                    ),
                   ),
                   Text(
                     "İstanbul Kodluyor Başvuru Formu \nOnaylandı.",
@@ -62,18 +73,22 @@ class InfoCard extends StatelessWidget {
                   )
                 ],
               ),
+              const SizedBox(height: 8),
               const Row(
                 children: [
-                  Icon(
-                    Icons.check,
-                    size: 20,
+                  Padding(
+                    padding: EdgeInsets.only(right: 8.0),
+                    child: Icon(
+                      Icons.check,
+                      size: 20,
+                    ),
                   ),
                   Text(
                     "İstanbul Kodluyor Belge Yükleme \nFormu Onaylandı.",
                     style: TextStyle(fontSize: 13),
                   )
                 ],
-              )
+              ),
             ],
           ),
         ),
