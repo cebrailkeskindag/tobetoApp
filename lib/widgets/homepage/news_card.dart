@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/models/news.dart';
+import 'package:tobetoapp/widgets/homepage/news_content.dart';
 
 final firebaseAuthInstance = FirebaseAuth.instance;
 final firebaseStorageInstance = FirebaseStorage.instance;
@@ -150,7 +151,17 @@ class _NewsCardState extends State<NewsCard> {
                           ),
                           const Spacer(),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                print("tıklandı");
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NewsContent(
+                                            content: widget.news.newsContent,
+                                            title: widget.news.title,
+                                          )),
+                                );
+                              },
                               child: const Text(
                                 "Devamını Oku",
                                 style: TextStyle(

@@ -58,7 +58,7 @@ class _CatalogState extends State<Catalog> {
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surface,
                 image: const DecorationImage(
-                  image: AssetImage('assets/images/cat.jpg'),
+                  image: AssetImage('assets/images/deneme.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),

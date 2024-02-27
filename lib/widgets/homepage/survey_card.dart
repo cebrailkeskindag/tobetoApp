@@ -14,7 +14,11 @@ class SurveyCard extends StatelessWidget {
               "assets/images/surveyError.png",
               height: 180,
             ),
-            const Text("Atanmış herhangi bir anketiniz bulunmamaktadır.")
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child:
+                  const Text("Atanmış herhangi bir anketiniz bulunmamaktadır."),
+            )
           ],
         ),
       ),

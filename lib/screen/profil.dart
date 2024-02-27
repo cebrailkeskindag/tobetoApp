@@ -26,7 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
   String _name = "";
   String _surname = "";
   String _phoneNumber = "";
-  DateTime? _birthDate;
+  Timestamp? _birthDate;
   String _tc = "";
   String _email = "";
   String _country = "";
@@ -60,20 +60,23 @@ class _ProfilePageState extends State<ProfilePage> {
 
     if (mounted) {
       setState(() {
-        _name = documentSnapshot.get("_name");
-        _surname = documentSnapshot.get("_surname");
-        _imageUrl = querySnapshot.get("_imageUrl");
-        _phoneNumber = documentSnapshot.get("_phoneNumber");
-        _birthDate = documentSnapshot.get(" _birthDate");
-        _tc = documentSnapshot.get(" _tc");
-        _email = documentSnapshot.get(" _email");
-        _country = documentSnapshot.get(" _country");
-        _city = documentSnapshot.get(" _city");
-        _district = documentSnapshot.get(" _district");
-        _street = documentSnapshot.get(" _street");
-        _aboutMe = documentSnapshot.get(" _aboutMe");
+        _name = querySnapshot.get("name");
+        _surname = querySnapshot.get("surname");
+        _imageUrl = querySnapshot.get("imageUrl");
+        _phoneNumber = querySnapshot.get("phoneNumber");
+        _birthDate = querySnapshot.get("birthDate");
+        _tc = querySnapshot.get("tc");
+        _email = querySnapshot.get("email");
+        _country = querySnapshot.get("country");
+        _city = querySnapshot.get("city");
+        _district = querySnapshot.get("district");
+        _street = querySnapshot.get("street");
+        _aboutMe = querySnapshot.get("aboutMe");
 
-        print("$_imageUrl");
+        print(_imageUrl);
+        print(_tc);
+        print(_email);
+        print(_aboutMe);
 
         if (_name.isNotEmpty) {
           userName = "$_name $_surname";
