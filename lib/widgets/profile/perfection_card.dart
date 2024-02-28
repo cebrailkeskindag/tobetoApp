@@ -4,7 +4,7 @@ import 'package:tobetoapp/models/perfection.dart';
 
 class PerfectionCard extends StatelessWidget {
   const PerfectionCard({Key? key, required this.perfection}) : super(key: key);
-  final PerfectionModel perfection;
+  final LanguageModel perfection;
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -22,7 +22,6 @@ class PerfectionCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             
               SizedBox(
                 height: 80,
                 child: AspectRatio(
@@ -44,11 +43,8 @@ class PerfectionCard extends StatelessWidget {
                                       fontSize: 12,
                                       fontWeight: FontWeight.w900)),
                             ),
-                           
                           ],
                         ),
-                        
-                        
                       ],
                     ),
                   ),

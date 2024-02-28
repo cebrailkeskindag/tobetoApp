@@ -1,15 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LanguageModel {
-  final String perfection;
+  final String language;
   final Timestamp date;
+  final String level;
 
-  LanguageModel({required this.perfection, required this.date});
+  LanguageModel({
+    required this.language,
+    required this.date,
+    required this.level,
+  });
 
   factory LanguageModel.fromJson(Map<String, dynamic> json) {
     return LanguageModel(
-      perfection: json['perfection'],
+      language: json['language'],
       date: json['date'],
+      level: json['level'],
     );
   }
 }
