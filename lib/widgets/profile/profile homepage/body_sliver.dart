@@ -82,7 +82,7 @@ class Body extends StatelessWidget {
                       child: Divider(),
                     ),
                     LanguageList(),
-                    LanguageEdit()
+
                     //Text("Henüz bir yabancı dil eklemedin")
                   ],
                 ),

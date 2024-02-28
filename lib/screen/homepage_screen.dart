@@ -163,11 +163,11 @@ class _HomepageScreenState extends State<HomepageScreen> {
               children: [
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.all(screenWidth / 30),
+                    padding: EdgeInsets.all(screenWidth / 60),
                     child: Container(
                       color: Theme.of(context).colorScheme.background,
                       child: Padding(
-                        padding: EdgeInsets.all(screenWidth / 80),
+                        padding: EdgeInsets.all(screenWidth / 100),
                         child: Column(
                           children: [
                             homePageView(),
@@ -206,48 +206,11 @@ class _HomepageScreenState extends State<HomepageScreen> {
       case 0:
         return const InfoCard();
       case 1:
-        return SingleChildScrollView(
+        return const SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              const EducationFirebase(),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 50.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color:
-                                  Colors.black.withOpacity(0.3), // Gölge rengi
-                              spreadRadius: 4, // Yayılma yarıçapı
-                              blurRadius: 10, // Bulanıklık yarıçapı
-                              // Gölgeyi kaydırma
-                            ),
-                          ],
-                        ),
-                        child: IconButton(
-                          onPressed: () {
-                            // IconButton'a basıldığında yapılacak işlemler
-                          },
-                          icon: const Icon(
-                            Icons.arrow_forward_ios,
-                            color: Colors.black87,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 15),
-                      const Text("Daha Fazla Göster")
-                    ],
-                  ),
-                ),
-              ),
+              EducationFirebase(), 
             ],
           ),
         );

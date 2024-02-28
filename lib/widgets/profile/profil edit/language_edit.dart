@@ -28,7 +28,7 @@ class _LanguageEditState extends State<LanguageEdit> {
       document.collection("languages").doc().set({
         'language': selectedlanguage?.language,
         'date': date,
-        'level': selectedlevel,
+        'level': selectedlevel?.level,
       });
     } on FirebaseException catch (e) {
       ScaffoldMessenger.of(context)
@@ -56,6 +56,8 @@ class _LanguageEditState extends State<LanguageEdit> {
   Language? selectedlanguage;
   Language? selectedlang;
   Level? selectedlevel;
+  bool isLanguage = false;
+  bool isLevel = false;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -81,6 +83,7 @@ class _LanguageEditState extends State<LanguageEdit> {
                   if (language != null) {
                     setState(() {
                       selectedlanguage = language;
+                      isLanguage = true;
                     });
                   }
                 },
@@ -129,6 +132,7 @@ class _LanguageEditState extends State<LanguageEdit> {
                   if (level != null) {
                     setState(() {
                       selectedlevel = level;
+                      isLevel = true;
                     });
                   }
                 },
@@ -165,8 +169,12 @@ class _LanguageEditState extends State<LanguageEdit> {
               ElevatedButton(
                   onPressed: () {
                     print(selectedlang?.language);
-
-                    _submitlanguage();
+                    if (isLevel && isLanguage) {
+                      _submitlanguage();
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Lütfen eksik alanları seçiniz")));
+                    }
                   },
                   child: const Text("Kaydet"))
             ],

@@ -15,16 +15,20 @@ class ButtonBack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-        top: size.height * 0.030,
+        top: size.height * 0.060,
         left: 15,
         child: InkWell(
           onTap: onTap,
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 30,
-            color: percent < .56
-                ? Colors.white.withOpacity(1 - percent)
-                : Colors.white,
+          child: CircleAvatar(
+            minRadius: 20,
+            backgroundColor: Colors.purple,
+            child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 30,
+              color: percent < .56
+                  ? Colors.white.withOpacity(1 - percent)
+                  : Colors.white,
+            ),
           ),
         ));
   }

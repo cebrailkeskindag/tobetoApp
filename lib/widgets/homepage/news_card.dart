@@ -98,7 +98,7 @@ class _NewsCardState extends State<NewsCard> {
           return Padding(
             padding: const EdgeInsets.only(top: 10),
             child: SizedBox(
-              width: screenWidth,
+              width: screenWidth * 0.9,
               child: Card(
                 elevation: 5,
                 shape: RoundedRectangleBorder(

@@ -79,7 +79,7 @@ class _LanguageListState extends State<LanguageList> {
               child: Row(
                 children: [
                   for (LanguageModel language in LanguageList)
-                    Text("${language.language}, "),
+                    Text("${language.language}-${language.level}, "),
                 ],
               ),
             ),

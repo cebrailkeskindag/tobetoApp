@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
+import 'package:tobetoapp/screen/homepage_screen.dart';
 import 'package:tobetoapp/widgets/profile/profile%20homepage/background_sliver.dart';
 import 'package:tobetoapp/widgets/profile/profile%20homepage/body_sliver.dart';
 import 'package:tobetoapp/widgets/profile/profile%20homepage/button_back.dart';
@@ -42,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
   final firebaseAuthInstance = FirebaseAuth.instance;
 
   final firebaseFireStore = FirebaseFirestore.instance;
-  
+
   bool _isLoading = true;
 
   @override
@@ -54,8 +55,9 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void _getUserInfo() async {
     setState(() {
-    _isLoading = true; // Set loading state to true when starting data fetching
-  });
+      _isLoading =
+          true; // Set loading state to true when starting data fetching
+    });
     final user = firebaseAuthInstance.currentUser;
     final document = firebaseFireStore.collection("users").doc(user!.uid);
     final documentSnapshot = await document.get();
@@ -72,7 +74,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     if (mounted) {
       setState(() {
-         _isLoading = false;
+        _isLoading = false;
         _name = querySnapshot.get("name");
         _surname = querySnapshot.get("surname");
         _imageUrl = querySnapshot.get("imageUrl");
@@ -104,33 +106,34 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body:_isLoading
-        ? const Center(
-            child: CircularProgressIndicator(), // Show CircularProgressIndicator while loading
-          )
-        : CustomScrollView(
-        slivers: [
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: _AppBarNetflix(
-                minExtended: kToolbarHeight,
-                maxExtended: size.height * 0.32,
-                size: size,
-                imageUrl: _imageUrl,
-                name: _name,
-                surname: _surname,
-                phoneNumber: _phoneNumber,
-                birthDate: _birthDateString,
-                email: _email),
-          ),
-          SliverToBoxAdapter(
-            child: Body(
-              size: size,
-              aboutMe: _aboutMe,
+      body: _isLoading
+          ? const Center(
+              child:
+                  CircularProgressIndicator(), // Show CircularProgressIndicator while loading
+            )
+          : CustomScrollView(
+              slivers: [
+                SliverPersistentHeader(
+                  pinned: true,
+                  delegate: _AppBarNetflix(
+                      minExtended: kToolbarHeight,
+                      maxExtended: size.height * 0.32,
+                      size: size,
+                      imageUrl: _imageUrl,
+                      name: _name,
+                      surname: _surname,
+                      phoneNumber: _phoneNumber,
+                      birthDate: _birthDateString,
+                      email: _email),
+                ),
+                SliverToBoxAdapter(
+                  child: Body(
+                    size: size,
+                    aboutMe: _aboutMe,
+                  ),
+                )
+              ],
             ),
-          )
-        ],
-      ),
     );
   }
 }
@@ -199,7 +202,8 @@ class _AppBarNetflix extends SliverPersistentHeaderDelegate {
         ButtonBack(
           size: size,
           percent: percent,
-          onTap: () => Navigator.pop(context),
+          onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (ctx) => const HomepageScreen())),
         ),
         EditCircleButton(size: size, percent: percent)
       ],
