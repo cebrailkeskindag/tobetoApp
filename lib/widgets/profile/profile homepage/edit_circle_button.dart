@@ -27,7 +27,7 @@ class EditCircleButton extends StatelessWidget {
                   scale: 1.0 - value,
                   child: CircleAvatar(
                     minRadius: 20,
-                    backgroundColor: Colors.red[300],
+                    backgroundColor: Colors.purple,
                     child: GestureDetector(
                       child: const Icon(
                         Icons.note_alt_outlined,

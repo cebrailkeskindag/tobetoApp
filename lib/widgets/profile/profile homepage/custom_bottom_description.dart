@@ -3,33 +3,42 @@ import 'package:flutter/material.dart';
 class CustomBottomDescription extends StatelessWidget {
   const CustomBottomDescription({
     Key? key,
+    required this.phoneNumber,
+    required this.birthDate,
+    required this.email,
   }) : super(key: key);
+
+  final String phoneNumber;
+  final String birthDate;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return  Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
             Text(
-              '10.10.2023',
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+              birthDate.isEmpty?
+              'Doğum Tarihi': birthDate,
+              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
             ),
-            Spacer(),
+            const Spacer(),
             Text(
-              'Telefon Numarası',
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+              phoneNumber.isEmpty?
+              'Telefon Numarası':phoneNumber,
+              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
             ),
-            
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 2,
         ),
         Text(
-          'Email Address',
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+          email.isEmpty?
+          'Email Address':email,
+          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
         ),
       ],
     );

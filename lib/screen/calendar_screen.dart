@@ -93,13 +93,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
                               const Text('Eğitmen'),
                               DropdownButton<Educator>(
                                 value: _selectedEducator,
-                                hint: Text(
-                                  'Eğitmen Seçin',
-                                  style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSecondary),
-                                ),
+                                hint: Text('Eğitmen Seçin',
+                                    style: TextStyle(
+                                      color:
+                                          Theme.of(context).colorScheme.surface,
+                                    )),
                                 onChanged: (Educator? educator) {
                                   setState(() {
                                     _selectedEducator = educator;
@@ -108,13 +106,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                 items:
                                     widget.educators.map((Educator educator) {
                                   return DropdownMenuItem<Educator>(
-                                    value: educator,
-                                    child: Text(educator.eduName,
+                                      value: educator,
+                                      child: Text(
+                                        educator.eduName,
                                         style: TextStyle(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onSecondary)),
-                                  );
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                        ),
+                                      ));
                                 }).toList(),
                               ),
                               const FilterCheckButton(),

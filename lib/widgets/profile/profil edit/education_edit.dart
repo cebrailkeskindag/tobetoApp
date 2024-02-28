@@ -17,9 +17,14 @@ class _EducationEditState extends State<EducationEdit> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
+
+    MediaQueryData mediaQuery = MediaQuery.of(context);
+
+    double screenHeight = mediaQuery.size.height;
+
     return SizedBox(
       width: double.infinity,
-      height: 500,
+      height: screenHeight * 0.8,
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

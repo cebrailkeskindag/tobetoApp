@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class CoverPhoto extends StatelessWidget {
   const CoverPhoto({
     Key? key,
-    required this.size,
+    required this.size,required this.imageUrl 
   }) : super(key: key);
-
+  final String imageUrl;
   final Size size;
 
   @override
@@ -18,10 +18,15 @@ class CoverPhoto extends StatelessWidget {
       height: size.height * 0.18,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: Image.asset(
+        child: imageUrl.isEmpty? Image.asset(
           'assets/images/ic_user.png',
           fit: BoxFit.fill,
-        ),
+        ):ClipOval(
+          child: Image.network(
+            imageUrl,
+            fit: BoxFit.fill,
+          ),
+        )
       ),
     );
   }

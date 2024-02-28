@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
 import 'package:tobetoapp/widgets/profile/profile%20homepage/background_sliver.dart';
 import 'package:tobetoapp/widgets/profile/profile%20homepage/body_sliver.dart';
@@ -27,6 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
   String _surname = "";
   String _phoneNumber = "";
   Timestamp? _birthDate;
+  String _birthDateString = "";
   String _tc = "";
   String _email = "";
   String _country = "";
@@ -40,6 +42,8 @@ class _ProfilePageState extends State<ProfilePage> {
   final firebaseAuthInstance = FirebaseAuth.instance;
 
   final firebaseFireStore = FirebaseFirestore.instance;
+  
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -49,6 +53,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   void _getUserInfo() async {
+    setState(() {
+    _isLoading = true; // Set loading state to true when starting data fetching
+  });
     final user = firebaseAuthInstance.currentUser;
     final document = firebaseFireStore.collection("users").doc(user!.uid);
     final documentSnapshot = await document.get();
@@ -58,13 +65,21 @@ class _ProfilePageState extends State<ProfilePage> {
     // firebaseFireStore.collection("profile").doc("personal");
     //  final documentSnapshotProfile = await profileDocument.get();
 
+    String formatTimestamp(Timestamp timestamp, String format) {
+      DateTime dateTime = timestamp.toDate();
+      return DateFormat(format).format(dateTime);
+    }
+
     if (mounted) {
       setState(() {
+         _isLoading = false;
         _name = querySnapshot.get("name");
         _surname = querySnapshot.get("surname");
         _imageUrl = querySnapshot.get("imageUrl");
         _phoneNumber = querySnapshot.get("phoneNumber");
         _birthDate = querySnapshot.get("birthDate");
+        _birthDateString = formatTimestamp(
+            querySnapshot.get("birthDate"), 'yyyy-MM-dd – kk:mm');
         _tc = querySnapshot.get("tc");
         _email = querySnapshot.get("email");
         _country = querySnapshot.get("country");
@@ -89,18 +104,30 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: CustomScrollView(
+      body:_isLoading
+        ? const Center(
+            child: CircularProgressIndicator(), // Show CircularProgressIndicator while loading
+          )
+        : CustomScrollView(
         slivers: [
           SliverPersistentHeader(
             pinned: true,
             delegate: _AppBarNetflix(
-              minExtended: kToolbarHeight,
-              maxExtended: size.height * 0.32,
-              size: size,
-            ),
+                minExtended: kToolbarHeight,
+                maxExtended: size.height * 0.32,
+                size: size,
+                imageUrl: _imageUrl,
+                name: _name,
+                surname: _surname,
+                phoneNumber: _phoneNumber,
+                birthDate: _birthDateString,
+                email: _email),
           ),
           SliverToBoxAdapter(
-            child: Body(size: size),
+            child: Body(
+              size: size,
+              aboutMe: _aboutMe,
+            ),
           )
         ],
       ),
@@ -113,10 +140,23 @@ class _AppBarNetflix extends SliverPersistentHeaderDelegate {
     required this.maxExtended,
     required this.minExtended,
     required this.size,
+    required this.imageUrl,
+    required this.name,
+    required this.surname,
+    required this.phoneNumber,
+    required this.birthDate,
+    required this.email,
   });
   final double maxExtended;
   final double minExtended;
   final Size size;
+  final String imageUrl;
+  final String name;
+  final String surname;
+
+  final String phoneNumber;
+  final String birthDate;
+  final String email;
 
   @override
   Widget build(
@@ -133,13 +173,18 @@ class _AppBarNetflix extends SliverPersistentHeaderDelegate {
       percent: percent,
       uploadlimit: uploadlimit,
       valueback: valueback,
+      imageUrl: imageUrl,
     );
 
     final bottomsliverbar = _CustomBottomSliverBar(
-      size: size,
-      fixrotation: fixrotation,
-      percent: percent,
-    );
+        size: size,
+        fixrotation: fixrotation,
+        percent: percent,
+        name: name,
+        surname: surname,
+        phoneNumber: phoneNumber,
+        birthDate: birthDate,
+        email: email);
 
     return Stack(
       children: [
@@ -173,17 +218,19 @@ class _AppBarNetflix extends SliverPersistentHeaderDelegate {
 }
 
 class _CoverCard extends StatelessWidget {
-  const _CoverCard({
-    Key? key,
-    required this.size,
-    required this.percent,
-    required this.uploadlimit,
-    required this.valueback,
-  }) : super(key: key);
+  const _CoverCard(
+      {Key? key,
+      required this.size,
+      required this.percent,
+      required this.uploadlimit,
+      required this.valueback,
+      required this.imageUrl})
+      : super(key: key);
   final Size size;
   final double percent;
   final double uploadlimit;
   final num valueback;
+  final String imageUrl;
 
   final double angleForCard = 6.5;
 
@@ -198,7 +245,10 @@ class _CoverCard extends StatelessWidget {
           ..rotateZ(percent > uploadlimit
               ? (valueback * angleForCard)
               : percent * angleForCard),
-        child: CoverPhoto(size: size),
+        child: CoverPhoto(
+          size: size,
+          imageUrl: imageUrl,
+        ),
       ),
     );
   }
@@ -210,10 +260,21 @@ class _CustomBottomSliverBar extends StatelessWidget {
     required this.size,
     required this.fixrotation,
     required this.percent,
+    required this.name,
+    required this.surname,
+    required this.phoneNumber,
+    required this.birthDate,
+    required this.email,
   }) : super(key: key);
   final Size size;
   final num fixrotation;
   final double percent;
+  final String name;
+  final String surname;
+
+  final String phoneNumber;
+  final String birthDate;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -222,9 +283,13 @@ class _CustomBottomSliverBar extends StatelessWidget {
         left: -size.width * fixrotation.clamp(0, 0.35),
         right: 0,
         child: _CustomBottomSliver(
-          size: size,
-          percent: percent,
-        ));
+            size: size,
+            percent: percent,
+            name: name,
+            surname: surname,
+            phoneNumber: phoneNumber,
+            birthDate: birthDate,
+            email: email));
   }
 }
 
@@ -233,10 +298,21 @@ class _CustomBottomSliver extends StatelessWidget {
     Key? key,
     required this.size,
     required this.percent,
+    required this.name,
+    required this.surname,
+    required this.phoneNumber,
+    required this.birthDate,
+    required this.email,
   }) : super(key: key);
 
   final Size size;
   final double percent;
+  final String name;
+  final String surname;
+
+  final String phoneNumber;
+  final String birthDate;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -249,9 +325,13 @@ class _CustomBottomSliver extends StatelessWidget {
             painter: CutRectangle(),
           ),
           DataCutRectangle(
-            size: size,
-            percent: percent,
-          )
+              size: size,
+              percent: percent,
+              name: name,
+              surname: surname,
+              phoneNumber: phoneNumber,
+              birthDate: birthDate,
+              email: email)
         ],
       ),
     );
