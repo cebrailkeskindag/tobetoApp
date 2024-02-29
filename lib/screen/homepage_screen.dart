@@ -74,21 +74,23 @@ class _HomepageScreenState extends State<HomepageScreen> {
     }
 
     if (mounted) {
-      setState(() {
-        _name = documentSnapshot.get("name");
+      if (documentSnapshot.exists && querySnapshot.exists) {
+        setState(() {
+          _name = documentSnapshot.get("name");
+          _usermail = documentSnapshot.get("email");
+          _title = querySnapshot.get("title");
 
-        _usermail = documentSnapshot.get("email");
-        _title = querySnapshot.get("title");
-        // _usermailExam = documentSnapshotExam.get("usermail");
-        print("title ${_title}");
-        print("imageUrl ${querySnapshot.get("imageUrl")}");
-        print("videoUrl ${querySnapshot.get("videoUrl")}");
-        print("videoLength ${querySnapshot.get("videoLength")}");
-        print(
-            "date ${formatTimestamp(querySnapshot.get("date"), 'yyyy-MM-dd – kk:mm')}");
-        print("id ${querySnapshot.get("id")}");
-        print("uid ${querySnapshot.get("uid")}");
-      });
+          // _usermailExam = documentSnapshotExam.get("usermail");
+          print("title ${_title}");
+          print("imageUrl ${querySnapshot.get("imageUrl")}");
+          print("videoUrl ${querySnapshot.get("videoUrl")}");
+          print("videoLength ${querySnapshot.get("videoLength")}");
+          print(
+              "date ${formatTimestamp(querySnapshot.get("date"), 'yyyy-MM-dd – kk:mm')}");
+          print("id ${querySnapshot.get("id")}");
+          print("uid ${querySnapshot.get("uid")}");
+        });
+      }
     }
   }
 
@@ -170,7 +172,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                         padding: EdgeInsets.all(screenWidth / 100),
                         child: Column(
                           children: [
-                            homePageView(),
+                            const homePageView(),
                             const TabBar(
                               isScrollable: true,
                               tabs: tabs,
@@ -210,7 +212,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              EducationFirebase(), 
+              EducationFirebase(),
             ],
           ),
         );

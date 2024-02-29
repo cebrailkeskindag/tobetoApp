@@ -15,8 +15,8 @@ class ButtonBack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-        top: size.height * 0.060,
-        left: 15,
+        top: size.height * 0.020,
+        left: 10,
         child: InkWell(
           onTap: onTap,
           child: CircleAvatar(

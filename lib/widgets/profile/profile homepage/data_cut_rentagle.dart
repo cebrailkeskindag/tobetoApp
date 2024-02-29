@@ -26,7 +26,7 @@ class DataCutRectangle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: size.width * 0.34, top: 8),
+      padding: EdgeInsets.only(left: size.width * 0.32, top: 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -56,7 +56,7 @@ class DataCutRectangle extends StatelessWidget {
             AnimatedOpacity(
               duration: const Duration(milliseconds: 200),
               opacity: (1 - pow(percent, 0.001)).toDouble(),
-              child:  CustomBottomDescription(
+              child: CustomBottomDescription(
                   phoneNumber: phoneNumber, birthDate: birthDate, email: email),
             )
           ]

@@ -63,6 +63,12 @@ class _ProfilePageState extends State<ProfilePage> {
     final documentSnapshot = await document.get();
     var profileCollectionRef = document.collection('profile').doc("personal");
     var querySnapshot = await profileCollectionRef.get();
+    if (!querySnapshot.exists) {
+      setState(() {
+      _isLoading =
+          false; // Set loading state to true when starting data fetching
+    });
+    }
     //  final profileDocument =
     // firebaseFireStore.collection("profile").doc("personal");
     //  final documentSnapshotProfile = await profileDocument.get();
@@ -73,32 +79,34 @@ class _ProfilePageState extends State<ProfilePage> {
     }
 
     if (mounted) {
-      setState(() {
-        _isLoading = false;
-        _name = querySnapshot.get("name");
-        _surname = querySnapshot.get("surname");
-        _imageUrl = querySnapshot.get("imageUrl");
-        _phoneNumber = querySnapshot.get("phoneNumber");
-        _birthDate = querySnapshot.get("birthDate");
-        _birthDateString = formatTimestamp(
-            querySnapshot.get("birthDate"), 'yyyy-MM-dd – kk:mm');
-        _tc = querySnapshot.get("tc");
-        _email = querySnapshot.get("email");
-        _country = querySnapshot.get("country");
-        _city = querySnapshot.get("city");
-        _district = querySnapshot.get("district");
-        _street = querySnapshot.get("street");
-        _aboutMe = querySnapshot.get("aboutMe");
+      if (documentSnapshot.exists && querySnapshot.exists) {
+        setState(() {
+          _isLoading = false;
+          _name = querySnapshot.get("name");
+          _surname = querySnapshot.get("surname");
+          _imageUrl = querySnapshot.get("imageUrl");
+          _phoneNumber = querySnapshot.get("phoneNumber");
+          _birthDate = querySnapshot.get("birthDate");
+          _birthDateString = formatTimestamp(
+              querySnapshot.get("birthDate"), 'yyyy-MM-dd – kk:mm');
+          _tc = querySnapshot.get("tc");
+          _email = querySnapshot.get("email");
+          _country = querySnapshot.get("country");
+          _city = querySnapshot.get("city");
+          _district = querySnapshot.get("district");
+          _street = querySnapshot.get("street");
+          _aboutMe = querySnapshot.get("aboutMe");
 
-        print(_imageUrl);
-        print(_tc);
-        print(_email);
-        print(_aboutMe);
+          print(_imageUrl);
+          print(_tc);
+          print(_email);
+          print(_aboutMe);
 
-        if (_name.isNotEmpty) {
-          userName = "$_name $_surname";
-        }
-      });
+          if (_name.isNotEmpty) {
+            userName = "$_name $_surname";
+          }
+        });
+      }
     }
   }
 

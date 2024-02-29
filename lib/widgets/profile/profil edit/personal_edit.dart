@@ -65,11 +65,13 @@ class _PersonalEditState extends State<PersonalEdit> {
     final document = firebaseFireStore.collection("users").doc(user!.uid);
     final documentSnapshot = await document.get();
     print("documentSnapshot");
-    setState(() {
-      if (documentSnapshot.get("imageUrl") != null) {
-        _imageUrl = documentSnapshot.get("imageUrl");
-      }
-    });
+    if (documentSnapshot.exists ) {
+      setState(() {
+        if (documentSnapshot.get("imageUrl") != null) {
+          _imageUrl = documentSnapshot.get("imageUrl");
+        }
+      });
+    }
   }
 
   void _pickImage() async {
@@ -115,7 +117,7 @@ class _PersonalEditState extends State<PersonalEdit> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              if (_imageUrl.isNotEmpty && _pickedFile == null)
+              if ( _pickedFile == null)
                 CircleAvatar(
                   backgroundColor: Colors.blueGrey,
                   foregroundImage: NetworkImage(_imageUrl),
@@ -180,7 +182,7 @@ class _PersonalEditState extends State<PersonalEdit> {
                               ),
                             ),
                           ),
-                          SizedBox(width: 50), // Boşluk ekleyebilirsiniz
+                          const SizedBox(width: 50), // Boşluk ekleyebilirsiniz
                           CircleAvatar(
                             maxRadius: 20,
                             child: IconButton(

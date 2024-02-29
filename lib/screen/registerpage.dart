@@ -3,9 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_bloc.dart';
-import 'package:tobetoapp/blocs/auth_bloc/auth_event.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_state.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
+import 'package:tobetoapp/screen/loginpage.dart';
 import 'package:tobetoapp/theme/app_color.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -28,7 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final firebaseAuthInstance = FirebaseAuth.instance;
   final firebaseFirestore = FirebaseFirestore.instance;
-  
+
   void _register() async {
     if (_email == null ||
         _password == null ||
@@ -36,7 +36,7 @@ class _RegisterPageState extends State<RegisterPage> {
         _name == null ||
         _surname == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Lütfen eksik alanları giriniz")));
+          const SnackBar(content: Text("Lütfen eksik alanları giriniz")));
     } else {
       if (_password == _password2) {
         try {
@@ -62,11 +62,10 @@ class _RegisterPageState extends State<RegisterPage> {
         }
       } else {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("Parola eşleşmiyor")));
+            .showSnackBar(const SnackBar(content: Text("Parola eşleşmiyor")));
       }
     }
   }
-
 
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -91,7 +90,7 @@ class _RegisterPageState extends State<RegisterPage> {
       listener: (context, state) {
         if (state is Authenticated) {
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => HomepageScreen()),
+            MaterialPageRoute(builder: (context) => const HomepageScreen()),
           );
         }
       },
@@ -238,8 +237,21 @@ class _RegisterPageState extends State<RegisterPage> {
                                       BorderRadius.all(Radius.circular(15)))),
                         ),
                       )),
-                  
-                  const SizedBox(height: 15),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (ctx) => const LoginPage()));
+                      },
+                      child: const Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          color: Color(0xFFA3A3A3),
+                          fontSize: 11.33,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                          height: 0,
+                        ),
+                      )),
                   ElevatedButton(
                     style: buttonStyle,
                     onPressed: () {

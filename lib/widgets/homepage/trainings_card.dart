@@ -37,7 +37,7 @@ class TrainingsCard extends StatelessWidget {
                     ), // Yuvarlanan köşe
                     child: Image.network(
                       edu.imageUrl,
-                      width: screenWidth * 0.8,
+                      width: screenWidth * 0.9,
                       height: 180,
                       fit: BoxFit.cover,
                       loadingBuilder: (BuildContext context, Widget child,

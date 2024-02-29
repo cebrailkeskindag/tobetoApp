@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
         // Örneğin, anasayfaya yönlendirme yapılabilir
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomepageScreen()),
+          MaterialPageRoute(builder: (context) => const HomepageScreen()),
         );
       }
     } catch (e) {
@@ -65,13 +65,13 @@ class _LoginPageState extends State<LoginPage> {
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 16),
         backgroundColor: (AppColorDark.elevatedButtonColor),
-        minimumSize: const Size(290, 40));
+        minimumSize: const Size(160, 40));
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is Authenticated) {
           // Kullanıcı oturum açtıysa anasayfaya yönlendir
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => HomepageScreen()),
+            MaterialPageRoute(builder: (context) => const HomepageScreen()),
           );
         }
       },
@@ -161,35 +161,40 @@ class _LoginPageState extends State<LoginPage> {
                               height: 0,
                             ),
                           )),
+                      const SizedBox(width: 24)
                     ],
                   ),
-                  ElevatedButton(
-                    style: buttonStyle,
-                    onPressed: () {
-                      print(_email);
-                      print(_password);
-                      _submit();
-                      /* Navigator.of(context).push(MaterialPageRoute(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        style: buttonStyle,
+                        onPressed: () {
+                          print(_email);
+                          print(_password);
+                          _submit();
+                          /* Navigator.of(context).push(MaterialPageRoute(
                         builder: (ctx) => const HomepageScreen()));*/
-                    },
-                    child: const Text(
-                      "GİRİŞ YAP",
-                      style:
-                          TextStyle(color: Colors.white, fontFamily: "Poppins"),
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  ElevatedButton(
-                    style: buttonStyle,
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (ctx) => const RegisterPage()));
-                    },
-                    child: const Text(
-                      "KAYIT OL",
-                      style:
-                          TextStyle(color: Colors.white, fontFamily: "Poppins"),
-                    ),
+                        },
+                        child: const Text(
+                          "GİRİŞ YAP",
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: "Poppins"),
+                        ),
+                      ),
+                      ElevatedButton(
+                        style: buttonStyle,
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (ctx) => const RegisterPage()));
+                        },
+                        child: const Text(
+                          "KAYIT OL",
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: "Poppins"),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 15),
                   Row(

@@ -45,16 +45,18 @@ class _DrawerMenuState extends State<DrawerMenu> {
     //  final documentSnapshotProfile = await profileDocument.get();
 
     if (mounted) {
-      setState(() {
-        _name = documentSnapshot.get("name");
-        _surname = documentSnapshot.get("surname");
-        _imageUrl = querySnapshot.get("imageUrl");
-        print("$_imageUrl");
+      if (documentSnapshot.exists && querySnapshot.exists) {
+        setState(() {
+          _name = documentSnapshot.get("name");
+          _surname = documentSnapshot.get("surname");
+          _imageUrl = querySnapshot.get("imageUrl");
+          print("$_imageUrl");
 
-        if (_name.isNotEmpty) {
-          userName = "$_name $_surname";
-        }
-      });
+          if (_name.isNotEmpty) {
+            userName = "$_name $_surname";
+          }
+        });
+      }
     }
   }
 
