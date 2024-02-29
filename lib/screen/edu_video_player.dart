@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/models/edu.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 
 class EduVideoPlayer extends StatefulWidget {
   final Uri videoUrl;
+  final Edu edu;
 
-  EduVideoPlayer({required this.videoUrl});
+  EduVideoPlayer({required this.videoUrl ,required this.edu });
 
   @override
   _EduVideoPlayerState createState() => _EduVideoPlayerState();
@@ -28,10 +30,10 @@ class _EduVideoPlayerState extends State<EduVideoPlayer> {
       aspectRatio: 16 / 9,
       showControls: true,
       materialProgressColors: ChewieProgressColors(
-        playedColor: Colors.red,
-        handleColor: Colors.blue,
-        backgroundColor: Colors.grey,
-        bufferedColor: Colors.lightGreen,
+       // playedColor: Colors.red,
+       // handleColor: Colors.blue,
+       // backgroundColor: Colors.grey,
+       // bufferedColor: Colors.lightGreen,
       ),
     );
 
@@ -43,7 +45,7 @@ class _EduVideoPlayerState extends State<EduVideoPlayer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Eğitim'),
+        title: Text(widget.edu.title),
       ),
       body: Center(
         child: Chewie(

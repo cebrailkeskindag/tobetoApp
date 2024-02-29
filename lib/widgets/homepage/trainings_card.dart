@@ -19,7 +19,7 @@ class TrainingsCard extends StatelessWidget {
     double screenWidth = mediaQuery.size.width;
     String formattedDate = formatTimestamp(edu.date, 'yyyy-MM-dd – kk:mm');
     Uri videoUri = Uri.parse(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4');
+        edu.videoUrl);
     return SizedBox(
       width: screenWidth * 0.95,
       child: Column(
@@ -71,7 +71,7 @@ class TrainingsCard extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (ctx) => EduVideoPlayer(
-                                  videoUrl: videoUri,
+                                  videoUrl: videoUri,edu:edu
                                 )));
                       },
                       child: const Text("Eğitime Git"))
