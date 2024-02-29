@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/screen/calender_firebase.dart';
 import 'package:tobetoapp/screen/catalog.dart';
+import 'package:tobetoapp/screen/catalog_firabase.dart';
 import 'package:tobetoapp/screen/evaluation.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
 import 'package:tobetoapp/screen/loginpage.dart';
@@ -48,7 +49,9 @@ class _DrawerMenuState extends State<DrawerMenu> {
         setState(() {
           _name = documentSnapshot.get("name");
           _surname = documentSnapshot.get("surname");
-          _imageUrl = querySnapshot.get("imageUrl");
+          if (querySnapshot.exists) {
+            _imageUrl = querySnapshot.get("imageUrl");
+          }
           print("$_imageUrl");
 
           if (_name.isNotEmpty) {

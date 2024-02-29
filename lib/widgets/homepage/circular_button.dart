@@ -1,6 +1,7 @@
 import 'package:fab_circular_menu_plus/fab_circular_menu_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_social_button/flutter_social_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CircularButton extends StatefulWidget {
   const CircularButton({Key? key}) : super(key: key);
@@ -8,6 +9,21 @@ class CircularButton extends StatefulWidget {
   @override
   _CircularButtonState createState() => _CircularButtonState();
 }
+
+/*
+void _launchWhatsApp() async {
+  const phoneNumber = '+905551234567'; // Uluslararası formatta telefon numarası
+  const message =
+      'Merhaba, pair8 üzerinden mesaj gönderiyorum!'; // Başlangıç mesajı
+  final url = 'https://wa.me/$phoneNumber/?text=${Uri.encodeFull(message)}';
+  Uri wpUri = Uri.parse(url);
+  if (await canLaunchUrl(wpUri)) {
+    await launchUrl(wpUri);
+  } else {
+    throw 'WhatsApp açılamadı';
+  }
+}
+*/
 
 class _CircularButtonState extends State<CircularButton> {
   @override
@@ -32,7 +48,9 @@ class _CircularButtonState extends State<CircularButton> {
             buttonType: ButtonType.email,
           ),
           FlutterSocialButton(
-            onTap: () {},
+            onTap: () {
+              // _launchWhatsApp();
+            },
             mini: true,
             buttonType: ButtonType.whatsapp,
           ),

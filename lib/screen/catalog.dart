@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/datas/datas.dart';
+import 'package:tobetoapp/screen/catalog_firabase.dart';
 import 'package:tobetoapp/widgets/catalog/catalog_widget.dart';
 import 'package:tobetoapp/widgets/homepage/drawer.dart';
 
@@ -51,69 +52,74 @@ class _CatalogState extends State<Catalog> {
               onPressed: () {}, icon: const Icon(Icons.filter_list_rounded))
         ],*/
           ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surface,
-                image: const DecorationImage(
-                  image: AssetImage('assets/images/hs3.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 20),
-                    const Text(
-                      "Öğrenmeye başla !",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    const SizedBox(height: 30),
-                    TextField(
-                      controller: _searchController,
-                      decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 10),
-                        hintText: "Eğitim arayın...",
-                        hintStyle: const TextStyle(fontSize: 18),
-                        prefixIcon: const Icon(Icons.search),
-                        fillColor: Colors.white,
-                        filled: true,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 40),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.black38,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        minimumSize: const Size(300, 40),
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        "Filtrele",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w900),
-                      ),
-                    ),
-                  ],
-                ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              image: const DecorationImage(
+                image: AssetImage('assets/images/hs3.jpg'),
+                fit: BoxFit.cover,
               ),
             ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 20),
+                  const Text(
+                    "Öğrenmeye başla !",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  TextField(
+                    controller: _searchController,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 10),
+                      hintText: "Eğitim arayın...",
+                      hintStyle: const TextStyle(fontSize: 18),
+                      prefixIcon: const Icon(Icons.search),
+                      fillColor: Colors.white,
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50.0),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black38,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      minimumSize: const Size(300, 40),
+                    ),
+                    onPressed: () {},
+                    child: const Text(
+                      "Filtrele",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const CatalogFirebase(),
+          const SizedBox(
+            height: 1,
+          )
+          /*
             ListView.builder(
               shrinkWrap:
                   true, // Bu satırı ekleyerek ListView'ı sarmalayabiliriz.
@@ -125,8 +131,8 @@ class _CatalogState extends State<Catalog> {
                 child: CatalogWidget(catalogModel: catalogList[index]),
               ),
             ),
-          ],
-        ),
+            */
+        ],
       ),
     );
   }
