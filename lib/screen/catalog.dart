@@ -58,7 +58,7 @@ class _CatalogState extends State<Catalog> {
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surface,
                 image: const DecorationImage(
-                  image: AssetImage('assets/images/deneme.jpg'),
+                  image: AssetImage('assets/images/hs3.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -83,7 +83,7 @@ class _CatalogState extends State<Catalog> {
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 5, horizontal: 10),
                         hintText: "Eğitim arayın...",
-                        hintStyle: const TextStyle(fontSize: 10),
+                        hintStyle: const TextStyle(fontSize: 18),
                         prefixIcon: const Icon(Icons.search),
                         fillColor: Colors.white,
                         filled: true,
@@ -95,8 +95,7 @@ class _CatalogState extends State<Catalog> {
                     const SizedBox(height: 40),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange.shade200,
-                        foregroundColor: Colors.transparent,
+                        foregroundColor: Colors.black38,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),

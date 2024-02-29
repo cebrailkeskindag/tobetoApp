@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_bloc.dart';
-import 'package:tobetoapp/blocs/auth_bloc/auth_event.dart';
 import 'package:tobetoapp/firebase_options.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
 import 'package:tobetoapp/screen/loginpage.dart';
@@ -15,6 +14,7 @@ void main() async {
   runApp(MultiBlocProvider(
     providers: [BlocProvider<AuthBloc>(create: (context) => AuthBloc())],
     child: const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyApp(),
     ),
   ));
@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Tobeto',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

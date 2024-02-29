@@ -146,7 +146,7 @@ const examList = [
       examClass: "Herkes İçin Kodlama 1C",
       examTime: "45 Dakika")
 ];
-*/
+*//*
 List<CalendarModel> educationList = [
   CalendarModel(
       id: "1",
@@ -205,7 +205,7 @@ List<CalendarModel> educationList = [
     minute: 30,
     author: "Ahmet Çetinkaya",
   ),
-];
+];*/
 
 List<Educator> educators = [
   Educator(eduName: "Ahmet Yılmaz"),

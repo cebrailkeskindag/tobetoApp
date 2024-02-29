@@ -1,37 +1,60 @@
-/*import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:tobetoapp/datas/datas.dart';
 
 import 'package:tobetoapp/models/calendar_model.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
 import 'package:tobetoapp/widgets/calendar/filtercheckbutton.dart';
 
 bool aramaYapiliyorMu = false;
+final firebaseAuthInstance = FirebaseAuth.instance;
+final firebaseStorageInstance = FirebaseStorage.instance;
+final firebaseFirestore = FirebaseFirestore.instance;
 
 Future<void> ara(String aramaKelimesi) async {
   print("Ara : $aramaKelimesi");
 }
 
-class CalendarScreen extends StatefulWidget {
-  const CalendarScreen({super.key, required this.educators});
+class CalendarFirebase extends StatefulWidget {
+  const CalendarFirebase({super.key, required this.educators});
   final List<Educator> educators;
 
   @override
-  _CalendarScreenState createState() => _CalendarScreenState();
+  _CalendarFirebaseState createState() => _CalendarFirebaseState();
 }
 
-class _CalendarScreenState extends State<CalendarScreen> {
-  late List<CalendarModel> events;
+class _CalendarFirebaseState extends State<CalendarFirebase> {
+    List<CalendarModel> events = [];
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
   Educator? _selectedEducator;
 
   final TextEditingController _eventController = TextEditingController();
+  Future<List<CalendarModel>> fetchEventsFromFirestore() async {
+  // late List<CalendarModel> events = [];
+    final user = firebaseAuthInstance.currentUser;
+
+    var querySnapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user!.uid)
+        .collection('calenderList')
+        .get();
+    querySnapshot.docs.forEach((doc) {
+      events.add(CalendarModel.fromJson(doc.data()));
+    });
+    return events;
+  }
 
   @override
   void initState() {
-    events = educationList;
+    fetchEventsFromFirestore().then((events) {
+      setState(() {
+        this.events = events;
+      });
+    });
     super.initState();
   }
 
@@ -259,4 +282,3 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 }
-*/
