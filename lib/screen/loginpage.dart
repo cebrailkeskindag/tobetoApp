@@ -83,8 +83,8 @@ class _LoginPageState extends State<LoginPage> {
         ? 'assets/images/tobeto_logo.png'
         : 'assets/images/tobeto_logo_d.png';
     String backgroundLogin = currentBrightness == Brightness.light
-        ? "assets/images/login_page.jpg"
-        : 'assets/images/login_background_d.png';
+        ? "assets/images/deneme7.jpg"
+        : 'assets/images/deneme7.jpg';
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 16),
         backgroundColor: (AppColorDark.elevatedButtonColor),
@@ -108,138 +108,147 @@ class _LoginPageState extends State<LoginPage> {
           )),
           child: Center(
             child: SizedBox(
-                child: SizedBox(
-              width: 400,
-              height: 485,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 60,
-                    child: Image.asset(imageName),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 50,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 30, right: 30),
-                      child: TextField(
-                        onChanged: (value) => _email = value,
-                        controller: _usernameController,
-                        keyboardType: TextInputType.name,
-                        decoration: const InputDecoration(
-                            labelText: "Kullanıcı adı",
-                            hintStyle: TextStyle(fontFamily: "Poppins"),
-                            prefixIcon: Icon(Icons.person),
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15)))),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.only(left: 30, right: 30),
-                      child: SizedBox(
-                        height: 50,
-                        child: TextField(
-                          onChanged: (value) => _password = value,
-                          controller: _passwordController,
-                          obscureText: !_isPasswordVisible,
-                          decoration: InputDecoration(
-                              labelText: "Parola giriniz",
-                              hintStyle: const TextStyle(fontFamily: "Poppins"),
-                              prefixIcon: const Icon(Icons.lock),
-                              suffixIcon: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _isPasswordVisible = !_isPasswordVisible;
-                                  });
-                                },
-                                child: Icon(_isPasswordVisible
-                                    ? Icons.visibility
-                                    : Icons.visibility_off),
-                              ),
-                              border: const OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15)))),
-                        ),
-                      )),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+              child: SizedBox(
+                width: 400,
+                height: 485,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                              color: Color(0xFFA3A3A3),
-                              fontSize: 11.33,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                              height: 0,
+                      SizedBox(
+                        height: 60,
+                        child: Image.asset(imageName),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 50,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 30, right: 30),
+                          child: TextField(
+                            onChanged: (value) => _email = value,
+                            controller: _usernameController,
+                            keyboardType: TextInputType.name,
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor:
+                                    Theme.of(context).colorScheme.background,
+                                labelText: "Kullanıcı adı",
+                                hintStyle:
+                                    const TextStyle(fontFamily: "Poppins"),
+                                prefixIcon: const Icon(Icons.person),
+                                border: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15)))),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(left: 30, right: 30),
+                          child: SizedBox(
+                            height: 50,
+                            child: TextField(
+                              onChanged: (value) => _password = value,
+                              controller: _passwordController,
+                              obscureText: !_isPasswordVisible,
+                              decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor:
+                                      Theme.of(context).colorScheme.background,
+                                  labelText: "Parola giriniz",
+                                  hintStyle:
+                                      const TextStyle(fontFamily: "Poppins"),
+                                  prefixIcon: const Icon(Icons.lock),
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
+                                      });
+                                    },
+                                    child: Icon(_isPasswordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off),
+                                  ),
+                                  border: const OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15)))),
                             ),
                           )),
-                      const SizedBox(width: 24)
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        style: buttonStyle,
-                        onPressed: () {
-                           print('giriş  tıklandı');
-                          print(_email);
-                          print(_password);
-                          _submit();
-                          /* Navigator.of(context).push(MaterialPageRoute(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                              onPressed: () {},
+                              child: const Text(
+                                'Forgot Password?',
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 255, 255, 255),
+                                  fontSize: 11.33,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
+                                  height: 0,
+                                ),
+                              )),
+                          const SizedBox(width: 24)
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ElevatedButton(
+                            style: buttonStyle,
+                            onPressed: () {
+                              print('giriş  tıklandı');
+                              print(_email);
+                              print(_password);
+                              _submit();
+                              /* Navigator.of(context).push(MaterialPageRoute(
                         builder: (ctx) => const HomepageScreen()));*/
-                        },
-                        child: const Text(
-                          "GİRİŞ YAP",
-                          style: TextStyle(
-                              color: Colors.white, fontFamily: "Poppins"),
-                        ),
+                            },
+                            child: const Text(
+                              "GİRİŞ YAP",
+                              style: TextStyle(
+                                  color: Colors.white, fontFamily: "Poppins"),
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: buttonStyle,
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (ctx) => const RegisterPage()));
+                            },
+                            child: const Text(
+                              "KAYIT OL",
+                              style: TextStyle(
+                                  color: Colors.white, fontFamily: "Poppins"),
+                            ),
+                          ),
+                        ],
                       ),
-                      ElevatedButton(
-                        style: buttonStyle,
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (ctx) => const RegisterPage()));
-                        },
-                        child: const Text(
-                          "KAYIT OL",
-                          style: TextStyle(
-                              color: Colors.white, fontFamily: "Poppins"),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      // Çizgi
-                      Container(
-                        height: 2.0,
-                        width: 90.0,
-                        decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                          begin: Alignment.bottomRight,
-                          end: Alignment.topLeft,
-                          colors: [
-                            Colors.black26,
-                            Colors.white,
-                          ],
-                        )),
-                      ),
-                   
-                      const Padding(
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          // Çizgi
+                          Container(
+                            height: 2.0,
+                            width: 90.0,
+                            decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                              begin: Alignment.bottomRight,
+                              end: Alignment.topLeft,
+                              colors: [
+                                Colors.black26,
+                                Colors.white,
+                              ],
+                            )),
+                          ),
+
+                          /*    const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text('Or continue with',
                               style: TextStyle(
@@ -330,10 +339,12 @@ class _LoginPageState extends State<LoginPage> {
                                 borderRadius: BorderRadius.circular(8.85),
                               ),
                             ))
-                      ]),
-                ],
+                      ] )*/
+                        ],
+                      ),
+                    ]),
               ),
-            )),
+            ),
           ),
         ),
       ),

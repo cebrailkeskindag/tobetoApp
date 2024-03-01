@@ -80,8 +80,8 @@ class _RegisterPageState extends State<RegisterPage> {
         ? 'assets/images/tobeto_logo.png'
         : 'assets/images/tobeto_logo_d.png';
     String backgroundLogin = currentBrightness == Brightness.light
-        ? "assets/images/login_background.png"
-        : 'assets/images/login_background_d.png';
+        ? "assets/images/deneme7.jpg"
+        : 'assets/images/deneme7.jpg';
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 16),
         backgroundColor: (AppColorDark.elevatedButtonColor),
@@ -104,185 +104,208 @@ class _RegisterPageState extends State<RegisterPage> {
           )),
           child: Center(
             child: SizedBox(
-                child: SizedBox(
-              width: 400,
-              height: 600,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 60,
-                    child: Image.asset(imageName),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 50,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 30, right: 30),
-                      child: TextField(
-                        onChanged: (value) => _name = value,
-                        controller: _nameController,
-                        keyboardType: TextInputType.name,
-                        decoration: const InputDecoration(
-                            labelText: "Adınız",
-                            hintStyle: TextStyle(fontFamily: "Poppins"),
-                            prefixIcon: Icon(Icons.person),
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15)))),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 50,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 30, right: 30),
-                      child: TextField(
-                        onChanged: (value) => _surname = value,
-                        controller: _surnameController,
-                        keyboardType: TextInputType.name,
-                        decoration: const InputDecoration(
-                            labelText: "Soyadınız",
-                            hintStyle: TextStyle(fontFamily: "Poppins"),
-                            prefixIcon: Icon(Icons.person),
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15)))),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 50,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 30, right: 30),
-                      child: TextField(
-                        onChanged: (value) => _email = value,
-                        controller: _usernameController,
-                        keyboardType: TextInputType.name,
-                        decoration: const InputDecoration(
-                            labelText: "Email giriniz",
-                            hintStyle: TextStyle(fontFamily: "Poppins"),
-                            prefixIcon: Icon(Icons.person),
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15)))),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.only(left: 30, right: 30),
-                      child: SizedBox(
-                        height: 50,
-                        child: TextField(
-                          onChanged: (value) => _password = value,
-                          controller: _passwordController,
-                          obscureText: !_isPasswordVisible,
-                          decoration: InputDecoration(
-                              labelText: "Parola giriniz",
-                              hintStyle: const TextStyle(fontFamily: "Poppins"),
-                              prefixIcon: const Icon(Icons.lock),
-                              suffixIcon: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _isPasswordVisible = !_isPasswordVisible;
-                                  });
-                                },
-                                child: Icon(_isPasswordVisible
-                                    ? Icons.visibility
-                                    : Icons.visibility_off),
-                              ),
-                              border: const OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15)))),
-                        ),
-                      )),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.only(left: 30, right: 30),
-                      child: SizedBox(
-                        height: 50,
-                        child: TextField(
-                          onChanged: (value) => _password2 = value,
-                          controller: _passwordController2,
-                          obscureText: !_isPasswordVisible,
-                          decoration: InputDecoration(
-                              labelText: "Parolayı tekrar giriniz",
-                              hintStyle: const TextStyle(fontFamily: "Poppins"),
-                              prefixIcon: const Icon(Icons.lock),
-                              suffixIcon: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _isPasswordVisible = !_isPasswordVisible;
-                                  });
-                                },
-                                child: Icon(_isPasswordVisible
-                                    ? Icons.visibility
-                                    : Icons.visibility_off),
-                              ),
-                              border: const OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15)))),
-                        ),
-                      )),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (ctx) => const LoginPage()));
-                      },
-                      child: const Text(
-                        'Forgot Password?',
-                        style: TextStyle(
-                          color: Color(0xFFA3A3A3),
-                          fontSize: 11.33,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
-                          height: 0,
-                        ),
-                      )),
-                  ElevatedButton(
-                    style: buttonStyle,
-                    onPressed: () {
-                      _register();
-                    },
-                    child: const Text(
-                      "KAYIT OL",
-                      style:
-                          TextStyle(color: Colors.white, fontFamily: "Poppins"),
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Row(
+              child: SizedBox(
+                width: 400,
+                height: 600,
+                child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      // Çizgi
-                      Container(
-                        height: 2.0,
-                        width: 90.0,
-                        decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                          begin: Alignment.bottomRight,
-                          end: Alignment.topLeft,
-                          colors: [
-                            Colors.black26,
-                            Colors.white,
-                          ],
-                        )),
+                    children: [
+                      SizedBox(
+                        height: 60,
+                        child: Image.asset(imageName),
                       ),
-                      // Continue with metni
-                      const Padding(
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 50,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 30, right: 30),
+                          child: TextField(
+                            onChanged: (value) => _name = value,
+                            controller: _nameController,
+                            keyboardType: TextInputType.name,
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor:
+                                    Theme.of(context).colorScheme.background,
+                                labelText: "Adınız",
+                                hintStyle:
+                                    const TextStyle(fontFamily: "Poppins"),
+                                prefixIcon: const Icon(Icons.person),
+                                border: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15)))),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 50,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 30, right: 30),
+                          child: TextField(
+                            onChanged: (value) => _surname = value,
+                            controller: _surnameController,
+                            keyboardType: TextInputType.name,
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor:
+                                    Theme.of(context).colorScheme.background,
+                                labelText: "Soyadınız",
+                                hintStyle:
+                                    const TextStyle(fontFamily: "Poppins"),
+                                prefixIcon: const Icon(Icons.person),
+                                border: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15)))),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 50,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 30, right: 30),
+                          child: TextField(
+                            onChanged: (value) => _email = value,
+                            controller: _usernameController,
+                            keyboardType: TextInputType.name,
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor:
+                                    Theme.of(context).colorScheme.background,
+                                labelText: "Email giriniz",
+                                hintStyle:
+                                    const TextStyle(fontFamily: "Poppins"),
+                                prefixIcon: const Icon(Icons.person),
+                                border: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15)))),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(left: 30, right: 30),
+                          child: SizedBox(
+                            height: 50,
+                            child: TextField(
+                              onChanged: (value) => _password = value,
+                              controller: _passwordController,
+                              obscureText: !_isPasswordVisible,
+                              decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor:
+                                      Theme.of(context).colorScheme.background,
+                                  labelText: "Parola giriniz",
+                                  hintStyle:
+                                      const TextStyle(fontFamily: "Poppins"),
+                                  prefixIcon: const Icon(Icons.lock),
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
+                                      });
+                                    },
+                                    child: Icon(_isPasswordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off),
+                                  ),
+                                  border: const OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15)))),
+                            ),
+                          )),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(left: 30, right: 30),
+                          child: SizedBox(
+                            height: 50,
+                            child: TextField(
+                              onChanged: (value) => _password2 = value,
+                              controller: _passwordController2,
+                              obscureText: !_isPasswordVisible,
+                              decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor:
+                                      Theme.of(context).colorScheme.background,
+                                  labelText: "Parolayı tekrar giriniz",
+                                  hintStyle:
+                                      const TextStyle(fontFamily: "Poppins"),
+                                  prefixIcon: const Icon(Icons.lock),
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
+                                      });
+                                    },
+                                    child: Icon(_isPasswordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off),
+                                  ),
+                                  border: const OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15)))),
+                            ),
+                          )),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (ctx) => const LoginPage()));
+                          },
+                          child: Text(
+                            'Forgot Password?',
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.background,
+                              fontSize: 11.33,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                              height: 0,
+                            ),
+                          )),
+                      ElevatedButton(
+                        style: buttonStyle,
+                        onPressed: () {
+                          _register();
+                        },
+                        child: Text(
+                          "KAYIT OL",
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.background,
+                              fontFamily: "Poppins"),
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          // Çizgi
+                          Container(
+                            height: 2.0,
+                            width: 90.0,
+                            decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                              begin: Alignment.bottomRight,
+                              end: Alignment.topLeft,
+                              colors: [
+                                Colors.black26,
+                                Colors.white,
+                              ],
+                            )),
+                          ),
+                          // Continue with metni
+                          /* const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text('Or continue with',
                               style: TextStyle(
@@ -354,10 +377,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                 borderRadius: BorderRadius.circular(8.85),
                               ),
                             ))
-                      ]),
-                ],
+                      ]),*/
+                        ],
+                      ),
+                    ]),
               ),
-            )),
+            ),
           ),
         ),
       ),
