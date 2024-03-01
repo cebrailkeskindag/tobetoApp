@@ -13,8 +13,7 @@ class CatalogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-    Uri videoUri = Uri.parse(
-        catalogModel.videoUrl);
+    Uri videoUri = Uri.parse(catalogModel.videoUrl);
     String formatTimestamp(Timestamp timestamp, String format) {
       DateTime dateTime = timestamp.toDate();
       return DateFormat(format).format(dateTime);
@@ -25,7 +24,8 @@ class CatalogWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (ctx) => CatalogVp(videoUrl: videoUri, modelCatalog: catalogModel)));
+            builder: (ctx) =>
+                CatalogVp(videoUrl: videoUri, modelCatalog: catalogModel)));
       },
       child: Stack(
         children: [
@@ -33,7 +33,7 @@ class CatalogWidget extends StatelessWidget {
           Image.network(
             catalogModel.imageUrl,
             fit: BoxFit.cover,
-            width: screenWidth * 0.95,
+            width: screenWidth,
           ),
 
           // Metin ve düğmeler
@@ -111,7 +111,8 @@ class CatalogWidget extends StatelessWidget {
             child: IconButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                            builder: (ctx) => CatalogVp(videoUrl: videoUri, modelCatalog: catalogModel)));
+                    builder: (ctx) => CatalogVp(
+                        videoUrl: videoUri, modelCatalog: catalogModel)));
               },
               icon: const Icon(Icons.play_circle),
               iconSize: 50,
