@@ -26,62 +26,67 @@ Bu uygulama ile, Tobeto platformuna Mobil cihazlar üzerinden de erişilmesi ama
 
 **Uygulama Giriş Sayfası**
 
-![Ekran görüntüsü 2024-01-13 000430](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/641c0450-23a1-47c0-93ff-6af954e86bce)
+![Ekran görüntüsü 2024-03-01 223805](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/eac05bcd-46be-4e63-8f78-05872127fcbc)   ![Ekran görüntüsü 2024-03-01 223955](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/d6252b75-97f7-4b82-b4d3-ba95270b6a89)
+
+![Ekran görüntüsü 2024-03-01 224026](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/7e72fd91-1879-46ef-97ac-576014af7f7a)  ![Ekran görüntüsü 2024-03-01 224006](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/440b50fb-e993-49aa-81b7-962c24c7e7ea)
 
 
-![Ekran görüntüsü 2024-01-13 002121](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/7c2463bb-183e-426c-8fa2-8e178c929ed4)
+
 
 
 **Side Drawer**
 
-![Ekran görüntüsü 2024-01-05 192704](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/fe403523-88cd-4a12-b708-dec8c191aa5c)
+![Ekran görüntüsü 2024-03-01 232746](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/c072da0a-e0bd-47d4-9324-7738055d7a23) ![Ekran görüntüsü 2024-03-01 232816](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/b7140719-3154-4c2f-9c61-e120176a6dd0)
 
-![image](https://github.com/cebrailkeskindag/tobetoApp/assets/46896417/5821f7d5-b396-45c1-914d-c2652d641cfe)
 
 
 
 **Ana Sayfa**
 `Projemiz geliştirme aşamasında`
 
-https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/81831430-7ae3-49d6-99e8-0b5ed90a32c8
 
-![Ekran görüntüsü 2024-01-05 191333](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/f1150726-588d-4da4-8228-2fddb5397ae4)
+https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/17a487f3-eb47-4e78-b245-dcc0ec8fe922
+
 
 
 **Değerlendirmeler**
 `Projemiz geliştirme aşamasında`
 
-https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/94e5008e-d7a7-479b-abe8-cde80ad8a6d0
+![Ekran görüntüsü 2024-03-01 233408](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/a3784662-4a6c-400c-a632-5048d7eb2535) ![Ekran görüntüsü 2024-03-01 233522](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/c805373d-1a43-485b-8d13-3f77859f517c)
 
-![Ekran görüntüsü 2024-01-05 191425](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/988352d1-75f5-4296-b02a-184a20fcebf7)
+
+
+
+
+
 
 **Profil**
 `Projemiz geliştirme aşamasında`
 
 
-
-https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/6b3ad820-ea0a-42c8-9edd-249f1cbd62ac
-
+![Ekran görüntüsü 2024-03-01 224913](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/0724ce69-a0d7-4fcb-b6ce-001f8847bd82) ![Ekran görüntüsü 2024-03-01 234021](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/e4394b9a-1429-45b3-9252-61de9695aed1)
 
 
-https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/a3c4f8aa-aca8-4504-8b52-a6e786941de1
+
+
+
+
 
 
 
 **Katalog**
 `Projemiz geliştirme aşamasında`
 
-![Ekran görüntüsü 2024-01-05 183228](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/470dd266-b4da-451d-959e-b4d297f20edc)
+![Ekran görüntüsü 2024-03-01 234021](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/40e1532f-eea4-4706-9c27-3e7f389560f1) ![Ekran görüntüsü 2024-03-01 234021](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/d4857a1a-0d65-44fd-b340-f72dc31dfc80)
 
 
-![Ekran görüntüsü 2024-01-05 191454](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/42e068d2-9791-46eb-bce2-85dfe7ad6514)
+
 
 
 **Takvim**
 
-https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/66194ee5-96b0-4132-ae5e-06e243b7555e
+![Ekran görüntüsü 2024-03-01 225119](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/2e043eb4-de5d-4280-8948-b041f71976d8) ![Ekran görüntüsü 2024-03-01 234101](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/e2f34398-3e30-43aa-9c74-67d6618aa1d8)
 
-![Ekran görüntüsü 2024-01-13 001812](https://github.com/cebrailkeskindag/tobetoApp/assets/146968990/50b4b3a6-6f97-4e91-bb2c-a48c37751451)
 
 
 # For foreign friends 
