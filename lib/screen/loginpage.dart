@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_bloc.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_event.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_state.dart';
@@ -53,6 +54,28 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isPasswordVisible = false;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+
+  Future<User?> _signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount!.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+      final UserCredential authResult =
+          await _auth.signInWithCredential(credential);
+      final User? user = authResult.user;
+      return user;
+    } catch (error) {
+      print('Error: $error');
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Brightness currentBrightness = MediaQuery.of(context).platformBrightness;
@@ -170,6 +193,7 @@ class _LoginPageState extends State<LoginPage> {
                       ElevatedButton(
                         style: buttonStyle,
                         onPressed: () {
+                           print('giriş  tıklandı');
                           print(_email);
                           print(_password);
                           _submit();
@@ -214,7 +238,7 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         )),
                       ),
-                      // Continue with metni
+                   
                       const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text('Or continue with',
@@ -246,33 +270,52 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                            width: 50,
-                            height: 50,
-                            decoration: ShapeDecoration(
-                              image: const DecorationImage(
-                                  image:
-                                      AssetImage("assets/images/gologo.png")),
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.30, color: Colors.white),
-                                borderRadius: BorderRadius.circular(8.85),
-                              ),
-                            )),
-                        Container(
-                            width: 50,
-                            height: 50,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              image: const DecorationImage(
-                                image: AssetImage("assets/images/flogo.png"),
-                              ),
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.30, color: Colors.white),
-                                borderRadius: BorderRadius.circular(8.85),
-                              ),
-                            )),
+                        GestureDetector(
+                          onTap: () async {
+                           
+                            final User? user = await _signInWithGoogle();
+                            if (user != null) {
+                              // Kullanıcı başarıyla giriş yaptı, burada istediğiniz işlemleri yapabilirsiniz.
+                              print(
+                                  'Signed in with Google: ${user.displayName}');
+                            } else {
+                              // Giriş başarısız oldu
+                              print('Failed to sign in with Google');
+                            }
+                          },
+                          child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: ShapeDecoration(
+                                image: const DecorationImage(
+                                    image:
+                                        AssetImage("assets/images/gologo.png")),
+                                shape: RoundedRectangleBorder(
+                                  side: const BorderSide(
+                                      width: 0.30, color: Colors.white),
+                                  borderRadius: BorderRadius.circular(8.85),
+                                ),
+                              )),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            print('Failed to sign in with facebook');
+                          },
+                          child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: ShapeDecoration(
+                                color: Colors.white,
+                                image: const DecorationImage(
+                                  image: AssetImage("assets/images/flogo.png"),
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  side: const BorderSide(
+                                      width: 0.30, color: Colors.white),
+                                  borderRadius: BorderRadius.circular(8.85),
+                                ),
+                              )),
+                        ),
                         Container(
                             width: 50,
                             height: 50,

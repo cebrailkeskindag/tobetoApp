@@ -12,7 +12,12 @@
           "package_name": "com.example.tobetoapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "319524239850-d1t6qvf0t6kihjp37jks542v98879qhr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCcLxc436iol5IT_nTvT29HrEpN3RBPEOg"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319524239850-d1t6qvf0t6kihjp37jks542v98879qhr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "319524239850-8fk19gsgdp2mkqki64814hn28ccai7mi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tobetoapp"
+              }
+            }
+          ]
         }
       }
     }
