@@ -47,8 +47,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
     if (mounted) {
       if (documentSnapshot.exists && querySnapshot.exists) {
         setState(() {
-          _name = documentSnapshot.get("name");
-          _surname = documentSnapshot.get("surname");
+          _name = querySnapshot.get("name");
+          _surname = querySnapshot.get("surname");
           if (querySnapshot.exists) {
             _imageUrl = querySnapshot.get("imageUrl");
           }

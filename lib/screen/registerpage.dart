@@ -49,12 +49,28 @@ class _RegisterPageState extends State<RegisterPage> {
               .doc(userCredentials.user!
                   .uid) // içerisine id aldığında o id'yi almadığına AUTO-ID kullanır.
               .set({
-            'email': _email,
+            "uid": userCredentials.user!.uid,
+          });
+          firebaseFirestore
+              .collection('users')
+              .doc(userCredentials.user!.uid)
+              .collection('profile')
+              .doc('personal')
+              .set({
+            "uid": userCredentials.user!.uid,
             "imageUrl": "",
             "name": _name,
             "surname": _surname,
-            "uid": userCredentials.user!.uid,
-          }); // Verilen değeri ilgili dökümana yazar.
+            "phoneNumber": "",
+            "birthDate": FieldValue.serverTimestamp(),
+            "tc": "",
+            'email': _email,
+            "country": "",
+            "city": "",
+            "district": "",
+            "street": "",
+            "aboutMe": "",
+          });
         } on FirebaseAuthException catch (error) {
           // Hata mesajı göster..
           ScaffoldMessenger.of(context).showSnackBar(
@@ -259,21 +275,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                           Radius.circular(15)))),
                             ),
                           )),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (ctx) => const LoginPage()));
-                          },
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.background,
-                              fontSize: 11.33,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                              height: 0,
-                            ),
-                          )),
+                      const SizedBox(
+                        height: 15,
+                      ),
                       ElevatedButton(
                         style: buttonStyle,
                         onPressed: () {

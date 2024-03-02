@@ -65,9 +65,9 @@ class _ProfilePageState extends State<ProfilePage> {
     var querySnapshot = await profileCollectionRef.get();
     if (!querySnapshot.exists) {
       setState(() {
-      _isLoading =
-          false; // Set loading state to true when starting data fetching
-    });
+        _isLoading =
+            false; // Set loading state to true when starting data fetching
+      });
     }
     //  final profileDocument =
     // firebaseFireStore.collection("profile").doc("personal");
@@ -87,8 +87,8 @@ class _ProfilePageState extends State<ProfilePage> {
           _imageUrl = querySnapshot.get("imageUrl");
           _phoneNumber = querySnapshot.get("phoneNumber");
           _birthDate = querySnapshot.get("birthDate");
-          _birthDateString = formatTimestamp(
-              querySnapshot.get("birthDate"), 'yyyy-MM-dd – kk:mm');
+          _birthDateString =
+              formatTimestamp(querySnapshot.get("birthDate"), 'yyyy-MM-dd');
           _tc = querySnapshot.get("tc");
           _email = querySnapshot.get("email");
           _country = querySnapshot.get("country");

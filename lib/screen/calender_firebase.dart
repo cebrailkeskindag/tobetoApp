@@ -26,7 +26,7 @@ class CalendarFirebase extends StatefulWidget {
 }
 
 class _CalendarFirebaseState extends State<CalendarFirebase> {
-    List<CalendarModel> events = [];
+  List<CalendarModel> events = [];
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
@@ -34,7 +34,7 @@ class _CalendarFirebaseState extends State<CalendarFirebase> {
 
   final TextEditingController _eventController = TextEditingController();
   Future<List<CalendarModel>> fetchEventsFromFirestore() async {
-  // late List<CalendarModel> events = [];
+    // late List<CalendarModel> events = [];
     final user = firebaseAuthInstance.currentUser;
 
     var querySnapshot = await FirebaseFirestore.instance

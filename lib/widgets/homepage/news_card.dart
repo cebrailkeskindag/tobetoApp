@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:tobetoapp/models/news.dart';
-import 'package:tobetoapp/widgets/homepage/news_content.dart';
 
 final firebaseAuthInstance = FirebaseAuth.instance;
 final firebaseStorageInstance = FirebaseStorage.instance;
@@ -18,34 +17,6 @@ class NewsCard extends StatefulWidget {
 }
 
 class _NewsCardState extends State<NewsCard> {
-  late Future<List<News>> _newsListFuture;
-  Future<List<News>> _getNewslist() async {
-    final user = firebaseAuthInstance.currentUser;
-    final userDocRef = firebaseFirestore.collection("users").doc(user!.uid);
-
-// Belirli belgeye ait alt koleksiyona erişin
-    var newsListcollectionRef = userDocRef.collection('newsList');
-    var querySnapshot = await newsListcollectionRef.get();
-
-    final newsList = querySnapshot.docs.map((doc) {
-      final data = doc.data();
-      return News.fromJson(data);
-    }).toList();
-
-    // Mesajları tarihe göre sırala
-    newsList.sort((a, b) {
-      return a.newsDate.compareTo(b.newsDate);
-    });
-
-    return newsList;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _newsListFuture = _getNewslist();
-  }
-
   @override
   Widget build(BuildContext context) {
     Timestamp timestamp = widget.news.newsDate;
@@ -54,130 +25,101 @@ class _NewsCardState extends State<NewsCard> {
     // Ekran genişliği
     double screenWidth = mediaQuery.size.width;
 
-    return FutureBuilder<List<News>>(
-      future: _newsListFuture,
-      builder: (context, snapshot) {
-        final newsList = snapshot.data ?? [];
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: SizedBox(
-              width: 100,
-              height: 100,
-              child: CircularProgressIndicator(
-                  strokeAlign: BorderSide.strokeAlignCenter),
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: SizedBox(
+        width: screenWidth * 0.9,
+        child: Card(
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color: Theme.of(context).primaryColor,
+              width: 6,
             ),
-          ); // Veri yüklenirken bekleyici göster
-        } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
-        } else if (newsList.isEmpty) {
-          return Padding(
+          ),
+          child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-                side: BorderSide(
-                    color: Theme.of(context).colorScheme.secondary, width: 8),
-              ),
-              child: Column(
-                children: [
-                  Image.asset(
-                    "assets/images/surveyError.png",
-                    height: 150,
-                  ),
-                  const Text(
-                    "Tanımlanmış herhangi bir sınavınız bulunmamaktadır.",
-                    textAlign: TextAlign.center,
-                  )
-                ],
-              ),
-            ),
-          );
-        } else {
-          // Veri başarıyla geldiyse
-          return Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: SizedBox(
-              width: screenWidth * 0.9,
-              child: Card(
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  side: BorderSide(
-                    color: Theme.of(context).primaryColor,
-                    width: 6,
-                  ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      "Duyuru",
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      "İstanbul Kodluyor",
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                    ),
+                  ],
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Duyuru",
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                          ),
-                          const Spacer(),
-                          Text(
-                            "İstanbul Kodluyor",
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
-                        children: [
-                          Text(
-                            widget.news.title,
-                            textAlign: TextAlign.left,
-                            style: const TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
-                        children: [
-                          const Icon(Icons.calendar_month_outlined),
-                          Text(
-                            newsDateString,
-                            style: const TextStyle(fontSize: 14),
-                          ),
-                          const Spacer(),
-                          TextButton(
-                              onPressed: () {
-                                print("tıklandı");
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => NewsContent(
-                                            content: widget.news.newsContent,
-                                            title: widget.news.title,
-                                          )),
-                                );
-                              },
-                              child: const Text(
-                                "Devamını Oku",
-                                style: TextStyle(
-                                  color: Color.fromRGBO(93, 5, 118, 0.9),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Text(
+                      widget.news.title,
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    const Icon(Icons.calendar_month_outlined),
+                    Text(
+                      newsDateString,
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                    const Spacer(),
+                    TextButton(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text(widget.news.title),
+                                content: SingleChildScrollView(
+                                  child: ListBody(
+                                    children: <Widget>[
+                                      Text(widget.news.newsContent),
+                                    ],
+                                  ),
                                 ),
-                              ))
-                        ],
-                      ),
-                    ],
-                  ),
+                                actions: <Widget>[
+                                  TextButton(
+                                    child: Text('Kapat'),
+                                    onPressed: () {
+                                      Navigator.of(context)
+                                          .pop(); // Diyalogu kapat
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: const Text(
+                          "Devamını Oku",
+                          style: TextStyle(
+                            color: Color.fromRGBO(93, 5, 118, 0.9),
+                          ),
+                        ))
+                  ],
                 ),
-              ),
+              ],
             ),
-          );
-        }
-      },
+          ),
+        ),
+      ),
     );
   }
 }

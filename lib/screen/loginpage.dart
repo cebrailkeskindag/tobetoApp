@@ -24,6 +24,25 @@ class _LoginPageState extends State<LoginPage> {
   String _password = '';
   bool _isAuth = false;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  showSnackBarFun(BuildContext context, String mesaj) {
+    SnackBar snackBar = SnackBar(
+      content: Text(
+        mesaj,
+        style: TextStyle(fontSize: 18),
+      ),
+      backgroundColor: Colors.indigo,
+      dismissDirection: DismissDirection.up,
+      behavior: SnackBarBehavior.floating,
+      margin: EdgeInsets.only(
+        bottom: MediaQuery.of(context).size.height - 200,
+        left: 10,
+        right: 10,
+      ),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   void _submit() async {
     //context.read<AuthBloc>().add(Login(email: _email, password: _email));
     /*if (_formKey.currentState!.validate()) {
@@ -47,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
       }
     } catch (e) {
       print('Error: $e');
-      // Hata durumunda kullanıcıya bilgi verilebilir
+      showSnackBarFun(context, "Error: $e");
     }
   }
 
@@ -76,6 +95,18 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  Future<void> resetPassword(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Parola sıfırlama maili mail adresinize gönderildi.")));
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Parola sıfırlama sırasında bir hata oluştu.}")));
+    }
+  }
+
+  final TextEditingController _emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Brightness currentBrightness = MediaQuery.of(context).platformBrightness;
@@ -89,6 +120,7 @@ class _LoginPageState extends State<LoginPage> {
         textStyle: const TextStyle(fontSize: 16),
         backgroundColor: (AppColorDark.elevatedButtonColor),
         minimumSize: const Size(160, 40));
+
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is Authenticated) {
@@ -182,12 +214,52 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                showModalBottomSheet<void>(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return ClipRRect(
+                                      borderRadius: const BorderRadius.only(
+                                          topRight: Radius.circular(30),
+                                          topLeft: Radius.circular(30)),
+                                      child: Container(
+                                        height: 150,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .background,
+                                        child: Center(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: <Widget>[
+                                              TextField(
+                                                controller: _emailController,
+                                                decoration: InputDecoration(
+                                                    labelText:
+                                                        'E-posta Adresi'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  resetPassword(
+                                                      _emailController.text);
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('Şifremi Sıfırla'),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
                               child: const Text(
-                                'Forgot Password?',
+                                'Parolamı Unuttum',
                                 style: TextStyle(
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontSize: 11.33,
+                                  color: Colors.black,
+                                  fontSize: 14.33,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                   height: 0,
@@ -205,7 +277,13 @@ class _LoginPageState extends State<LoginPage> {
                               print('giriş  tıklandı');
                               print(_email);
                               print(_password);
-                              _submit();
+                              if (_email.isEmpty || _password.isEmpty) {
+                                showSnackBarFun(context,
+                                    "Lütfen kullanıcı adı ve şifre giriniz!");
+                              } else {
+                                _submit();
+                              }
+
                               /* Navigator.of(context).push(MaterialPageRoute(
                         builder: (ctx) => const HomepageScreen()));*/
                             },

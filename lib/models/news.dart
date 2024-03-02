@@ -8,6 +8,7 @@ class News {
     required this.title,
     required this.newsDate,
     required this.newsContent,
+    required this.who,
   });
 
   final String id;
@@ -15,6 +16,7 @@ class News {
   final Timestamp newsDate;
   final String uid;
   final String newsContent;
+  final String who;
 
   factory News.fromJson(Map<String, dynamic> json) => News(
         id: json['id'],
@@ -22,5 +24,6 @@ class News {
         title: json['title'],
         newsDate: json['newsDate'],
         newsContent: json['content'],
+        who: json['who'],
       );
 }

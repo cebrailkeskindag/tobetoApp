@@ -18,6 +18,7 @@ void main() async {
       BlocProvider<CatalogBloc>(create: (context) => CatalogBloc())
     ],
     child: const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyApp(),
     ),
   ));
