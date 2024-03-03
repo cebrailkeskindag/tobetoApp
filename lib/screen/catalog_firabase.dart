@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tobetoapp/blocs/catalog_bloc/catalog_bloc.dart';
 import 'package:tobetoapp/blocs/catalog_bloc/catalog_event.dart';
-import 'package:tobetoapp/blocs/catalog_bloc/catalog_state.dart';
-import 'package:tobetoapp/models/modelcatolag.dart';
+import 'package:tobetoapp/blocs/catalog_bloc/catalog_state.dart'; 
 import 'package:tobetoapp/widgets/catalog/catalog_widget.dart';
 
 class CatalogFirebase extends StatelessWidget {
@@ -11,7 +10,7 @@ class CatalogFirebase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // CatalogBloc'u kullanarak verileri yükleyin
+    
     context.read<CatalogBloc>().add(LoadCatalog());
 
     return Scaffold(
@@ -20,18 +19,18 @@ class CatalogFirebase extends StatelessWidget {
       ),
       body: BlocBuilder<CatalogBloc, CatalogState>(
         builder: (context, state) {
-          // CatalogLoaded durumunda, verileri ekranda gösterin
+           
           if (state is CatalogLoaded) {
             return ListView.builder(
               itemCount: state.catalogs.length,
               itemBuilder: (context, index) {
-                // Her bir ModelCatalog öğesini ListTile olarak gösterin
+                 
                 final catalog = state.catalogs[index];
                 return CatalogWidget(catalogModel: catalog);
               },
             );
           }
-          // Diğer durumlar için uygun görsel geri dönüş sağlayın
+          
           else if (state is CatalogLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is CatalogError) {

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/models/news.dart';
 import 'package:tobetoapp/widgets/homepage/news_card.dart';
 
@@ -18,37 +19,12 @@ class NewsCardFirebase extends StatefulWidget {
 }
 
 class _NewsCardFirebaseState extends State<NewsCardFirebase> {
-  void _getUserInfo() async {
-    var newsListCollectionRef =
-        firebaseFirestore.collection('newsList').doc("news5");
-    var querySnapshot = await newsListCollectionRef.get();
-
-    String formatTimestamp(Timestamp timestamp, String format) {
-      DateTime dateTime = timestamp.toDate();
-      return DateFormat(format).format(dateTime);
-    }
-
-    if (mounted) {
-      setState(() {
-        print("title ${querySnapshot.get("title")}");
-        print("content ${querySnapshot.get("content")}");
-        print("who ${querySnapshot.get("who")}");
-        print(
-            "newsDate ${formatTimestamp(querySnapshot.get("newsDate"), 'yyyy-MM-dd – kk:mm')}");
-        print("id ${querySnapshot.get("id")}");
-        print("uid ${querySnapshot.get("uid")}");
-      });
-    }
-  }
-
+  
   late Future<List<News>> _newsListFuture;
 
   Future<List<News>> _getNewslist() async {
-    final user = firebaseAuthInstance.currentUser;
-    // final userDocRef = firebaseFirestore.collection("users").doc(user!.uid);
-
-// Belirli belgeye ait alt koleksiyona erişin
-    var newsListCollectionRef = firebaseFirestore.collection('newsList');
+  
+    var newsListCollectionRef = firebaseFirestore.collection(ConstanstFirebase.NEWS_LIST);
     var querySnapshot = await newsListCollectionRef.get();
 
     final newsList = querySnapshot.docs.map((doc) {
@@ -56,7 +32,6 @@ class _NewsCardFirebaseState extends State<NewsCardFirebase> {
       return News.fromJson(data);
     }).toList();
 
-    // Mesajları tarihe göre sırala
     newsList.sort((a, b) {
       return a.newsDate.compareTo(b.newsDate);
     });
@@ -67,7 +42,7 @@ class _NewsCardFirebaseState extends State<NewsCardFirebase> {
   @override
   void initState() {
     super.initState();
-    _getUserInfo();
+   
     _newsListFuture = _getNewslist();
   }
 
@@ -75,7 +50,6 @@ class _NewsCardFirebaseState extends State<NewsCardFirebase> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
 
-    // Ekran genişliği
     double screenWidth = mediaQuery.size.width;
 
     return FutureBuilder<List<News>>(
@@ -83,7 +57,7 @@ class _NewsCardFirebaseState extends State<NewsCardFirebase> {
       builder: (context, snapshot) {
         final newsList = snapshot.data ?? [];
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator(); // Veri yüklenirken bekleyici göster
+          return const CircularProgressIndicator();  
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else if (newsList.isEmpty) {
@@ -105,8 +79,7 @@ class _NewsCardFirebaseState extends State<NewsCardFirebase> {
             ),
           );
         } else {
-          // Veri başarıyla geldiyse
-
+          
           return SizedBox(
             width: screenWidth / 0.20,
             child: SingleChildScrollView(

@@ -1,5 +1,5 @@
 class CatalogModel {
-  // Ctor'da default değer
+ 
   const CatalogModel({
     required this.id,
     required this.imagePath,

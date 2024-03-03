@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
 import 'package:tobetoapp/widgets/profile/profile%20homepage/background_sliver.dart';
@@ -59,19 +60,17 @@ class _ProfilePageState extends State<ProfilePage> {
           true; // Set loading state to true when starting data fetching
     });
     final user = firebaseAuthInstance.currentUser;
-    final document = firebaseFireStore.collection("users").doc(user!.uid);
+    final document = firebaseFireStore.collection(ConstanstFirebase.USERS).doc(user!.uid);
     final documentSnapshot = await document.get();
-    var profileCollectionRef = document.collection('profile').doc("personal");
+    var profileCollectionRef = document.collection(ConstanstFirebase.PROFILE).doc(ConstanstFirebase.PERSONAL);
     var querySnapshot = await profileCollectionRef.get();
     if (!querySnapshot.exists) {
       setState(() {
         _isLoading =
-            false; // Set loading state to true when starting data fetching
+            false;  
       });
     }
-    //  final profileDocument =
-    // firebaseFireStore.collection("profile").doc("personal");
-    //  final documentSnapshotProfile = await profileDocument.get();
+     
 
     String formatTimestamp(Timestamp timestamp, String format) {
       DateTime dateTime = timestamp.toDate();

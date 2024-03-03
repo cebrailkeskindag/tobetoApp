@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class News {
-  // Ctor'da default değer
+
   const News({
     required this.id,
     required this.uid,

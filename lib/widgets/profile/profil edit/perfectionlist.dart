@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/models/perfection.dart';
 
 final firebaseAuthInstance = FirebaseAuth.instance;
@@ -22,10 +23,9 @@ class _PerfectionListState extends State<PerfectionList> {
 
   Future<List<LanguageModel>> _getPerfectionlist() async {
     final user = firebaseAuthInstance.currentUser;
-    final userDocRef = firebaseFirestore.collection("users").doc(user!.uid);
-
-// Belirli belgeye ait alt koleksiyona erişin
-    var perfectionListCollectionRef = userDocRef.collection('perfections');
+    final userDocRef = firebaseFirestore.collection(ConstanstFirebase.USERS).doc(user!.uid);
+ 
+    var perfectionListCollectionRef = userDocRef.collection(ConstanstFirebase.PERFECTIONS);
     var querySnapshot = await perfectionListCollectionRef.get();
 
     final perfectionList = querySnapshot.docs.map((doc) {
@@ -58,7 +58,7 @@ class _PerfectionListState extends State<PerfectionList> {
       builder: (context, snapshot) {
         final perfectionList = snapshot.data ?? [];
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator(); // Veri yüklenirken bekleyici göster
+          return const CircularProgressIndicator();  
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else if (perfectionList.isEmpty) {
@@ -70,7 +70,7 @@ class _PerfectionListState extends State<PerfectionList> {
             ),
           );
         } else {
-          // Veri başarıyla geldiyse
+         
 
           return SizedBox(
             width: screenWidth / 0.20,

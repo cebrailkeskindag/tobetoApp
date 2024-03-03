@@ -128,7 +128,7 @@ class _CatalogState extends State<Catalog> {
                   child: ListView.builder(
                     itemCount: state.catalogs.length,
                     itemBuilder: (context, index) {
-                      // Her bir ModelCatalog öğesini ListTile olarak gösterin
+                      
                       final catalog = state.catalogs[index];
                       return CatalogWidget(catalogModel: catalog);
                     },
@@ -137,23 +137,11 @@ class _CatalogState extends State<Catalog> {
                 const SizedBox(
                   height: 1,
                 )
-                /*
-            ListView.builder(
-              shrinkWrap:
-                  true, // Bu satırı ekleyerek ListView'ı sarmalayabiliriz.
-              physics:
-                  const NeverScrollableScrollPhysics(), // ListView'ın kaydırılmasını devre dışı bırakır.
-              itemCount: catalogList.length,
-              itemBuilder: (ctx, index) => Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CatalogWidget(catalogModel: catalogList[index]),
-              ),
-            ),
-            */
+                
               ],
             );
           }
-          // Diğer durumlar için uygun görsel geri dönüş sağlayın
+          
           else if (state is CatalogLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is CatalogError) {

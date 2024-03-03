@@ -33,11 +33,11 @@ whatsapp() async {
 }
 
 void _launchWhatsApp() async {
-  const phoneNumber = '+905551234567'; // Uluslararası formatta telefon numarası
+  const phoneNumber = '+905551234567';  
   const message =
-      'Merhaba, pair8 üzerinden mesaj gönderiyorum!'; // Başlangıç mesajı
+      'Merhaba, pair8 üzerinden mesaj gönderiyorum!'; 
   final url = 'https://wa.me/$phoneNumber/?text=${Uri.encodeFull(message)}';
-  //Uri wpUri = Uri.parse(url);
+  
   if (await canLaunchUrlString(url)) {
     await launchUrlString(url);
   } else {

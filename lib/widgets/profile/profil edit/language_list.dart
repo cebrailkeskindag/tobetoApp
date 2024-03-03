@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/models/language_models.dart';
 
 final firebaseAuthInstance = FirebaseAuth.instance;
@@ -22,10 +23,9 @@ class _LanguageListState extends State<LanguageList> {
 
   Future<List<LanguageModel>> _getLanguagelist() async {
     final user = firebaseAuthInstance.currentUser;
-    final userDocRef = firebaseFirestore.collection("users").doc(user!.uid);
-
-// Belirli belgeye ait alt koleksiyona erişin
-    var languageListCollectionRef = userDocRef.collection('languages');
+    final userDocRef = firebaseFirestore.collection(ConstanstFirebase.USERS).doc(user!.uid);
+ 
+    var languageListCollectionRef = userDocRef.collection(ConstanstFirebase.LANGUAGES);
     var querySnapshot = await languageListCollectionRef.get();
 
     final languageList = querySnapshot.docs.map((doc) {
@@ -58,7 +58,7 @@ class _LanguageListState extends State<LanguageList> {
       builder: (context, snapshot) {
         final LanguageList = snapshot.data ?? [];
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator(); // Veri yüklenirken bekleyici göster
+          return const CircularProgressIndicator();  
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else if (LanguageList.isEmpty) {
@@ -70,7 +70,7 @@ class _LanguageListState extends State<LanguageList> {
             ),
           );
         } else {
-          // Veri başarıyla geldiyse
+           
 
           return SizedBox(
             width: screenWidth / 0.20,

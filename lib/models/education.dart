@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Education {
-  // Ctor'da default değer
   const Education({
     required this.id,
     required this.uid,

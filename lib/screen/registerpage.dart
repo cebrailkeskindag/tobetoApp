@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_bloc.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_state.dart';
-import 'package:tobetoapp/screen/homepage_screen.dart';
-import 'package:tobetoapp/screen/loginpage.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
+import 'package:tobetoapp/screen/homepage_screen.dart'; 
 import 'package:tobetoapp/theme/app_color.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -45,17 +45,17 @@ class _RegisterPageState extends State<RegisterPage> {
                   email: _email, password: _password);
           print(userCredentials);
           firebaseFirestore
-              .collection("users")
+              .collection(ConstanstFirebase.USERS)
               .doc(userCredentials.user!
                   .uid) // içerisine id aldığında o id'yi almadığına AUTO-ID kullanır.
               .set({
             "uid": userCredentials.user!.uid,
           });
           firebaseFirestore
-              .collection('users')
+              .collection(ConstanstFirebase.USERS)
               .doc(userCredentials.user!.uid)
-              .collection('profile')
-              .doc('personal')
+              .collection(ConstanstFirebase.PROFILE)
+              .doc(ConstanstFirebase.PERSONAL)
               .set({
             "uid": userCredentials.user!.uid,
             "imageUrl": "",

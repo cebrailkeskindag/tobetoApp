@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/models/edu.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
 import 'package:tobetoapp/widgets/homepage/trainings_card.dart';
@@ -22,9 +23,8 @@ class _EducationFirebaseState extends State<EducationFirebase> {
 
   Future<List<Edu>> _getEdulist() async {
     final user = firebaseAuthInstance.currentUser;
-    final userDocRef = firebaseFirestore.collection("users").doc(user!.uid);
-
-// Belirli belgeye ait alt koleksiyona erişin
+    final userDocRef = firebaseFirestore.collection(ConstanstFirebase.USERS).doc(user!.uid);
+ 
     var eduListCollectionRef = userDocRef.collection('educationList');
     var querySnapshot = await eduListCollectionRef.get();
 
@@ -32,8 +32,7 @@ class _EducationFirebaseState extends State<EducationFirebase> {
       final data = doc.data();
       return Edu.fromJson(data);
     }).toList();
-
-    // Mesajları tarihe göre sırala
+ 
     eduList.sort((a, b) {
       return a.date.compareTo(b.date);
     });
@@ -50,8 +49,7 @@ class _EducationFirebaseState extends State<EducationFirebase> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-
-    // Ekran genişliği
+ 
     double screenWidth = mediaQuery.size.width;
 
     return FutureBuilder<List<Edu>>(
@@ -86,7 +84,7 @@ class _EducationFirebaseState extends State<EducationFirebase> {
             ),
           );
         } else {
-          // Veri başarıyla geldiyse
+           
           return Padding(
             padding: const EdgeInsets.only(top: 8),
             child: SizedBox(
@@ -98,7 +96,7 @@ class _EducationFirebaseState extends State<EducationFirebase> {
                     for (Edu edu in eduList)
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 8.0), // Boşluk ekle
+                            horizontal: 8.0), 
                         child: TrainingsCard(edu: edu),
                       ),
                     SizedBox(
@@ -117,16 +115,16 @@ class _EducationFirebaseState extends State<EducationFirebase> {
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.black
-                                          .withOpacity(0.3), // Gölge rengi
-                                      spreadRadius: 4, // Yayılma yarıçapı
-                                      blurRadius: 10, // Bulanıklık yarıçapı
-                                      // Gölgeyi kaydırma
+                                          .withOpacity(0.3),  
+                                      spreadRadius: 4,  
+                                      blurRadius: 10, 
+                                       
                                     ),
                                   ],
                                 ),
                                 child: IconButton(
                                   onPressed: () {
-                                    // IconButton'a basıldığında yapılacak işlemler
+                                    
                                   },
                                   icon: const Icon(
                                     Icons.arrow_forward_ios,

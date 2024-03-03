@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/screen/calender_firebase.dart';
 import 'package:tobetoapp/screen/catalog.dart';
@@ -30,19 +31,16 @@ class _DrawerMenuState extends State<DrawerMenu> {
   @override
   void initState() {
     super.initState();
-    // Sayfa yüklendiğinde bu fonksiyon çağrılır
+    
     _getUserInfo();
   }
 
   void _getUserInfo() async {
     final user = firebaseAuthInstance.currentUser;
-    final document = firebaseFireStore.collection("users").doc(user!.uid);
+    final document = firebaseFireStore.collection(ConstanstFirebase.USERS).doc(user!.uid);
     final documentSnapshot = await document.get();
-    var profileCollectionRef = document.collection('profile').doc("personal");
-    var querySnapshot = await profileCollectionRef.get();
-    //  final profileDocument =
-    // firebaseFireStore.collection("profile").doc("personal");
-    //  final documentSnapshotProfile = await profileDocument.get();
+    var profileCollectionRef = document.collection(ConstanstFirebase.PROFILE).doc(ConstanstFirebase.PERSONAL);
+    var querySnapshot = await profileCollectionRef.get(); 
 
     if (mounted) {
       if (documentSnapshot.exists && querySnapshot.exists) {
@@ -52,7 +50,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
           if (querySnapshot.exists) {
             _imageUrl = querySnapshot.get("imageUrl");
           }
-          print("$_imageUrl");
+          
 
           if (_name.isNotEmpty) {
             userName = "$_name $_surname";

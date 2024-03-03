@@ -8,12 +8,9 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-
-    // Ekran genişliği
+ 
     double screenWidth = mediaQuery.size.width;
-
-    // Ekran yüksekliği
-    //double screenHeight = mediaQuery.size.height;
+    double screenHeight = mediaQuery.size.height;
     return Column(
       children: [
         Padding(

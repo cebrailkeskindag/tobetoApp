@@ -6,8 +6,7 @@ class EvaItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-
-    // Ekran genişliği
+ 
     double screenWidth = mediaQuery.size.width;
     return Padding(
       padding: const EdgeInsets.all(8.0),

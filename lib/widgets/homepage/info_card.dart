@@ -10,7 +10,7 @@ class InfoCard extends StatelessWidget {
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20), // Adjust the value as needed
+          borderRadius: BorderRadius.circular(20),  
           side: BorderSide(
             color: Theme.of(context).primaryColor,
             width: 6,
@@ -43,7 +43,7 @@ class InfoCard extends StatelessWidget {
                         maxWidth: 100,
                         maxHeight: 20,
                       ),
-                      color: Color.fromRGBO(
+                      color: const Color.fromRGBO(
                         27,
                         227,
                         240,

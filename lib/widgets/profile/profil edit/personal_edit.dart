@@ -7,6 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
@@ -46,11 +47,9 @@ class _PersonalEditState extends State<PersonalEdit> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _surnameController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
-  final TextEditingController _birthDateController = TextEditingController();
   final TextEditingController _tcController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _countryController = TextEditingController();
-  final TextEditingController _cityController = TextEditingController();
   final TextEditingController _districtController = TextEditingController();
   final TextEditingController _streetController = TextEditingController();
   final TextEditingController _aboutMeController = TextEditingController();
@@ -67,11 +66,13 @@ class _PersonalEditState extends State<PersonalEdit> {
   }
 
   void _getUserImage() async {
-    print("GetUserImage");
     final user = firebaseAuthInstance.currentUser;
-    final document = firebaseFireStore.collection("users").doc(user!.uid);
-    final documentSnapshot = await document.get();
-    var profileCollectionRef = document.collection('profile').doc("personal");
+    final document =
+        firebaseFireStore.collection(ConstanstFirebase.USERS).doc(user!.uid);
+
+    var profileCollectionRef = document
+        .collection(ConstanstFirebase.PROFILE)
+        .doc(ConstanstFirebase.PERSONAL);
     var querySnapshot = await profileCollectionRef.get();
     if (querySnapshot.exists) {
       setState(() {
@@ -140,7 +141,8 @@ class _PersonalEditState extends State<PersonalEdit> {
     final url = await storageRef.getDownloadURL();
     print(url);
 
-    final document = firebaseFireStore.collection("users").doc(user.uid);
+    final document =
+        firebaseFireStore.collection(ConstanstFirebase.USERS).doc(user.uid);
     await document.update({'imageUrl': url});
 
     setState(() {
@@ -217,8 +219,7 @@ class _PersonalEditState extends State<PersonalEdit> {
                             child: IconButton(
                               onPressed: () {
                                 setState(() {
-                                  _pickedFile =
-                                      null; // Seçilen resmi null olarak ayarla
+                                  _pickedFile = null;
                                 });
                               },
                               icon: const Icon(
@@ -227,12 +228,12 @@ class _PersonalEditState extends State<PersonalEdit> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 50), // Boşluk ekleyebilirsiniz
+                          const SizedBox(width: 50),
                           CircleAvatar(
                             maxRadius: 20,
                             child: IconButton(
                               onPressed: () {
-                                _pickImage(); // Edit iconuna tıklandığında yeni resim seçme işlemi
+                                _pickImage();
                               },
                               icon: const Icon(Icons.create),
                             ),
@@ -451,10 +452,10 @@ class _PersonalEditState extends State<PersonalEdit> {
                         _district.isNotEmpty) {
                       _upload();
                       firebaseFirestore
-                          .collection('users')
+                          .collection(ConstanstFirebase.USERS)
                           .doc(user!.uid)
-                          .collection('profile')
-                          .doc('personal')
+                          .collection(ConstanstFirebase.PROFILE)
+                          .doc(ConstanstFirebase.PERSONAL)
                           .set({
                         "uid": user?.uid,
                         "imageUrl": _imageUrl,

@@ -112,7 +112,7 @@ class _ExperienceEditState extends State<ExperienceEdit> {
               const SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
-                  // labelText: "Doğum Tarihiniz",
+                
                   hintText: selectedDate != null
                       ? "${selectedDate!.toLocal().day.toString().padLeft(2, '0')}/${selectedDate!.toLocal().month.toString().padLeft(2, '0')}/${selectedDate!.toLocal().year}"
                       : "İş Başlangıcı",

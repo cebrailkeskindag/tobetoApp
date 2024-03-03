@@ -3,6 +3,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
@@ -19,40 +20,36 @@ class _LanguageEditState extends State<LanguageEdit> {
   final firebaseFirestore = FirebaseFirestore.instance;
 
   DateTime? date;
+  
   void _submitlanguage() async {
     final user = firebaseAuthInstance.currentUser;
-    final document = firebaseFireStore.collection("users").doc(user!.uid);
+    final document =
+        firebaseFireStore.collection(ConstanstFirebase.USERS).doc(user!.uid);
 
     date = DateTime.now();
     try {
-      document.collection("languages").doc().set({
-        'language': selectedlanguage?.language,
-        'date': date,
-        'level': selectedlevel?.level,
-      });
+      final languageSnapshot = await document
+          .collection(ConstanstFirebase.LANGUAGES)
+          .where('language', isEqualTo: selectedlanguage?.language)
+          .get();
+
+      if (languageSnapshot.docs.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Bu dil zaten eklenmiş!'),
+        ));
+      } else {
+        document.collection(ConstanstFirebase.LANGUAGES).doc().set({
+          'language': selectedlanguage?.language,
+          'date': date,
+          'level': selectedlevel?.level,
+        });
+      }
     } on FirebaseException catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message!)));
     }
   }
 
-  /*void _submitlanguage() async {
-    final user = firebaseAuthInstance.currentUser;
-    final document = firebaseFireStore.collection("language").doc(Language!.uid);
-
-    date = DateTime.now();
-    try {
-      document.collection("levels").doc().set({
-        'language': selectedlanguage?.language,
-        'date': date,
-        'level': selectedlevel,
-      });
-    } on FirebaseException catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.message!)));
-    }
-  }
-*/
   Language? selectedlanguage;
   Language? selectedlang;
   Level? selectedlevel;
@@ -168,7 +165,6 @@ class _LanguageEditState extends State<LanguageEdit> {
               const SizedBox(height: 20),
               ElevatedButton(
                   onPressed: () {
-                    print(selectedlang?.language);
                     if (isLevel && isLanguage) {
                       _submitlanguage();
                     } else {

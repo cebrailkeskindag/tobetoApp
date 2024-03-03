@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_bloc.dart';
-import 'package:tobetoapp/blocs/auth_bloc/auth_event.dart';
 import 'package:tobetoapp/blocs/auth_bloc/auth_state.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
 import 'package:tobetoapp/screen/registerpage.dart';
@@ -44,11 +43,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _submit() async {
-    //context.read<AuthBloc>().add(Login(email: _email, password: _email));
-    /*if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      
-    }*/
+  
     try {
       final UserCredential userCredential =
           await _auth.signInWithEmailAndPassword(
@@ -124,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is Authenticated) {
-          // Kullanıcı oturum açtıysa anasayfaya yönlendir
+      
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const HomepageScreen()),
           );
@@ -274,9 +269,7 @@ class _LoginPageState extends State<LoginPage> {
                           ElevatedButton(
                             style: buttonStyle,
                             onPressed: () {
-                              print('giriş  tıklandı');
-                              print(_email);
-                              print(_password);
+          
                               if (_email.isEmpty || _password.isEmpty) {
                                 showSnackBarFun(context,
                                     "Lütfen kullanıcı adı ve şifre giriniz!");
@@ -284,8 +277,6 @@ class _LoginPageState extends State<LoginPage> {
                                 _submit();
                               }
 
-                              /* Navigator.of(context).push(MaterialPageRoute(
-                        builder: (ctx) => const HomepageScreen()));*/
                             },
                             child: const Text(
                               "GİRİŞ YAP",

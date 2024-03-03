@@ -2,10 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tobetoapp/datas/datas.dart';
-import 'package:tobetoapp/models/exam.dart';
-import 'package:tobetoapp/models/news.dart';
-import 'package:tobetoapp/models/training.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/widgets/homepage/circular_button.dart';
 import 'package:tobetoapp/widgets/homepage/education_firebase.dart';
 import 'package:tobetoapp/widgets/homepage/exam_firebase.dart';
@@ -13,14 +10,9 @@ import 'package:tobetoapp/widgets/homepage/info_card.dart';
 import 'package:tobetoapp/widgets/homepage/category_card.dart';
 
 import 'package:tobetoapp/widgets/homepage/drawer.dart';
-import 'package:tobetoapp/widgets/homepage/exam_card.dart';
-import 'package:tobetoapp/widgets/homepage/news_card.dart';
 import 'package:tobetoapp/widgets/homepage/news_card_firebase.dart';
 import 'package:tobetoapp/widgets/homepage/page_view.dart';
 import 'package:tobetoapp/widgets/homepage/survey_card.dart';
-import 'package:tobetoapp/widgets/homepage/trainings_card.dart';
-import 'package:tobetoapp/datas/datas.dart';
-
 import '../theme/app_color.dart';
 
 const List<Tab> tabs = <Tab>[
@@ -48,56 +40,32 @@ final firebaseAuthInstance = FirebaseAuth.instance;
 final firebaseFireStore = FirebaseFirestore.instance;
 
 class _HomepageScreenState extends State<HomepageScreen> {
-  PageController pageController = PageController(viewportFraction: 0.85);
-  var _currPageValue = 0.0;
-  double _scalefactor = 0.8;
-  double _height = 220;
-
   @override
   void initState() {
     super.initState();
-    // Sayfa yüklendiğinde bu fonksiyon çağrılır
+
     _getUserInfo();
   }
 
   void _getUserInfo() async {
     final user = firebaseAuthInstance.currentUser;
-    final document = firebaseFireStore.collection("users").doc(user!.uid);
+    final document =
+        firebaseFireStore.collection(ConstanstFirebase.USERS).doc(user!.uid);
     final documentSnapshot = await document.get();
-    var eduListCollectionRef = document.collection('educationList').doc("edu4");
-    var querySnapshot = await eduListCollectionRef.get();
-    //firebaseFireStore.collection("educationList").doc("Zx9tcizMPC1RBLe4pcPs");
-    //final documentSnapshotExam = await documentExam.get();
+
     String formatTimestamp(Timestamp timestamp, String format) {
       DateTime dateTime = timestamp.toDate();
       return DateFormat(format).format(dateTime);
     }
 
     if (mounted) {
-      if (documentSnapshot.exists && querySnapshot.exists) {
+      if (documentSnapshot.exists) {
         setState(() {
           _name = documentSnapshot.get("name");
           _usermail = documentSnapshot.get("email");
-          _title = querySnapshot.get("title");
         });
       }
     }
-  }
-
-  @override
-  void initState1() {
-    super.initState();
-    pageController.addListener(() {
-      setState(() {
-        _currPageValue = pageController.page!;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    pageController.dispose();
   }
 
   @override
@@ -114,18 +82,14 @@ class _HomepageScreenState extends State<HomepageScreen> {
         : 'assets/images/tobeto_logo_d.png';
     MediaQueryData mediaQuery = MediaQuery.of(context);
 
-    // Ekran genişliği
     double screenWidth = mediaQuery.size.width;
 
     String welcomeText = _name.isNotEmpty
         ? "'ya Hoş Geldin, ${_name}"
         : "'ya Hoş Geldin, Sevgili Öğrencimiz";
-    // Ekran yüksekliği
-    //double screenHeight = mediaQuery.size.height;
+
     return DefaultTabController(
       length: tabs.length,
-      // The Builder widget is used to have a different BuildContext to access
-      // closest DefaultTabController.
       child: Builder(builder: (BuildContext context) {
         final TabController tabController = DefaultTabController.of(context);
         tabController.addListener(() {
@@ -133,7 +97,6 @@ class _HomepageScreenState extends State<HomepageScreen> {
             setState(() {
               //print(tabController.index);
               selectedIndex = tabController.index;
-              print("Selected index: $selectedIndex");
             });
           }
         });
@@ -169,11 +132,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                             ),
                             SizedBox(
                               width: screenWidth / 0.20,
-                              child:
-                                  ////Text("selected index: $selectedIndex"),
-                                  //const InfoCard(),
-                                  _buildTabContent(selectedIndex),
-                              // SizedBox(width: screenWidth / 0.20, child: TrainingsCard(),
+                              child: _buildTabContent(selectedIndex),
                             ),
                           ],
                         ),
@@ -218,7 +177,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
       case 3:
         return const SurveyCard();
       default:
-        return const InfoCard(); // Default durum için boş bir container
+        return const InfoCard();
     }
   }
 }

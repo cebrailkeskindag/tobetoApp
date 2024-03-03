@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/models/exam.dart';
 import 'package:tobetoapp/widgets/homepage/exam_card.dart';
 
@@ -23,10 +24,9 @@ class _ExamFirebaseState extends State<ExamFirebase> {
 
   Future<List<Exam>> _getExamlist() async {
     final user = firebaseAuthInstance.currentUser;
-    final userDocRef = firebaseFirestore.collection("users").doc(user!.uid);
-
-// Belirli belgeye ait alt koleksiyona erişin
-    var examListCollectionRef = userDocRef.collection('examList');
+    final userDocRef = firebaseFirestore.collection(ConstanstFirebase.USERS).doc(user!.uid);
+ 
+    var examListCollectionRef = userDocRef.collection(ConstanstFirebase.EXAM_LIST);
     var querySnapshot = await examListCollectionRef.get();
 
     final examList = querySnapshot.docs.map((doc) {
@@ -34,7 +34,7 @@ class _ExamFirebaseState extends State<ExamFirebase> {
       return Exam.fromJson(data);
     }).toList();
 
-    // Mesajları tarihe göre sırala
+     
     examList.sort((a, b) {
       return a.date.compareTo(b.date);
     });
@@ -60,7 +60,7 @@ class _ExamFirebaseState extends State<ExamFirebase> {
       builder: (context, snapshot) {
         final examList = snapshot.data ?? [];
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator(); // Veri yüklenirken bekleyici göster
+          return const CircularProgressIndicator();  
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else if (examList.isEmpty) {
@@ -82,7 +82,7 @@ class _ExamFirebaseState extends State<ExamFirebase> {
             ),
           );
         } else {
-          // Veri başarıyla geldiyse
+          
 
           return SizedBox(
             width: screenWidth / 0.20,

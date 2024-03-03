@@ -146,7 +146,7 @@ const examList = [
       examClass: "Herkes İçin Kodlama 1C",
       examTime: "45 Dakika")
 ];
-*//*
+*/ /*
 List<CalendarModel> educationList = [
   CalendarModel(
       id: "1",
@@ -319,7 +319,6 @@ List<Perfection> compets = [
   Perfection(compet: "C#"),
   Perfection(compet: "Muhasebe"),
   Perfection(compet: "javascript"),
-  Perfection(compet: "javascript"),
   Perfection(compet: "Uyum Sağlama"),
   Perfection(compet: "Yönetim ve İdare"),
   Perfection(compet: "Reklam"),
@@ -376,22 +375,6 @@ List<Level> levels = [
   Level(level: "İleri Seviye (C1, C2)"),
   Level(level: "Ana Dil"),
 ];
-
-/*void _getUserInfo() async {
-  final user = firebaseAuthInstance.currentUser;
-  final document = firebaseFireStore.collection("users").doc(user!.uid);
-  final documentSnapshot = await document.get();
-  var eduListCollectionRef = document.collection('educationList').doc("edu4");
-  var querySnapshot = await eduListCollectionRef.get();
-
-   if (mounted) {
-      setState(() {
-        _namePage = documentSnapshot.get("name");
-       
-      });
-    }
-  }
-  */
 
 List<PageModel> pages = [
   PageModel(title: "TOBETO'ya Hoş geldin!", image: "assets/images/hs1.jpg"),

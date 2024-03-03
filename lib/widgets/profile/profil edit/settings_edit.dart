@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/blocs/auth_bloc/auth_event.dart';
 import 'package:tobetoapp/screen/loginpage.dart';
 
 class SettingsEdit extends StatefulWidget {
@@ -95,7 +94,7 @@ class _SettingsEditState extends State<SettingsEdit> {
                                 children: <Widget>[
                                   TextField(
                                     controller: _emailController,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         labelText: 'E-posta Adresi'),
                                   ),
                                   ElevatedButton(
@@ -103,7 +102,7 @@ class _SettingsEditState extends State<SettingsEdit> {
                                       resetPassword(_emailController.text);
                                       Navigator.pop(context);
                                     },
-                                    child: Text('Şifremi Sıfırla'),
+                                    child: const Text('Şifremi Sıfırla'),
                                   )
                                 ],
                               ),
@@ -121,15 +120,15 @@ class _SettingsEditState extends State<SettingsEdit> {
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('Hesabınızı silmek istiyor musunuz?'),
+                        content: const Text('Hesabınızı silmek istiyor musunuz?'),
                         action: SnackBarAction(
                           label: 'Hesabımı Sil',
                           onPressed: () {
                             deleteUser();
                           },
                         ),
-                        duration: Duration(
-                            seconds: 3), // SnackBar'ın ekranda kalma süresi
+                        duration: const Duration(
+                            seconds: 3),  
                       ),
                     );
                   },

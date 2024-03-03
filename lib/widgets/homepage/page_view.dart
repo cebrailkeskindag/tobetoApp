@@ -49,7 +49,7 @@ class _homePageViewState extends State<homePageView> {
           dotsCount: pages.length,
           position: _currPageValue.toInt(),
           decorator: DotsDecorator(
-              color: Colors.grey, // Inactive color
+              color: Colors.grey,  
               activeColor: Theme.of(context).primaryColor),
         ),
       ],

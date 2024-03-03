@@ -34,7 +34,7 @@ class TrainingsCard extends StatelessWidget {
                     borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(12),
                       topLeft: Radius.circular(12),
-                    ), // Yuvarlanan köşe
+                    ), 
                     child: Image.network(
                       edu.imageUrl,
                       width: screenWidth * 0.9,

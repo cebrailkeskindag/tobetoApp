@@ -26,7 +26,7 @@ class _EduVideoPlayerState extends State<EduVideoPlayer> {
       videoPlayerController: _videoPlayerController,
       autoPlay: true,
       looping: true,
-      // Bunlar opsiyonel, video oynatıcı kontrolleri ve görünümü özelleştirmek için kullanılabilir
+    
       aspectRatio: 16 / 9,
       showControls: true,
       materialProgressColors: ChewieProgressColors(

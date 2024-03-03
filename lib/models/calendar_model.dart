@@ -1,9 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart'; // Firestore için
+import 'package:cloud_firestore/cloud_firestore.dart'; 
 
 class CalendarModel {
   final String id;
   final String title;
-  final DateTime date; // Doğrudan DateTime türünde olacak
+  final DateTime date;
   final String hour;
   final String minute;
   final String author;
@@ -18,12 +18,12 @@ class CalendarModel {
   });
 
   factory CalendarModel.fromJson(Map<String, dynamic> json) {
-    // Firestore'dan gelen Timestamp'ı DateTime'a çevirme
+   
     var dateFromTimestamp = json['date'] is Timestamp
         ? json['date'].toDate()
         : (json['date'] is DateTime
             ? json['date']
-            : DateTime.now()); // Varsayılan değer veya hata yönetimi
+            : DateTime.now()); 
 
     return CalendarModel(
       id: json['id'],

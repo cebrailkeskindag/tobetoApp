@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tobetoapp/models/profile_edit.dart';
-import 'package:tobetoapp/widgets/profile/profil%20edit/language_edit.dart';
 import 'package:tobetoapp/widgets/profile/profil%20edit/language_list.dart';
 import 'package:tobetoapp/widgets/profile/profil%20edit/perfectionlist.dart';
 import 'package:tobetoapp/widgets/profile/profile%20homepage/activite_map.dart';

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/models/modelcatolag.dart';
 import 'catalog_event.dart';
 import 'catalog_state.dart';
@@ -21,7 +22,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   }
 
   Future<List<ModelCatalog>> _getCatalogListlist() async {
-    final userDocRef = FirebaseFirestore.instance.collection("catalogList");
+    final userDocRef = FirebaseFirestore.instance.collection(ConstanstFirebase.CATALOG_LIST);
 
     var querySnapshot = await userDocRef.get();
 
@@ -30,7 +31,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       return ModelCatalog.fromJson(data);
     }).toList();
 
-    // Mesajları tarihe göre sırala
     catalogList.sort((a, b) {
       return a.date.compareTo(b.date);
     });

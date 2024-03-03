@@ -22,7 +22,7 @@ class _NewsCardState extends State<NewsCard> {
     Timestamp timestamp = widget.news.newsDate;
     String newsDateString = timestamp.toDate().toString();
     MediaQueryData mediaQuery = MediaQuery.of(context);
-    // Ekran genişliği
+    
     double screenWidth = mediaQuery.size.width;
 
     return Padding(

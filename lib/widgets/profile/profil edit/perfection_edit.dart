@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
 
@@ -17,19 +18,34 @@ class _PerfectionEditState extends State<PerfectionEdit> {
 
   final firebaseFireStore = FirebaseFirestore.instance;
   DateTime? date;
+  
   void _submitPerfection() async {
     final user = firebaseAuthInstance.currentUser;
-    final document = firebaseFireStore.collection("users").doc(user!.uid);
-    //final documentSnapshot = await document.get();
-    // var perfectionCollectionRef = document.collection('profile').doc("perfections");
-    //var querySnapshot = await perfectionCollectionRef.get();
+    final document =
+        firebaseFireStore.collection(ConstanstFirebase.USERS).doc(user!.uid);
+
     date = DateTime.now();
     try {
-      document.collection("perfections").doc().set({
-        'perfection': selectedperfection?.compet,
-        'date': date,
-      });
+       
+      final perfectionSnapshot = await document
+          .collection(ConstanstFirebase.PERFECTIONS)
+          .where('perfection', isEqualTo: selectedperfection?.compet)
+          .get();
+
+      if (perfectionSnapshot.docs.isNotEmpty) {
+         
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Bu yetkinlik zaten eklenmiş!'),
+        ));
+      } else {
+         
+        document.collection(ConstanstFirebase.PERFECTIONS).doc().set({
+          'perfection': selectedperfection?.compet,
+          'date': date,
+        });
+      }
     } on FirebaseException catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message!)));
     }
@@ -94,10 +110,12 @@ class _PerfectionEditState extends State<PerfectionEdit> {
                 ),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(onPressed: () {
-                print(selectedperfection?.compet);
-                _submitPerfection();
-                }, child: const Text("Kaydet"))
+              ElevatedButton(
+                  onPressed: () {
+                    print(selectedperfection?.compet);
+                    _submitPerfection();
+                  },
+                  child: const Text("Kaydet"))
             ],
           ),
         ),

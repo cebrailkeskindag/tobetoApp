@@ -18,8 +18,7 @@ class CatalogWidget extends StatelessWidget {
       DateTime dateTime = timestamp.toDate();
       return DateFormat(format).format(dateTime);
     }
-
-    // Ekran genişliği
+ 
     double screenWidth = mediaQuery.size.width;
     return GestureDetector(
       onTap: () {
@@ -36,14 +35,14 @@ class CatalogWidget extends StatelessWidget {
             width: screenWidth,
           ),
 
-          // Metin ve düğmeler
+          
           Positioned(
             bottom: 0.0,
             left: 0.0,
             child: Container(
               width: screenWidth,
               color: Colors.black.withOpacity(0.5),
-              //color: Colors.black.withOpacity(0.5),
+              
               child: Column(
                 children: [
                   Padding(
