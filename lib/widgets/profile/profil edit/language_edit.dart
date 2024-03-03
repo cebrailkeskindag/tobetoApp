@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
+import 'package:tobetoapp/screen/homepage_screen.dart';
 
 class LanguageEdit extends StatefulWidget {
   const LanguageEdit({Key? key}) : super(key: key);
@@ -11,8 +16,45 @@ class LanguageEdit extends StatefulWidget {
 }
 
 class _LanguageEditState extends State<LanguageEdit> {
+  final firebaseAuthInstance = FirebaseAuth.instance;
+  final firebaseFirestore = FirebaseFirestore.instance;
+
+  DateTime? date;
+  
+  void _submitlanguage() async {
+    final user = firebaseAuthInstance.currentUser;
+    final document =
+        firebaseFireStore.collection(ConstanstFirebase.USERS).doc(user!.uid);
+
+    date = DateTime.now();
+    try {
+      final languageSnapshot = await document
+          .collection(ConstanstFirebase.LANGUAGES)
+          .where('language', isEqualTo: selectedlanguage?.language)
+          .get();
+
+      if (languageSnapshot.docs.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Bu dil zaten eklenmiş!'),
+        ));
+      } else {
+        document.collection(ConstanstFirebase.LANGUAGES).doc().set({
+          'language': selectedlanguage?.language,
+          'date': date,
+          'level': selectedlevel?.level,
+        });
+      }
+    } on FirebaseException catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message!)));
+    }
+  }
+
+  Language? selectedlanguage;
   Language? selectedlang;
   Level? selectedlevel;
+  bool isLanguage = false;
+  bool isLevel = false;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -33,11 +75,12 @@ class _LanguageEditState extends State<LanguageEdit> {
                   labelText: "Dil Seçiniz*",
                   hintStyle: const TextStyle(fontFamily: "Poppins"),
                 ),
-                value: selectedlang,
+                value: selectedlanguage,
                 onChanged: (Language? language) {
                   if (language != null) {
                     setState(() {
-                      selectedlang = language;
+                      selectedlanguage = language;
+                      isLanguage = true;
                     });
                   }
                 },
@@ -47,8 +90,11 @@ class _LanguageEditState extends State<LanguageEdit> {
                     value: language,
                     child: Text(
                       language.language,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.normal),
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                        color: Theme.of(context).colorScheme.onSecondary,
+                      ),
                     ),
                   );
                 }).toList(),
@@ -83,6 +129,7 @@ class _LanguageEditState extends State<LanguageEdit> {
                   if (level != null) {
                     setState(() {
                       selectedlevel = level;
+                      isLevel = true;
                     });
                   }
                 },
@@ -92,8 +139,11 @@ class _LanguageEditState extends State<LanguageEdit> {
                     value: level,
                     child: Text(
                       level.level,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.normal),
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                        color: Theme.of(context).colorScheme.onSecondary,
+                      ),
                     ),
                   );
                 }).toList(),
@@ -113,7 +163,16 @@ class _LanguageEditState extends State<LanguageEdit> {
                 ),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(onPressed: () {}, child: const Text("Kaydet"))
+              ElevatedButton(
+                  onPressed: () {
+                    if (isLevel && isLanguage) {
+                      _submitlanguage();
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Lütfen eksik alanları seçiniz")));
+                    }
+                  },
+                  child: const Text("Kaydet"))
             ],
           ),
         ),

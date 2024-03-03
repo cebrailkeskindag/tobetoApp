@@ -1,7 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/datas/datas.dart';
-import 'package:tobetoapp/screen/calendar_screen.dart';
+import 'package:tobetoapp/screen/calender_firebase.dart';
 import 'package:tobetoapp/screen/catalog.dart';
+import 'package:tobetoapp/screen/catalog_firabase.dart';
 import 'package:tobetoapp/screen/evaluation.dart';
 import 'package:tobetoapp/screen/homepage_screen.dart';
 import 'package:tobetoapp/screen/loginpage.dart';
@@ -15,6 +19,47 @@ class DrawerMenu extends StatefulWidget {
 }
 
 class _DrawerMenuState extends State<DrawerMenu> {
+  String _name = '';
+  String _surname = '';
+  String userName = "Kullanıcı Adı";
+  String _imageUrl = "";
+
+  final firebaseAuthInstance = FirebaseAuth.instance;
+
+  final firebaseFireStore = FirebaseFirestore.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    
+    _getUserInfo();
+  }
+
+  void _getUserInfo() async {
+    final user = firebaseAuthInstance.currentUser;
+    final document = firebaseFireStore.collection(ConstanstFirebase.USERS).doc(user!.uid);
+    final documentSnapshot = await document.get();
+    var profileCollectionRef = document.collection(ConstanstFirebase.PROFILE).doc(ConstanstFirebase.PERSONAL);
+    var querySnapshot = await profileCollectionRef.get(); 
+
+    if (mounted) {
+      if (documentSnapshot.exists && querySnapshot.exists) {
+        setState(() {
+          _name = querySnapshot.get("name");
+          _surname = querySnapshot.get("surname");
+          if (querySnapshot.exists) {
+            _imageUrl = querySnapshot.get("imageUrl");
+          }
+          
+
+          if (_name.isNotEmpty) {
+            userName = "$_name $_surname";
+          }
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Brightness currentBrightness = MediaQuery.of(context).platformBrightness;
@@ -76,7 +121,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
             leading: const Icon(Icons.date_range),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (ctx) => CalendarScreen(
+                  builder: (ctx) => CalendarFirebase(
                         educators: educators,
                       )));
             },
@@ -99,13 +144,26 @@ class _DrawerMenuState extends State<DrawerMenu> {
                 padding: const EdgeInsets.all(10),
                 child: Row(
                   children: [
-                    const Text("Kullanıcı adı"),
+                    Text(
+                      userName,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     const Spacer(),
-                    Image.asset(
-                      'assets/images/ic_user.png',
-                      width: 40.0,
-                      height: 40.0,
-                    )
+                    _imageUrl.isEmpty
+                        ? ClipOval(
+                            child: Image.asset(
+                              'assets/images/ic_user.png',
+                              width: 40.0,
+                              height: 40.0,
+                            ),
+                          )
+                        : ClipOval(
+                            child: Image.network(
+                              _imageUrl,
+                              width: 40.0,
+                              height: 40.0,
+                            ),
+                          )
                   ],
                 ),
               ),
@@ -115,12 +173,19 @@ class _DrawerMenuState extends State<DrawerMenu> {
               title: const Text(
                 "Çıkış Yap",
               ),
-              onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginPage(),
-                    ));
+              onTap: () async {
+                try {
+                  await FirebaseAuth.instance.signOut();
+
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ));
+                } catch (e) {
+                  print('Error: $e');
+                  // Hata durumunda kullanıcıya bilgi verebilirsiniz
+                }
               },
               leading: const Icon(Icons.exit_to_app)),
           const SizedBox(height: 30),

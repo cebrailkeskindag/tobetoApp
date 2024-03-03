@@ -5,7 +5,7 @@ class CutRectangle extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint();
     paint.style = PaintingStyle.fill;
-    paint.color = const Color(0x7500489A);
+    paint.color = Color.fromARGB(150, 255, 255, 255);
     paint.strokeWidth = 10;
     final path = Path();
     path.moveTo(0, size.height);

@@ -9,8 +9,7 @@ class Evaluation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-
-    // Ekran genişliği
+ 
     double screenWidth = mediaQuery.size.width;
 
     Brightness currentBrightness = MediaQuery.of(context).platformBrightness;

@@ -1,13 +1,23 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/widgets/profile/profil%20edit/language_list.dart';
+import 'package:tobetoapp/widgets/profile/profil%20edit/perfectionlist.dart';
 import 'package:tobetoapp/widgets/profile/profile%20homepage/activite_map.dart';
+
+final firebaseAuthInstance = FirebaseAuth.instance;
+
+final firebaseFireStore = FirebaseFirestore.instance;
 
 class Body extends StatelessWidget {
   const Body({
     Key? key,
     required this.size,
+    required this.aboutMe,
   }) : super(key: key);
 
   final Size size;
+  final String aboutMe;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +34,10 @@ class Body extends StatelessWidget {
               ),
             ),
             const Divider(),
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(15.0),
               child: Text(
-                '''
-                      ''',
+                aboutMe,
                 textAlign: TextAlign.start,
                 style: TextStyle(fontSize: 15),
               ),
@@ -48,7 +57,8 @@ class Body extends StatelessWidget {
                       padding: EdgeInsets.only(top: 5, bottom: 5),
                       child: Divider(),
                     ),
-                    Text("Henüz bir yetkinlik eklemedin")
+                    // Text("Henüz bir yetkinlik eklemedin")
+                    PerfectionList()
                   ],
                 ),
               ),
@@ -69,7 +79,9 @@ class Body extends StatelessWidget {
                       padding: EdgeInsets.only(top: 5, bottom: 5),
                       child: Divider(),
                     ),
-                    Text("Henüz bir yabancı dil eklemedin")
+                    LanguageList(),
+
+                    //Text("Henüz bir yabancı dil eklemedin")
                   ],
                 ),
               ),

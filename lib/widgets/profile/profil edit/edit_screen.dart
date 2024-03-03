@@ -45,7 +45,7 @@ class _EditScreenState extends State<EditScreen> {
           tabController.addListener(() {
             if (!tabController.indexIsChanging) {
               setState(() {
-                //print(tabController.index);
+                 
                 selectedIndex = tabController.index;
               });
             }
@@ -95,7 +95,7 @@ class _EditScreenState extends State<EditScreen> {
         return const SingleChildScrollView(child: LanguageEdit());
       default:
         return const SingleChildScrollView(
-            child: SettingsEdit()); // Default durum için boş bir container
+            child: SettingsEdit()); 
     }
   }
 }

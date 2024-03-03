@@ -8,15 +8,25 @@ class DataCutRectangle extends StatelessWidget {
     Key? key,
     required this.size,
     required this.percent,
+    required this.name,
+    required this.surname,
+    required this.phoneNumber,
+    required this.birthDate,
+    required this.email,
   }) : super(key: key);
 
   final Size size;
   final double percent;
+  final String name;
+  final String surname;
+  final String phoneNumber;
+  final String birthDate;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: size.width * 0.34, top: 8),
+      padding: EdgeInsets.only(left: size.width * 0.32, top: 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -29,10 +39,10 @@ class DataCutRectangle extends StatelessWidget {
                     (percent > 0.48
                         ? pow(percent, 10.5).clamp(0.0, 0.06)
                         : 0.0)),
-            child: const Row(
+            child: Row(
               children: [
                 Text(
-                  'Kullanıcı Adı',
+                  name.isEmpty ? 'Kullanıcı Adı' : '$name $surname',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
                   textAlign: TextAlign.start,
                 ),
@@ -46,7 +56,8 @@ class DataCutRectangle extends StatelessWidget {
             AnimatedOpacity(
               duration: const Duration(milliseconds: 200),
               opacity: (1 - pow(percent, 0.001)).toDouble(),
-              child: const CustomBottomDescription(),
+              child: CustomBottomDescription(
+                  phoneNumber: phoneNumber, birthDate: birthDate, email: email),
             )
           ]
         ],

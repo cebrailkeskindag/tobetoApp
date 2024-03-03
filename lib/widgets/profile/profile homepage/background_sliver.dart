@@ -9,7 +9,7 @@ class BackgroundSliver extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned.fill(
       child: Image.asset(
-        'assets/images/profile_background.jpeg',
+        'assets/images/hs3.jpg',
         fit: BoxFit.cover,
         colorBlendMode: BlendMode.darken,
         color: Colors.black.withOpacity(0.2),

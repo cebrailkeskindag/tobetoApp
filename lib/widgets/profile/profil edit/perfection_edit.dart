@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tobetoapp/constants/constants_firabase.dart';
 import 'package:tobetoapp/datas/datas.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
 
@@ -11,6 +14,43 @@ class PerfectionEdit extends StatefulWidget {
 }
 
 class _PerfectionEditState extends State<PerfectionEdit> {
+  final firebaseAuthInstance = FirebaseAuth.instance;
+
+  final firebaseFireStore = FirebaseFirestore.instance;
+  DateTime? date;
+  
+  void _submitPerfection() async {
+    final user = firebaseAuthInstance.currentUser;
+    final document =
+        firebaseFireStore.collection(ConstanstFirebase.USERS).doc(user!.uid);
+
+    date = DateTime.now();
+    try {
+       
+      final perfectionSnapshot = await document
+          .collection(ConstanstFirebase.PERFECTIONS)
+          .where('perfection', isEqualTo: selectedperfection?.compet)
+          .get();
+
+      if (perfectionSnapshot.docs.isNotEmpty) {
+         
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Bu yetkinlik zaten eklenmiş!'),
+        ));
+      } else {
+         
+        document.collection(ConstanstFirebase.PERFECTIONS).doc().set({
+          'perfection': selectedperfection?.compet,
+          'date': date,
+        });
+      }
+    } on FirebaseException catch (e) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message!)));
+    }
+  }
+
   Perfection? selectedperfection;
   @override
   Widget build(BuildContext context) {
@@ -46,8 +86,11 @@ class _PerfectionEditState extends State<PerfectionEdit> {
                     value: compet,
                     child: Text(
                       compet.compet,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.normal),
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                        color: Theme.of(context).colorScheme.onSecondary,
+                      ),
                     ),
                   );
                 }).toList(),
@@ -67,7 +110,12 @@ class _PerfectionEditState extends State<PerfectionEdit> {
                 ),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(onPressed: () {}, child: const Text("Kaydet"))
+              ElevatedButton(
+                  onPressed: () {
+                    print(selectedperfection?.compet);
+                    _submitPerfection();
+                  },
+                  child: const Text("Kaydet"))
             ],
           ),
         ),

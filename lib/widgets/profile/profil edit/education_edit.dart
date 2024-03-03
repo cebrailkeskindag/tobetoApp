@@ -17,9 +17,14 @@ class _EducationEditState extends State<EducationEdit> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
+
+    MediaQueryData mediaQuery = MediaQuery.of(context);
+
+    double screenHeight = mediaQuery.size.height;
+
     return SizedBox(
       width: double.infinity,
-      height: 500,
+      height: screenHeight * 0.8,
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -49,8 +54,11 @@ class _EducationEditState extends State<EducationEdit> {
                     value: education,
                     child: Text(
                       education.eduLevel,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.normal),
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                        color: Theme.of(context).colorScheme.surface,
+                      ),
                     ),
                   );
                 }).toList(),
@@ -94,7 +102,10 @@ class _EducationEditState extends State<EducationEdit> {
                   hintText: selectedDate != null
                       ? "${selectedDate!.toLocal().year}"
                       : "Başlangıç Yılı",
-                  hintStyle: const TextStyle(fontFamily: "Poppins"),
+                  hintStyle: TextStyle(
+                    fontFamily: "Poppins",
+                    color: Theme.of(context).colorScheme.surface,
+                  ),
                   suffixIcon: IconButton(
                     onPressed: () async {
                       final DateTime? picked = await showDatePicker(
@@ -128,7 +139,10 @@ class _EducationEditState extends State<EducationEdit> {
                   hintText: selectedendDate != null
                       ? "${selectedendDate!.toLocal().year}"
                       : "Mezuniyet Yılı",
-                  hintStyle: const TextStyle(fontFamily: "Poppins"),
+                  hintStyle: TextStyle(
+                    fontFamily: "Poppins",
+                    color: Theme.of(context).colorScheme.surface,
+                  ),
                   suffixIcon: IconButton(
                     onPressed: () async {
                       final DateTime? picked = await showDatePicker(

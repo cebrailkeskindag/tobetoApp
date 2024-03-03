@@ -1,34 +1,48 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tobetoapp/models/catalog_model.dart';
+import 'package:tobetoapp/models/modelcatolag.dart';
+import 'package:tobetoapp/screen/catalog_vp.dart';
+import 'package:tobetoapp/screen/edu_video_player.dart';
 
 class CatalogWidget extends StatelessWidget {
   const CatalogWidget({Key? key, required this.catalogModel}) : super(key: key);
-  final CatalogModel catalogModel;
+  final ModelCatalog catalogModel;
 
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-
-    // Ekran genişliği
+    Uri videoUri = Uri.parse(catalogModel.videoUrl);
+    String formatTimestamp(Timestamp timestamp, String format) {
+      DateTime dateTime = timestamp.toDate();
+      return DateFormat(format).format(dateTime);
+    }
+ 
     double screenWidth = mediaQuery.size.width;
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (ctx) =>
+                CatalogVp(videoUrl: videoUri, modelCatalog: catalogModel)));
+      },
       child: Stack(
         children: [
           // Arka plan resmi
           Image.network(
-            catalogModel.imagePath,
+            catalogModel.imageUrl,
             fit: BoxFit.cover,
+            width: screenWidth,
           ),
 
-          // Metin ve düğmeler
+          
           Positioned(
             bottom: 0.0,
             left: 0.0,
             child: Container(
               width: screenWidth,
               color: Colors.black.withOpacity(0.5),
-              //color: Colors.black.withOpacity(0.5),
+              
               child: Column(
                 children: [
                   Padding(
@@ -40,7 +54,7 @@ class CatalogWidget extends StatelessWidget {
                           color: Colors.white,
                         ),
                         Text(
-                          catalogModel.name,
+                          catalogModel.author,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 17.0,
@@ -54,7 +68,8 @@ class CatalogWidget extends StatelessWidget {
                           color: Colors.white,
                         ),
                         Text(
-                          catalogModel.time,
+                          formatTimestamp(
+                              catalogModel.date, 'yyyy-MM-dd – kk:mm'),
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 17.0,
@@ -94,7 +109,9 @@ class CatalogWidget extends StatelessWidget {
             right: 20.0,
             child: IconButton(
               onPressed: () {
-                // Düğme tıklandığında yapılacak işlemler
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (ctx) => CatalogVp(
+                        videoUrl: videoUri, modelCatalog: catalogModel)));
               },
               icon: const Icon(Icons.play_circle),
               iconSize: 50,

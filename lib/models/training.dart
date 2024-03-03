@@ -1,5 +1,4 @@
 class Training {
-  // Ctor'da default değer
   const Training({
     required this.id,
     required this.imagePath,

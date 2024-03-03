@@ -1,22 +1,30 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:tobetoapp/models/calendar_model.dart';
 import 'package:tobetoapp/models/catalog_model.dart';
-import 'package:tobetoapp/models/exam.dart';
-import 'package:tobetoapp/models/news.dart';
+import 'package:tobetoapp/models/homepagemodel.dart';
 import 'package:tobetoapp/models/profile_edit.dart';
-import 'package:tobetoapp/models/training.dart';
+import 'package:tobetoapp/screen/homepage_screen.dart';
 
+final firebaseAuthInstance = FirebaseAuth.instance;
+final firebaseStorageInstance = FirebaseStorage.instance;
+final firebaseFirestore = FirebaseFirestore.instance;
+/*
 const newsList = [
   News(
       id: "1",
       title: "Yeni Grupların Discord'a Katılımı",
-      newsDate: "07.12.2023"),
+      newsDate: "07.12.2023",
+      uid: ''),
   News(
       id: "2",
       title: "4 Aralık Online Hoşgeldin Buluşması",
-      newsDate: "29.11.2023"),
-  News(id: "3", title: "Önemli Bilgilendirme", newsDate: "23.11.2023"),
-];
+      newsDate: "29.11.2023",
+      uid: ''),
+  News(id: "3", title: "Önemli Bilgilendirme", newsDate: "23.11.2023", uid: ''),
+];*/
 
 const catalogList = [
   CatalogModel(
@@ -96,7 +104,7 @@ const catalogList = [
       time: "17dk",
       title: "Müşteri Ne İster?")
 ];
-
+/*
 const trainingsList = [
   Training(
       id: "1",
@@ -119,7 +127,8 @@ const trainingsList = [
       time: "2 Ekim 2023 03:00",
       title: "Hoşgeldin Buluşması - 2"),
 ];
-
+*/
+/*
 const examList = [
   Exam(
       id: "1",
@@ -137,7 +146,7 @@ const examList = [
       examClass: "Herkes İçin Kodlama 1C",
       examTime: "45 Dakika")
 ];
-
+*/ /*
 List<CalendarModel> educationList = [
   CalendarModel(
       id: "1",
@@ -196,7 +205,7 @@ List<CalendarModel> educationList = [
     minute: 30,
     author: "Ahmet Çetinkaya",
   ),
-];
+];*/
 
 List<Educator> educators = [
   Educator(eduName: "Ahmet Yılmaz"),
@@ -299,7 +308,6 @@ List<Province> provinces = [
   Province(city: 'Zonguldak'),
 ];
 
-
 List<Education> educationLevels = [
   Education(eduLevel: " Lisans"),
   Education(eduLevel: " Ön Lisans"),
@@ -310,7 +318,6 @@ List<Education> educationLevels = [
 List<Perfection> compets = [
   Perfection(compet: "C#"),
   Perfection(compet: "Muhasebe"),
-  Perfection(compet: "javascript"),
   Perfection(compet: "javascript"),
   Perfection(compet: "Uyum Sağlama"),
   Perfection(compet: "Yönetim ve İdare"),
@@ -367,4 +374,16 @@ List<Level> levels = [
   Level(level: "Orta Seviye (B1, B2)"),
   Level(level: "İleri Seviye (C1, C2)"),
   Level(level: "Ana Dil"),
+];
+
+List<PageModel> pages = [
+  PageModel(title: "TOBETO'ya Hoş geldin!", image: "assets/images/hs1.jpg"),
+  PageModel(
+      title:
+          "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!",
+      image: "assets/images/hs2.jpg"),
+  PageModel(
+      title: "Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
+      image: "assets/images/hs3.jpg"),
+  PageModel(title: "Aradığın  “İş”  Burada!", image: "assets/images/hs4.jpg"),
 ];

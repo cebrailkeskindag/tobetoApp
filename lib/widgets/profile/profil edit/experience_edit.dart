@@ -18,9 +18,14 @@ class _ExperienceEditState extends State<ExperienceEdit> {
 
   @override
   Widget build(BuildContext context) {
+
+    MediaQueryData mediaQuery = MediaQuery.of(context);
+
+    double screenHeight = mediaQuery.size.height;
+
     return SizedBox(
       width: double.infinity,
-      height: 500,
+      height: screenHeight * 0.8,
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -62,7 +67,10 @@ class _ExperienceEditState extends State<ExperienceEdit> {
                   ),
                   labelText: "Şehir Seçiniz*",
                   hintText: "İstanbul",
-                  hintStyle: const TextStyle(fontFamily: "Poppins"),
+                  hintStyle: TextStyle(
+                    fontFamily: "Poppins",
+                    color: Theme.of(context).colorScheme.onSecondary,
+                  ),
                 ),
                 value: selectedprovince,
                 onChanged: (Province? province) {
@@ -78,8 +86,11 @@ class _ExperienceEditState extends State<ExperienceEdit> {
                     value: province,
                     child: Text(
                       province.city,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.normal),
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                        color: Theme.of(context).colorScheme.onSecondary,
+                      ),
                     ),
                   );
                 }).toList(),
@@ -101,11 +112,13 @@ class _ExperienceEditState extends State<ExperienceEdit> {
               const SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
-                  // labelText: "Doğum Tarihiniz",
+                
                   hintText: selectedDate != null
                       ? "${selectedDate!.toLocal().day.toString().padLeft(2, '0')}/${selectedDate!.toLocal().month.toString().padLeft(2, '0')}/${selectedDate!.toLocal().year}"
                       : "İş Başlangıcı",
-                  hintStyle: const TextStyle(fontFamily: "Poppins"),
+                  hintStyle: TextStyle(
+                      fontFamily: "Poppins",
+                      color: Theme.of(context).colorScheme.surface),
                   suffixIcon: IconButton(
                     onPressed: () async {
                       final DateTime? picked = await showDatePicker(
@@ -139,7 +152,10 @@ class _ExperienceEditState extends State<ExperienceEdit> {
                   hintText: selectedendDate != null
                       ? "${selectedendDate!.toLocal().day.toString().padLeft(2, '0')}/${selectedendDate!.toLocal().month.toString().padLeft(2, '0')}/${selectedendDate!.toLocal().year}"
                       : "İş Bitişi",
-                  hintStyle: const TextStyle(fontFamily: "Poppins"),
+                  hintStyle: TextStyle(
+                    fontFamily: "Poppins",
+                    color: Theme.of(context).colorScheme.surface,
+                  ),
                   suffixIcon: IconButton(
                     onPressed: () async {
                       final DateTime? picked = await showDatePicker(
