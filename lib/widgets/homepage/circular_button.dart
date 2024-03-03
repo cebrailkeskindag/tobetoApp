@@ -16,7 +16,7 @@ class CircularButton extends StatefulWidget {
 
 late BuildContext _context;
 whatsapp() async {
-  var contact = "+905551234567";
+  var contact = "+905394548705";
   var androidUrl = "whatsapp://send?phone=$contact&text=Merhaba TOBETO";
   var iosUrl = "https://wa.me/$contact?text=${Uri.parse('Merhaba TOBETO')}";
 
@@ -29,19 +29,6 @@ whatsapp() async {
   } on Exception {
     ScaffoldMessenger.of(_context).showSnackBar(
         const SnackBar(content: Text("WhatsApp is not installed.")));
-  }
-}
-
-void _launchWhatsApp() async {
-  const phoneNumber = '+905551234567';  
-  const message =
-      'Merhaba, pair8 üzerinden mesaj gönderiyorum!'; 
-  final url = 'https://wa.me/$phoneNumber/?text=${Uri.encodeFull(message)}';
-  
-  if (await canLaunchUrlString(url)) {
-    await launchUrlString(url);
-  } else {
-    throw 'WhatsApp açılamadı';
   }
 }
 
